@@ -87,8 +87,13 @@ self.addEventListener('fetch', e => {
     return;
   }
 
+  // `cache: 'no-cache'` forces revalidation with the server. A plain fetch()
+  // still consults the browser's HTTP cache, and GitHub Pages serves HTML with
+  // max-age=600 — so without this, "network-first" would happily hand back a
+  // ten-minute-old index.html and the deploy would appear not to have landed.
+  // Revalidation is cheap: unchanged files come back as a 304.
   e.respondWith(
-    fetch(req)
+    fetch(new Request(req.url, { cache: 'no-cache', credentials: 'same-origin' }))
       .then(res => cachePut(SHELL_CACHE, req, res))
       .catch(() => caches.match(req).then(hit => hit || caches.match('index.html')))
   );
