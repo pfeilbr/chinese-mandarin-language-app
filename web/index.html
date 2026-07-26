@@ -35,6 +35,7 @@
   <header class="topbar">
     <div class="topbar-row">
       <h1>Say It In Mandarin</h1>
+      <button id="ear-btn" class="pill-btn ear-btn">Train ear</button>
       <button id="menu-btn" class="icon-btn menu-btn" aria-label="Menu">
         <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -280,6 +281,35 @@
       </div>
     </section>
 
+  </div>
+</section>
+
+<!-- Ear training. Listening-only tone identification: the best-evidenced way to
+     get a non-tonal-language speaker's ear working, and it transfers to speaking
+     without any speaking practice. -->
+<section id="drill" class="sheet" hidden aria-modal="true" role="dialog" aria-label="Ear training">
+  <div class="sheet-inner">
+    <div class="sheet-head">
+      <button class="icon-btn close-btn" aria-label="Back">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <span id="drill-score" class="drill-score"></span>
+    </div>
+
+    <h2 class="sheet-title">Which tone?</h2>
+    <p class="drill-lead">Listen to the whole phrase, then pick the tone of the highlighted sound.</p>
+
+    <div class="drill-card">
+      <p id="drill-meaning" class="drill-meaning"></p>
+      <p id="drill-syl" class="drill-syl"></p>
+      <p id="drill-where" class="drill-where"></p>
+      <button id="drill-replay" class="cmp-btn">Play again</button>
+    </div>
+
+    <div id="drill-choices" class="drill-choices"></div>
+
+    <p id="drill-feedback" class="drill-feedback" hidden></p>
+    <button id="drill-next" class="cmp-btn accent drill-next" hidden>Next</button>
   </div>
 </section>
 

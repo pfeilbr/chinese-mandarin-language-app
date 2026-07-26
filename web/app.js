@@ -440,7 +440,9 @@ function showSheet(node) {
 
 function hideSheet() {
   if (!activeSheet) return;
+  const wasDrill = activeSheet === $('#drill');
   const wasDetail = activeSheet === el.sheet;
+  if (wasDrill) { stopPlayback(); drill = null; }
   activeSheet.hidden = true;
   activeSheet = null;
   document.body.style.overflow = '';
@@ -571,6 +573,118 @@ document.addEventListener('keydown', e => {
     (!audio.paused || rafId) ? stopPlayback() : play(current);
   }
 });
+
+/* ── Ear training ────────────────────────────────────────────────────
+   Listening-only tone identification. This is the best-evidenced intervention
+   for a speaker of a non-tonal language: training perception alone measurably
+   improves *production* too, without any speaking practice, because the
+   bottleneck is an ear that doesn't yet treat pitch as meaning.
+
+   The whole phrase is played rather than a sliced-out syllable. That's partly
+   pedagogy — tones behave differently in connected speech than in isolation —
+   and partly honesty: the per-syllable timings here are even subdivisions of
+   TTS word spans, accurate to only ~100ms, so a sliced syllable could clip and
+   mark a correct answer wrong. */
+
+const TONE_LABEL = { 1: 'flat', 2: 'rising', 3: 'low', 4: 'falling' };
+const TONE_HINT = {
+  1: 'high and level, like holding a note',
+  2: 'rising, like asking "huh?"',
+  3: 'low and creaky — kept low rather than deeply dipped',
+  4: 'falling sharply, like a firm "no!"',
+};
+
+let drill = null;          // { phrase, index, answered }
+let drillScore = { right: 0, asked: 0 };
+
+/** Syllables carrying a full tone; neutral ones aren't worth drilling. */
+const drillable = p => p.syllables
+  .map((s, i) => ({ s, i }))
+  .filter(({ s }) => (s.said || s.tone) >= 1 && (s.said || s.tone) <= 4);
+
+function nextQuestion() {
+  const pool = DATA.phrases.filter(p => drillable(p).length);
+  const phrase = pool[Math.floor(Math.random() * pool.length)];
+  const opts = drillable(phrase);
+  const pick = opts[Math.floor(Math.random() * opts.length)];
+  drill = { phrase, index: pick.i, answered: false };
+
+  const total = phrase.syllables.length;
+  const ord = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'][pick.i] || `${pick.i + 1}th`;
+  $('#drill-meaning').textContent = phrase.en;
+  $('#drill-syl').textContent = pick.s.say;
+  $('#drill-where').textContent = total > 1 ? `the ${ord} of ${total} sounds` : 'the whole phrase';
+
+  $('#drill-choices').innerHTML = [1, 2, 3, 4].map(t =>
+    `<button class="drill-choice" data-tone="${t}">
+       <svg viewBox="0 0 15 9" aria-hidden="true">${TONE_PATH[t]}</svg>
+       ${t} ${TONE_LABEL[t]}
+     </button>`).join('');
+
+  $('#drill-feedback').hidden = true;
+  $('#drill-next').hidden = true;
+  renderDrillScore();
+  playDrillPhrase();
+}
+
+function renderDrillScore() {
+  $('#drill-score').textContent = drillScore.asked
+    ? `${drillScore.right}/${drillScore.asked}` : '';
+}
+
+/** Play a phrase straight through, ignoring loop/shadow/syllable modes. */
+async function playDrillPhrase() {
+  if (!drill) return;
+  stopPlayback();
+  const gen = ++generation;
+  const plan = playbackPlan(drill.phrase, speed);
+  if (!audio.src.endsWith(plan.src)) audio.src = plan.src;
+  audio.playbackRate = plan.rate;
+  const timing = drill.phrase.timing[plan.track];
+  const last = timing[timing.length - 1];
+  await playRange(0, last.t + last.d + 0.2, gen);
+}
+
+function answerDrill(tone) {
+  if (!drill || drill.answered) return;
+  drill.answered = true;
+  const syl = drill.phrase.syllables[drill.index];
+  const right = syl.said || syl.tone;
+  const ok = tone === right;
+
+  drillScore.asked++;
+  if (ok) drillScore.right++;
+  renderDrillScore();
+
+  for (const btn of $('#drill-choices').querySelectorAll('.drill-choice')) {
+    const t = Number(btn.dataset.tone);
+    btn.disabled = true;
+    if (t === right) btn.classList.add('correct');
+    else if (t === tone) btn.classList.add('wrong');
+  }
+
+  const fb = $('#drill-feedback');
+  fb.innerHTML = ok
+    ? `Yes — <b>${esc(syl.say)}</b> is tone ${right}, ${TONE_HINT[right]}.`
+    : `Not quite. <b>${esc(syl.say)}</b> is tone ${right} (${TONE_LABEL[right]}), ` +
+      `${TONE_HINT[right]} — you picked ${tone} (${TONE_LABEL[tone]}).` +
+      (syl.sandhi ? ` This one shifts: written as tone 3, said as tone 2 because a low tone follows.` : '');
+  fb.hidden = false;
+  $('#drill-next').hidden = false;
+  playDrillPhrase();
+}
+
+$('#ear-btn').addEventListener('click', () => {
+  drillScore = { right: 0, asked: 0 };
+  showSheet($('#drill'));
+  nextQuestion();
+});
+$('#drill-choices').addEventListener('click', e => {
+  const btn = e.target.closest('[data-tone]');
+  if (btn) answerDrill(Number(btn.dataset.tone));
+});
+$('#drill-next').addEventListener('click', nextQuestion);
+$('#drill-replay').addEventListener('click', playDrillPhrase);
 
 /* ── Present mode ────────────────────────────────────────────────────
    Hands the phone to the other person. Characters are shown as large as the

@@ -520,6 +520,44 @@ html.hide-pinyin .syl-py { display: none; }
 html.hide-hanzi .syl-han,
 html.hide-hanzi .card-script { display: none; }
 
+/* ── Ear training ────────────────────────────────────────── */
+
+.ear-btn { margin-left: auto; margin-right: 4px; color: var(--text-dim); }
+
+.drill-score { font-size: 14px; font-weight: 700; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
+.drill-lead { margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: var(--text-dim); }
+
+.drill-card {
+  margin-top: 20px; padding: 22px 18px;
+  text-align: center;
+  background: var(--bg-raised);
+  border: 1px solid var(--line); border-radius: 16px;
+}
+.drill-meaning { margin: 0; font-size: 14px; color: var(--text-dim); }
+.drill-syl { margin: 8px 0 2px; font-size: 40px; font-weight: 700; letter-spacing: -.02em; }
+.drill-where { margin: 0 0 16px; font-size: 13px; color: var(--text-faint); }
+
+.drill-choices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 12px; }
+
+.drill-choice {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 18px 10px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line); border-radius: 14px;
+  font-size: 15px; font-weight: 600;
+}
+.drill-choice svg { width: 26px; height: 15px; }
+.drill-choice svg path { stroke-width: 2.4; }
+.drill-choice:active { background: var(--bg-hover); }
+.drill-choice[disabled] { opacity: .45; }
+.drill-choice.correct { border-color: var(--t2); background: color-mix(in srgb, var(--t2) 18%, transparent); opacity: 1; }
+.drill-choice.wrong   { border-color: var(--t1); background: color-mix(in srgb, var(--t1) 18%, transparent); opacity: 1; }
+
+.drill-feedback { margin: 16px 0 0; font-size: 15px; line-height: 1.5; }
+.drill-feedback b { font-weight: 700; }
+.drill-next { width: 100%; margin-top: 12px; padding: 15px; }
+
 /* ── Present mode ────────────────────────────────────────── */
 
 .sheet-head-right { display: flex; align-items: center; gap: 6px; }
