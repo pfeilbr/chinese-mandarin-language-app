@@ -60,9 +60,12 @@
       <button class="icon-btn close-btn" aria-label="Back">
         <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
-      <button id="fav-btn" class="icon-btn star" aria-label="Save to favourites">
-        <svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg>
-      </button>
+      <div class="sheet-head-right">
+        <button id="show-btn" class="pill-btn">Show her</button>
+        <button id="fav-btn" class="icon-btn star" aria-label="Save to favourites">
+          <svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg>
+        </button>
+      </div>
     </div>
 
     <p id="d-en" class="d-en"></p>
@@ -279,6 +282,28 @@
 
   </div>
 </section>
+
+<!-- Present mode: hand the phone over so they can read it themselves.
+     Characters are the whole point here — they're what the other person reads,
+     and the one part of the phrase this app otherwise hides. -->
+<section id="present" class="present" hidden aria-modal="true" role="dialog" aria-label="Show this phrase">
+  <div class="present-body">
+    <p id="present-en" class="present-en"></p>
+    <p id="present-zh" class="present-zh"></p>
+    <p id="present-py" class="present-py"></p>
+  </div>
+  <div class="present-bar">
+    <button id="present-close" class="cmp-btn">Done</button>
+    <button id="present-play" class="cmp-btn">Play it</button>
+    <button id="present-flip" class="cmp-btn" aria-pressed="false">Flip</button>
+  </div>
+</section>
+
+<!-- Quick strip: the handful of phrases actually used day to day, parked in
+     the thumb's reach instead of behind a scroll and a tap. -->
+<nav id="quickbar" class="quickbar" hidden aria-label="Quick access">
+  <div id="quick-tiles" class="quick-tiles"></div>
+</nav>
 
 <!-- Update prompt -->
 <div id="update-bar" class="update-bar" hidden role="alertdialog" aria-labelledby="update-title">

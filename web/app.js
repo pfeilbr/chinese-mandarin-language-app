@@ -341,6 +341,7 @@ function noteUsed(id) {
   // The Recent chip only exists once there's something in it, so its first
   // appearance needs the strip rebuilt. Later plays just reorder the list.
   if (wasEmpty) renderChips();
+  renderQuickbar();
 }
 
 function cardHtml(p) {
@@ -430,6 +431,7 @@ let activeSheet = null;
 function showSheet(node) {
   if (activeSheet) hideSheet();
   activeSheet = node;
+  renderQuickbar();
   node.hidden = false;
   node.scrollTop = 0;
   document.body.style.overflow = 'hidden';
@@ -448,6 +450,7 @@ function hideSheet() {
     current = null;
     renderList();
   }
+  renderQuickbar();
 }
 
 function openSheet(phrase) {
@@ -550,6 +553,7 @@ el.favBtn.addEventListener('click', () => {
   store.set('favs', [...favs]);
   el.favBtn.setAttribute('aria-pressed', String(favs.has(current.id)));
   renderChips();
+  renderQuickbar();
   toast(favs.has(current.id) ? 'Saved to favourites' : 'Removed from favourites');
 });
 
@@ -560,12 +564,94 @@ for (const btn of document.querySelectorAll('.close-btn')) {
 window.addEventListener('popstate', hideSheet);
 
 document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !$('#present').hidden) return closePresent();
   if (e.key === 'Escape' && activeSheet) history.back();
   if (e.key === ' ' && current && activeSheet === el.sheet && e.target === document.body) {
     e.preventDefault();
     (!audio.paused || rafId) ? stopPlayback() : play(current);
   }
 });
+
+/* ── Present mode ────────────────────────────────────────────────────
+   Hands the phone to the other person. Characters are shown as large as the
+   viewport allows, because they're what a Chinese reader actually reads — and
+   the one part of the phrase this app otherwise keeps hidden. Flip rotates the
+   text 180° so the phone can just be slid across a table. */
+
+function openPresent() {
+  if (!current) return;
+  $('#present-en').textContent = current.en;
+  $('#present-zh').textContent = current.zh;
+  $('#present-py').textContent = current.py;
+  $('#present').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closePresent() {
+  $('#present').hidden = true;
+  if (!activeSheet) document.body.style.overflow = '';
+}
+
+$('#show-btn').addEventListener('click', openPresent);
+$('#present-close').addEventListener('click', closePresent);
+$('#present-play').addEventListener('click', () => current && play(current));
+$('#present-flip').addEventListener('click', e => {
+  const on = $('#present').classList.toggle('flipped');
+  e.currentTarget.setAttribute('aria-pressed', String(on));
+});
+
+/* ── Quick strip ─────────────────────────────────────────────────────
+   Live use is bursty and repetitive — the same handful of phrases, needed in
+   seconds, one-handed. Those live in the thumb's reach at the bottom rather
+   than behind a scrolling chip row at the top. */
+
+function quickList() {
+  const ids = [...recent, ...[...favs].filter(id => !recent.includes(id))];
+  return ids.map(id => BY_ID.get(id)).filter(Boolean).slice(0, 12);
+}
+
+function renderQuickbar() {
+  const items = quickList();
+  const bar = $('#quickbar');
+  bar.hidden = items.length === 0 || !!activeSheet;
+  document.body.classList.toggle('has-quickbar', !bar.hidden);
+  if (bar.hidden) return;
+  $('#quick-tiles').innerHTML = items.map(p =>
+    `<button class="quick-tile" data-quick="${p.id}" aria-label="Play ${esc(p.en)}">
+       <span class="quick-tile-en">${esc(p.en)}</span>
+       <span class="quick-tile-say">${esc(p.phon)}</span>
+     </button>`).join('');
+}
+
+$('#quick-tiles').addEventListener('click', e => {
+  const node = e.target.closest('[data-quick]');
+  if (!node) return;
+  const p = BY_ID.get(node.dataset.quick);
+  if (current && current.id === p.id && !audio.paused) return stopPlayback();
+  current = p;
+  play(p);
+});
+
+/* ── Deep links ──────────────────────────────────────────────────────
+   iOS won't let a PWA register Siri phrases, widgets or Back Tap directly, but
+   the Shortcuts app can "Open URL" — and a Shortcut *can* be bound to Back Tap
+   and the Action Button. Supporting ?p= and ?present= is what makes that
+   bridge possible. */
+
+function applyDeepLink() {
+  const q = new URLSearchParams(location.search);
+  const p = q.get('p') && BY_ID.get(q.get('p'));
+  const cat = q.get('cat');
+  if (cat && (CATS.has(cat) || VIRTUAL_FILTERS[cat])) {
+    filter = cat;
+    renderChips();
+    renderList();
+  }
+  if (p) {
+    openSheet(p);
+    if (q.get('present') === '1') openPresent();
+  }
+}
 
 /* ── Record & compare ────────────────────────────────────────────────
    Hearing yourself straight after the native clip is the only reliable way to
@@ -1015,6 +1101,8 @@ renderList();
 updateSpeedUI();
 updateModeUI();
 refreshInstallSection();
+renderQuickbar();
+applyDeepLink();
 
 window.addEventListener('load', initServiceWorker);
 

@@ -511,6 +511,85 @@ html.hide-pinyin .syl-py { display: none; }
 html.hide-hanzi .syl-han,
 html.hide-hanzi .card-script { display: none; }
 
+/* ── Present mode ────────────────────────────────────────── */
+
+.sheet-head-right { display: flex; align-items: center; gap: 6px; }
+
+.pill-btn {
+  padding: 8px 14px;
+  font-size: 14px; font-weight: 600;
+  border: 1px solid var(--line); border-radius: 999px;
+}
+.pill-btn:active { background: var(--bg-hover); }
+
+.present {
+  position: fixed; inset: 0; z-index: 80;
+  display: flex; flex-direction: column;
+  /* Near-black behind near-white: maximum legibility across a dim table. */
+  background: #000; color: #fff;
+  padding: calc(var(--safe-t) + 16px) 16px calc(var(--safe-b) + 16px);
+}
+
+.present-body {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4vh; text-align: center;
+  transition: transform .2s;
+}
+.present.flipped .present-body { transform: rotate(180deg); }
+
+.present-en { margin: 0; font-size: 20px; font-weight: 600; color: #9aa4b2; }
+.present-zh {
+  margin: 0;
+  /* Scales with the viewport so it stays readable across a table. */
+  font-size: min(19vw, 13vh); line-height: 1.25; font-weight: 500;
+  letter-spacing: .02em;
+}
+.present-py { margin: 0; font-size: 22px; color: #c3cad4; }
+
+.present-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.present .cmp-btn { background: #14181e; border-color: #2a313c; color: #fff; }
+
+/* ── Quick strip ─────────────────────────────────────────── */
+
+.quickbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  padding: 8px 12px calc(var(--safe-b) + 8px);
+  background: rgba(14, 17, 22, .93);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line);
+}
+
+.quick-tiles {
+  display: flex; gap: 8px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.quick-tiles::-webkit-scrollbar { display: none; }
+
+.quick-tile {
+  flex: none;
+  display: flex; flex-direction: column; gap: 2px;
+  /* Comfortably past the 44pt minimum — this gets tapped one-handed, walking. */
+  min-width: 116px; min-height: 56px;
+  padding: 9px 12px;
+  text-align: left;
+  background: var(--bg-raised);
+  border: 1px solid var(--line); border-radius: 12px;
+}
+.quick-tile:active { background: var(--bg-hover); border-color: var(--accent); }
+.quick-tile.playing { border-color: var(--accent); }
+.quick-tile-en {
+  font-size: 13px; font-weight: 600; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+}
+.quick-tile-say {
+  font-size: 12px; color: var(--text-dim); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 150px;
+}
+
+/* Keep the last cards clear of the fixed strip. */
+body.has-quickbar .list { padding-bottom: calc(var(--safe-b) + 104px); }
+
 /* ── Toast ───────────────────────────────────────────────── */
 
 .toast {
