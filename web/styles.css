@@ -126,6 +126,11 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 }
 .cat-head:first-child { margin-top: 2px; }
 
+.list-intro {
+  margin: 2px 2px 6px;
+  font-size: 13px; line-height: 1.5; color: var(--text-dim);
+}
+
 .card {
   display: flex; align-items: center; gap: 12px;
   width: 100%; padding: 13px 14px;
@@ -249,6 +254,19 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
   font-size: 15px; color: var(--text-dim);
 }
 .d-phon b { color: var(--text); font-weight: 600; }
+
+.d-sandhi {
+  margin: 10px 0 0; padding: 11px 13px;
+  font-size: 13px; line-height: 1.5; color: var(--text-dim);
+  background: var(--bg-raised); border-radius: 10px;
+}
+.d-sandhi b { color: var(--text); font-weight: 600; }
+
+/* Marks a syllable whose tone shifts because of the one after it. */
+.syl.sandhi .syl-say {
+  text-decoration: underline dotted currentColor 2px;
+  text-underline-offset: 4px;
+}
 
 /* ── Player ──────────────────────────────────────────────── */
 

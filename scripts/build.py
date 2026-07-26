@@ -43,6 +43,36 @@ def tone_of(syllable: str) -> int:
     return 5  # neutral
 
 
+T3_TO_T2 = str.maketrans("ǎěǐǒǔǚĂĚĬŎŬǙ", "áéíóúǘÁÉÍÓÚǗ")
+
+
+def apply_tone_sandhi(syllables: list[dict]) -> None:
+    """Third-tone sandhi: a 3rd tone before another 3rd tone is *said* as a 2nd.
+    你好 is pronounced "ní hǎo", never "nǐ hǎo" -- so showing tone 3 on 你 would
+    coach the wrong sound on a fifth of the library.
+
+    Runs of three or more are genuinely ambiguous: which syllables shift depends
+    on how the phrase groups prosodically, and the TTS word spans aren't
+    reliable enough to infer that. Pairing left to right is the standard
+    simplification and gets the common cases right -- 你好可爱 comes out
+    "ní hǎo kě ài", grouped 你好 + 可爱, which is what a speaker actually says.
+
+    Records the spoken tone in `said` and keeps the dictionary tone in `tone`.
+    """
+    i = 0
+    n = len(syllables)
+    while i < n:
+        s = syllables[i]
+        s.setdefault("said", s["tone"])
+        if s["tone"] == 3 and i + 1 < n and syllables[i + 1]["tone"] == 3:
+            s["said"] = 2
+            s["sandhi"] = True
+            s["say_py"] = s["py"].translate(T3_TO_T2)
+            i += 2          # the second of the pair keeps its 3rd tone
+        else:
+            i += 1
+
+
 def hanzi_chars(zh: str) -> list[str]:
     """Sounded characters only -- punctuation is display-only."""
     return [c for c in zh if c not in PUNCT and not c.isspace()]
@@ -69,10 +99,12 @@ def build_syllables(phrase: dict) -> list[dict]:
             "    The respelling is what gets read aloud, so it needs one\n"
             "    space-separated chunk per syllable."
         )
-    return [
+    syllables = [
         {"han": c, "py": p, "tone": tone_of(p), "say": s}
         for c, p, s in zip(chars, pys, phons)
     ]
+    apply_tone_sandhi(syllables)
+    return syllables
 
 
 async def render(text: str, voice: str, rate: str, out_path: Path) -> list[dict]:
@@ -147,6 +179,8 @@ async def process(phrase: dict, cfg: dict, force: bool, sem: asyncio.Semaphore) 
     }
     if phrase.get("note"):
         out["note"] = phrase["note"]
+    if phrase.get("starter") is not None:
+        out["starter"] = phrase["starter"]
 
     async with sem:
         for track, rate in cfg["tracks"].items():

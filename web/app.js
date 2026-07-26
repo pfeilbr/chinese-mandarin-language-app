@@ -26,7 +26,10 @@ const store = {
 let favs   = new Set(store.get('favs', []));
 let speed  = store.get('speed', 55);          // percent of native speaking pace
 let modes  = Object.assign({ step: false, loop: false, shadow: false }, store.get('modes', {}));
-let filter = 'all';
+let recent = store.get('recent', []);         // phrase ids, most recently played first
+// Ninety phrases is a lot to face cold, so a first-time visitor lands on the
+// starter set rather than the full list.
+let filter = store.get('filter', 'start');
 let query  = '';
 let current = null;                            // phrase object shown in the sheet
 
@@ -34,7 +37,8 @@ const $ = sel => document.querySelector(sel);
 const el = {
   list: $('#list'), chips: $('#chips'), search: $('#search'), empty: $('#empty'),
   sheet: $('#detail'), dEn: $('#d-en'), dNote: $('#d-note'), dHanzi: $('#d-hanzi'),
-  dPhon: $('#d-phon'), playBtn: $('#play-btn'), speed: $('#speed'), speedVal: $('#speed-val'),
+  dPhon: $('#d-phon'), dSandhi: $('#d-sandhi'),
+  playBtn: $('#play-btn'), speed: $('#speed'), speedVal: $('#speed-val'),
   favBtn: $('#fav-btn'), toast: $('#toast'), shadowHint: $('#shadow-hint'),
 };
 
@@ -193,6 +197,7 @@ async function playOnce(phrase, plan, gen) {
 
 async function play(phrase) {
   stopPlayback();
+  noteUsed(phrase.id);
   const gen = ++generation;
   const plan = playbackPlan(phrase, speed);
 
@@ -286,14 +291,18 @@ const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&
 function syllablesHtml(phrase, { interactive }) {
   const timing = phrase.timing.slow;
   return phrase.syllables.map((s, i) => {
+    // `said` is the tone actually pronounced — it differs from the dictionary
+    // tone wherever sandhi applies, and the spoken one is the only one worth
+    // showing to someone learning to say this out loud.
+    const tone = s.said || s.tone;
     const wordEnd = timing[i + 1] && timing[i + 1].word !== timing[i].word;
     const tag = interactive ? 'button' : 'span';
-    return `<${tag} class="syl t${s.tone}${wordEnd ? ' word-end' : ''}"` +
+    return `<${tag} class="syl t${tone}${wordEnd ? ' word-end' : ''}${s.sandhi ? ' sandhi' : ''}"` +
            (interactive ? ` data-syl="${i}" aria-label="${esc(s.say)}"` : '') + '>' +
              `<span class="syl-say">${esc(s.say)}</span>` +
-             toneSvg(s.tone) +
+             toneSvg(tone) +
              `<span class="syl-han">${esc(s.han)}</span>` +
-             `<span class="syl-py">${esc(s.py)}</span>` +
+             `<span class="syl-py">${esc(s.say_py || s.py)}</span>` +
            `</${tag}>`;
   }).join('');
 }
@@ -301,7 +310,7 @@ function syllablesHtml(phrase, { interactive }) {
 /** Compact preview for list cards — respelling first, script second. */
 function inlineZh(phrase) {
   return `<span class="card-say">`
-       + phrase.syllables.map(s => `<span class="t${s.tone}">${esc(s.say)}</span>`).join(' ')
+       + phrase.syllables.map(s => `<span class="t${s.said || s.tone}">${esc(s.say)}</span>`).join(' ')
        + `</span>`
        + `<span class="card-script"> ${esc(phrase.zh)}</span>`;
 }
@@ -309,12 +318,29 @@ function inlineZh(phrase) {
 const PLAY_ICON = '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
 const STAR_ICON = '<svg class="card-fav" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg>';
 
+const VIRTUAL_FILTERS = {
+  all:    () => true,
+  start:  p => p.starter != null,
+  recent: p => recent.includes(p.id),
+  fav:    p => favs.has(p.id),
+};
+
 function matches(p) {
-  if (filter === 'fav' && !favs.has(p.id)) return false;
-  if (filter !== 'all' && filter !== 'fav' && p.cat !== filter) return false;
+  const virtual = VIRTUAL_FILTERS[filter];
+  if (virtual ? !virtual(p) : p.cat !== filter) return false;
   if (!query) return true;
   const hay = `${p.en} ${p.py} ${p.zh} ${p.phon}`.toLowerCase();
   return query.split(/\s+/).every(w => hay.includes(w));
+}
+
+/** Remember what's been played so the Recent filter reflects real use. */
+function noteUsed(id) {
+  const wasEmpty = recent.length === 0;
+  recent = [id, ...recent.filter(x => x !== id)].slice(0, 12);
+  store.set('recent', recent);
+  // The Recent chip only exists once there's something in it, so its first
+  // appearance needs the strip rebuilt. Later plays just reorder the list.
+  if (wasEmpty) renderChips();
 }
 
 function cardHtml(p) {
@@ -328,8 +354,16 @@ function cardHtml(p) {
 }
 
 function renderList() {
-  const hits = DATA.phrases.filter(matches);
+  let hits = DATA.phrases.filter(matches);
   el.empty.hidden = hits.length > 0;
+
+  if (filter === 'start') hits.sort((a, b) => a.starter - b.starter);
+  if (filter === 'recent') hits.sort((a, b) => recent.indexOf(a.id) - recent.indexOf(b.id));
+
+  const intro = (filter === 'start' && !query)
+    ? `<p class="list-intro">Twelve to learn first — the ones you'll use nearly every day.
+       Once these feel easy, work through the categories.</p>`
+    : '';
 
   // Group under headings only when browsing everything; a filtered or searched
   // view is short enough that headings would be more noise than signal.
@@ -340,14 +374,17 @@ function renderList() {
       return `<h2 class="cat-head">${c.emoji} ${esc(c.name)}</h2>` + items.map(cardHtml).join('');
     }).join('');
   } else {
-    el.list.innerHTML = hits.map(cardHtml).join('');
+    el.list.innerHTML = intro + hits.map(cardHtml).join('');
   }
 }
 
 function renderChips() {
   const all = [
+    { id: 'start', name: 'Start here', emoji: '🌱' },
     { id: 'all', name: 'All', emoji: '' },
-    { id: 'fav', name: 'Favourites', emoji: '★' },
+    // Only worth offering once there's something in them.
+    ...(recent.length ? [{ id: 'recent', name: 'Recent', emoji: '🕘' }] : []),
+    ...(favs.size ? [{ id: 'fav', name: 'Favourites', emoji: '★' }] : []),
     ...DATA.categories,
   ];
   el.chips.innerHTML = all.map(c =>
@@ -422,6 +459,15 @@ function openSheet(phrase) {
   el.dPhon.innerHTML = phrase.phon
     ? `Read it out loud: <b>${esc(phrase.phon)}</b> &nbsp;·&nbsp; CAPITALS get the stress`
     : '';
+  const shifts = phrase.syllables.filter(s => s.sandhi);
+  el.dSandhi.hidden = !shifts.length;
+  if (shifts.length) {
+    el.dSandhi.innerHTML =
+      `<b>${shifts.map(s => esc(s.say)).join(', ')}</b> ` +
+      `${shifts.length === 1 ? 'is' : 'are'} underlined because the tone changes here. ` +
+      `A dipping tone turns into a rising one when another dipping tone follows it — ` +
+      `so 你好 is said <b>ní hǎo</b>, never <b>nǐ hǎo</b>. The colour shows what to actually say.`;
+  }
   el.favBtn.setAttribute('aria-pressed', String(favs.has(phrase.id)));
   refreshCompareUI();
   showSheet(el.sheet);
@@ -454,6 +500,7 @@ el.chips.addEventListener('click', e => {
   const chip = e.target.closest('[data-cat]');
   if (!chip) return;
   filter = chip.dataset.cat;
+  store.set('filter', filter);
   renderChips();
   renderList();
   el.list.scrollIntoView({ block: 'start' });
@@ -502,6 +549,7 @@ el.favBtn.addEventListener('click', () => {
   favs.has(current.id) ? favs.delete(current.id) : favs.add(current.id);
   store.set('favs', [...favs]);
   el.favBtn.setAttribute('aria-pressed', String(favs.has(current.id)));
+  renderChips();
   toast(favs.has(current.id) ? 'Saved to favourites' : 'Removed from favourites');
 });
 
