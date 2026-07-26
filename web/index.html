@@ -21,7 +21,12 @@
 
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="styles.css">
+
+<!-- Versioned by build id. HTML and its scripts are cached independently by the
+     browser (GitHub Pages serves max-age=600), so without this a visitor can end
+     up running yesterday's app.js against today's markup — which breaks the app
+     outright the moment an element is renamed. -->
+<link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
 <body>
 
@@ -271,7 +276,7 @@
 
 <div id="toast" class="toast" hidden></div>
 
-<script src="data/phrases.js"></script>
-<script src="app.js"></script>
+<script src="data/phrases.js?v=__BUILD__"></script>
+<script src="app.js?v=__BUILD__"></script>
 </body>
 </html>

@@ -24,12 +24,15 @@ const AUDIO_CACHE = 'sim-audio';   // unversioned: a clip's bytes never change
  *                  the source of truth.
  */
 
+/* The ?v= stamps must match the ones index.html requests, or the precache would
+   store URLs the page never asks for. Both files are stamped with the same
+   BUILD by the deploy workflow, so they stay in lockstep. */
 const SHELL = [
   './',
   'index.html',
-  'styles.css',
-  'app.js',
-  'data/phrases.js',
+  `styles.css?v=${BUILD}`,
+  `app.js?v=${BUILD}`,
+  `data/phrases.js?v=${BUILD}`,
   'manifest.webmanifest',
   'icons/icon-192.png',
   'icons/icon-512.png',
