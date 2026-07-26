@@ -765,6 +765,13 @@ async function checkForUpdate(manual) {
 function initServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
 
+  // Whether a worker controlled this page *at load* is what distinguishes an
+  // update from a first install. It can't be read later: the initial worker's
+  // clients.claim() sets a controller mid-install, which would make a brand new
+  // visitor's first load look like an update and prompt them to update to the
+  // version they just downloaded.
+  const hadController = !!navigator.serviceWorker.controller;
+
   navigator.serviceWorker.addEventListener('controllerchange', () => {
     // Only reload for an update the user actually asked for; the very first
     // registration also fires this when it claims the page.
@@ -776,15 +783,15 @@ function initServiceWorker() {
   navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
     .then(reg => {
       swReg = reg;
-      if (reg.waiting && navigator.serviceWorker.controller) showUpdatePrompt();
+      if (reg.waiting && hadController) showUpdatePrompt();
 
       reg.addEventListener('updatefound', () => {
         const nw = reg.installing;
         if (!nw) return;
         nw.addEventListener('statechange', () => {
-          // A worker reaching `installed` while one already controls the page
+          // A worker reaching `installed` when one already controlled the page
           // means this is an update, not a first install.
-          if (nw.state === 'installed' && navigator.serviceWorker.controller) showUpdatePrompt();
+          if (nw.state === 'installed' && hadController) showUpdatePrompt();
         });
       });
 
