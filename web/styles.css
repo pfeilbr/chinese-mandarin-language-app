@@ -11,11 +11,20 @@
   --accent:    #ff5c8a;
   --accent-dim:#3a1f2a;
 
-  /* Tone colours — kept consistent between hanzi, pinyin and the legend. */
+  /* Tone colours, matching Pleco's default mapping (1 red, 2 green, 3 blue,
+     4 purple, 5 grey). There is no universal standard, but Pleco is the
+     de-facto one and the app a learner is most likely to meet next — and the
+     previous scheme here used the *same* colours for *different* tones, which
+     is the worst kind of clash to carry forward.
+
+     Colour is deliberately the secondary channel: the one controlled study of
+     tone colour-coding found it performed worse than plain tone marks, and
+     red/green is the commonest colour-vision deficiency. The contour glyph
+     under each syllable is the primary signal. */
   --t1: #ff6b6b;
-  --t2: #ffb03a;
-  --t3: #3ecf7d;
-  --t4: #5aa9ff;
+  --t2: #3ecf7d;
+  --t3: #5aa9ff;
+  --t4: #c08cff;
   --t5: #8b95a3;
 
   --safe-t: env(safe-area-inset-top, 0px);

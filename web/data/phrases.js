@@ -69,13 +69,13 @@ window.PHRASE_DATA = {
    "en": "I love you",
    "zh": "我爱你",
    "py": "wǒ ài nǐ",
-   "phon": "wor EYE nee",
+   "phon": "waw EYE nee",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -137,13 +137,13 @@ window.PHRASE_DATA = {
    "en": "I love you so much",
    "zh": "我好爱你",
    "py": "wǒ hǎo ài nǐ",
-   "phon": "wor how EYE nee",
+   "phon": "waw how EYE nee",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 2,
      "sandhi": true,
      "say_py": "wó"
@@ -223,13 +223,13 @@ window.PHRASE_DATA = {
    "en": "I'm crazy about you",
    "zh": "我喜欢你",
    "py": "wǒ xǐ huan nǐ",
-   "phon": "wor SHEE hwahn nee",
+   "phon": "waw SHEE hwahn nee",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 2,
      "sandhi": true,
      "say_py": "wó"
@@ -308,13 +308,13 @@ window.PHRASE_DATA = {
    "en": "I miss you",
    "zh": "我想你了",
    "py": "wǒ xiǎng nǐ le",
-   "phon": "wor SHYAHNG nee luh",
+   "phon": "waw SHYAHNG nee luh",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 2,
      "sandhi": true,
      "say_py": "wó"
@@ -512,13 +512,13 @@ window.PHRASE_DATA = {
    "en": "Come here, give me a hug",
    "zh": "过来抱抱",
    "py": "guò lái bào bao",
-   "phon": "gwor lye BAOW baow",
+   "phon": "gwaw lye BAOW baow",
    "syllables": [
     {
      "han": "过",
      "py": "guò",
      "tone": 4,
-     "say": "gwor",
+     "say": "gwaw",
      "said": 4
     },
     {
@@ -597,7 +597,7 @@ window.PHRASE_DATA = {
    "en": "Give me a kiss",
    "zh": "亲我一下",
    "py": "qīn wǒ yí xià",
-   "phon": "chin wor yee SHYAH",
+   "phon": "chin waw yee SHYAH",
    "syllables": [
     {
      "han": "亲",
@@ -610,7 +610,7 @@ window.PHRASE_DATA = {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -681,7 +681,7 @@ window.PHRASE_DATA = {
    "en": "I'm so happy when I'm with you",
    "zh": "和你在一起我很开心",
    "py": "hé nǐ zài yì qǐ wǒ hěn kāi xīn",
-   "phon": "huh nee dzye yee chee wor hun kye SHIN",
+   "phon": "huh nee dzye yee chee waw hun kye SHIN",
    "syllables": [
     {
      "han": "和",
@@ -724,7 +724,7 @@ window.PHRASE_DATA = {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor"
+     "say": "waw"
     },
     {
      "han": "很",
@@ -851,13 +851,13 @@ window.PHRASE_DATA = {
    "en": "I want to be with you always",
    "zh": "我想一直和你在一起",
    "py": "wǒ xiǎng yì zhí hé nǐ zài yì qǐ",
-   "phon": "wor shyahng yee jr huh nee dzye yee CHEE",
+   "phon": "waw shyahng yee jr huh nee dzye yee CHEE",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 2,
      "sandhi": true,
      "say_py": "wó"
@@ -1021,7 +1021,7 @@ window.PHRASE_DATA = {
    "en": "You're my favorite person",
    "zh": "你是我最喜欢的人",
    "py": "nǐ shì wǒ zuì xǐ huan de rén",
-   "phon": "nee shr wor dzway shee hwahn duh RUN",
+   "phon": "nee shr waw dzway shee hwahn duh RUN",
    "syllables": [
     {
      "han": "你",
@@ -1041,7 +1041,7 @@ window.PHRASE_DATA = {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -2006,7 +2006,7 @@ window.PHRASE_DATA = {
    "en": "You're so good to me",
    "zh": "你对我真好",
    "py": "nǐ duì wǒ zhēn hǎo",
-   "phon": "nee dway wor jun HOW",
+   "phon": "nee dway waw jun HOW",
    "syllables": [
     {
      "han": "你",
@@ -2026,7 +2026,7 @@ window.PHRASE_DATA = {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -2191,13 +2191,13 @@ window.PHRASE_DATA = {
    "en": "I'm proud of you",
    "zh": "我为你骄傲",
    "py": "wǒ wèi nǐ jiāo ào",
-   "phon": "wor way nee jyaow AOW",
+   "phon": "waw way nee jyaow AOW",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -2292,7 +2292,7 @@ window.PHRASE_DATA = {
    "en": "You did really well",
    "zh": "你做得很好",
    "py": "nǐ zuò de hěn hǎo",
-   "phon": "nee dzwor duh hun HOW",
+   "phon": "nee dzwaw duh hun HOW",
    "syllables": [
     {
      "han": "你",
@@ -2305,7 +2305,7 @@ window.PHRASE_DATA = {
      "han": "做",
      "py": "zuò",
      "tone": 4,
-     "say": "dzwor",
+     "say": "dzwaw",
      "said": 4
     },
     {
@@ -2455,6 +2455,193 @@ window.PHRASE_DATA = {
     ]
    },
    "starter": 4
+  },
+  {
+   "id": "auntie",
+   "cat": "family",
+   "en": "Auntie (her mum)",
+   "zh": "阿姨",
+   "py": "ā yí",
+   "phon": "ah YEE",
+   "syllables": [
+    {
+     "han": "阿",
+     "py": "ā",
+     "tone": 1,
+     "say": "ah",
+     "said": 1
+    },
+    {
+     "han": "姨",
+     "py": "yí",
+     "tone": 2,
+     "say": "YEE",
+     "said": 2
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.281,
+      "word": 0
+     },
+     {
+      "t": 0.381,
+      "d": 0.281,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.511,
+      "word": 0
+     },
+     {
+      "t": 0.652,
+      "d": 0.511,
+      "word": 0
+     }
+    ]
+   },
+   "note": "You address her mother by title, never by name. Learn this before 你好 — it's what family notices first."
+  },
+  {
+   "id": "uncle",
+   "cat": "family",
+   "en": "Uncle (her dad)",
+   "zh": "叔叔",
+   "py": "shū shu",
+   "phon": "SHOO shoo",
+   "syllables": [
+    {
+     "han": "叔",
+     "py": "shū",
+     "tone": 1,
+     "say": "SHOO",
+     "said": 1
+    },
+    {
+     "han": "叔",
+     "py": "shu",
+     "tone": 5,
+     "say": "shoo",
+     "said": 5
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.331,
+      "word": 0
+     },
+     {
+      "t": 0.431,
+      "d": 0.331,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.603,
+      "word": 0
+     },
+     {
+      "t": 0.744,
+      "d": 0.603,
+      "word": 0
+     }
+    ]
+   },
+   "note": "Same for her father. Titles, not names."
+  },
+  {
+   "id": "sorry-to-trouble",
+   "cat": "family",
+   "en": "Sorry to trouble you",
+   "zh": "麻烦你了",
+   "py": "má fan nǐ le",
+   "phon": "mah FAHN nee luh",
+   "syllables": [
+    {
+     "han": "麻",
+     "py": "má",
+     "tone": 2,
+     "say": "mah",
+     "said": 2
+    },
+    {
+     "han": "烦",
+     "py": "fan",
+     "tone": 5,
+     "say": "FAHN",
+     "said": 5
+    },
+    {
+     "han": "你",
+     "py": "nǐ",
+     "tone": 3,
+     "say": "nee",
+     "said": 3
+    },
+    {
+     "han": "了",
+     "py": "le",
+     "tone": 5,
+     "say": "luh",
+     "said": 5
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.212,
+      "word": 0
+     },
+     {
+      "t": 0.312,
+      "d": 0.212,
+      "word": 0
+     },
+     {
+      "t": 0.525,
+      "d": 0.138,
+      "word": 1
+     },
+     {
+      "t": 0.662,
+      "d": 0.263,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.387,
+      "word": 0
+     },
+     {
+      "t": 0.527,
+      "d": 0.387,
+      "word": 0
+     },
+     {
+      "t": 0.914,
+      "d": 0.25,
+      "word": 1
+     },
+     {
+      "t": 1.164,
+      "d": 0.477,
+      "word": 2
+     }
+    ]
+   },
+   "note": "Use this, not 谢谢, for small everyday favours. Constant 谢谢 among family sounds distant and marks you as an outsider."
   },
   {
    "id": "hello-parents",
@@ -2886,13 +3073,13 @@ window.PHRASE_DATA = {
    "en": "Let me help",
    "zh": "我来帮忙",
    "py": "wǒ lái bāng máng",
-   "phon": "wor lye bahng MAHNG",
+   "phon": "waw lye bahng MAHNG",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -3055,13 +3242,13 @@ window.PHRASE_DATA = {
    "en": "I'm full, thank you",
    "zh": "我吃饱了，谢谢",
    "py": "wǒ chī bǎo le xiè xie",
-   "phon": "wor chr BAOW luh shyeh shyeh",
+   "phon": "waw chr BAOW luh shyeh shyeh",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -3174,13 +3361,13 @@ window.PHRASE_DATA = {
    "en": "I'll take good care of her",
    "zh": "我会好好照顾她",
    "py": "wǒ huì hǎo hǎo zhào gù tā",
-   "phon": "wor hway how how jaow goo TAH",
+   "phon": "waw hway how how jaow goo TAH",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -3311,7 +3498,7 @@ window.PHRASE_DATA = {
    "en": "Please look after me",
    "zh": "请多关照",
    "py": "qǐng duō guān zhào",
-   "phon": "ching dwor gwahn JAOW",
+   "phon": "ching dwaw gwahn JAOW",
    "syllables": [
     {
      "han": "请",
@@ -3324,7 +3511,7 @@ window.PHRASE_DATA = {
      "han": "多",
      "py": "duō",
      "tone": 1,
-     "say": "dwor",
+     "say": "dwaw",
      "said": 1
     },
     {
@@ -3464,7 +3651,7 @@ window.PHRASE_DATA = {
    "en": "Hello, Grandma (mum's side)",
    "zh": "外婆好",
    "py": "wài pó hǎo",
-   "phon": "wye por HOW",
+   "phon": "wye paw HOW",
    "syllables": [
     {
      "han": "外",
@@ -3477,7 +3664,7 @@ window.PHRASE_DATA = {
      "han": "婆",
      "py": "pó",
      "tone": 2,
-     "say": "por",
+     "say": "paw",
      "said": 2
     },
     {
@@ -4223,13 +4410,13 @@ window.PHRASE_DATA = {
    "en": "A toast to you",
    "zh": "我敬您一杯",
    "py": "wǒ jìng nín yì bēi",
-   "phon": "wor jing neen yee BAY",
+   "phon": "waw jing neen yee BAY",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -4318,6 +4505,245 @@ window.PHRASE_DATA = {
     ]
    },
    "note": "Raise your glass lower than theirs. That detail matters."
+  },
+  {
+   "id": "i-can-eat-spicy",
+   "cat": "chengdu",
+   "en": "I can eat spicy food",
+   "zh": "我能吃辣",
+   "py": "wǒ néng chī là",
+   "phon": "waw nung chr LAH",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "waw",
+     "said": 3
+    },
+    {
+     "han": "能",
+     "py": "néng",
+     "tone": 2,
+     "say": "nung",
+     "said": 2
+    },
+    {
+     "han": "吃",
+     "py": "chī",
+     "tone": 1,
+     "say": "chr",
+     "said": 1
+    },
+    {
+     "han": "辣",
+     "py": "là",
+     "tone": 4,
+     "say": "LAH",
+     "said": 4
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.15,
+      "word": 0
+     },
+     {
+      "t": 0.25,
+      "d": 0.175,
+      "word": 1
+     },
+     {
+      "t": 0.438,
+      "d": 0.2,
+      "word": 2
+     },
+     {
+      "t": 0.637,
+      "d": 0.312,
+      "word": 3
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.273,
+      "word": 0
+     },
+     {
+      "t": 0.414,
+      "d": 0.318,
+      "word": 1
+     },
+     {
+      "t": 0.755,
+      "d": 0.364,
+      "word": 2
+     },
+     {
+      "t": 1.118,
+      "d": 0.568,
+      "word": 3
+     }
+    ]
+   },
+   "note": "In Chengdu this earns real credit at the family table. Say it, then prove it."
+  },
+  {
+   "id": "love-sichuan-food",
+   "cat": "chengdu",
+   "en": "I love Sichuan food",
+   "zh": "我喜欢川菜",
+   "py": "wǒ xǐ huan chuān cài",
+   "phon": "waw shee hwahn chwahn TSYE",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "waw",
+     "said": 2,
+     "sandhi": true,
+     "say_py": "wó"
+    },
+    {
+     "han": "喜",
+     "py": "xǐ",
+     "tone": 3,
+     "say": "shee"
+    },
+    {
+     "han": "欢",
+     "py": "huan",
+     "tone": 5,
+     "say": "hwahn",
+     "said": 5
+    },
+    {
+     "han": "川",
+     "py": "chuān",
+     "tone": 1,
+     "say": "chwahn",
+     "said": 1
+    },
+    {
+     "han": "菜",
+     "py": "cài",
+     "tone": 4,
+     "say": "TSYE",
+     "said": 4
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.138,
+      "word": 0
+     },
+     {
+      "t": 0.25,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.431,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.625,
+      "d": 0.287,
+      "word": 2
+     },
+     {
+      "t": 0.912,
+      "d": 0.287,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.414,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 0.744,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 1.095,
+      "d": 0.522,
+      "word": 2
+     },
+     {
+      "t": 1.617,
+      "d": 0.522,
+      "word": 2
+     }
+    ]
+   },
+   "note": "Complimenting her mother's cooking is the fastest route into her good graces."
+  },
+  {
+   "id": "yaode",
+   "cat": "chengdu",
+   "en": "Okay / will do",
+   "zh": "要得",
+   "py": "yào de",
+   "phon": "yaow DUH",
+   "syllables": [
+    {
+     "han": "要",
+     "py": "yào",
+     "tone": 4,
+     "say": "yaow",
+     "said": 4
+    },
+    {
+     "han": "得",
+     "py": "de",
+     "tone": 5,
+     "say": "DUH",
+     "said": 5
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.3,
+      "word": 0
+     },
+     {
+      "t": 0.4,
+      "d": 0.3,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.545,
+      "word": 0
+     },
+     {
+      "t": 0.686,
+      "d": 0.545,
+      "word": 0
+     }
+    ]
+   },
+   "note": "Sichuanese, not standard Mandarin — an everyday Chengdu yes. Ask her how it really sounds."
   },
   {
    "id": "bashi",
@@ -4427,13 +4853,13 @@ window.PHRASE_DATA = {
    "en": "I want hotpot",
    "zh": "我想吃火锅",
    "py": "wǒ xiǎng chī huǒ guō",
-   "phon": "wor shyahng chr hwor GWOR",
+   "phon": "waw shyahng chr hwaw GWAW",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 2,
      "sandhi": true,
      "say_py": "wó"
@@ -4455,14 +4881,14 @@ window.PHRASE_DATA = {
      "han": "火",
      "py": "huǒ",
      "tone": 3,
-     "say": "hwor",
+     "say": "hwaw",
      "said": 3
     },
     {
      "han": "锅",
      "py": "guō",
      "tone": 1,
-     "say": "GWOR",
+     "say": "GWAW",
      "said": 1
     }
    ],
@@ -4529,13 +4955,13 @@ window.PHRASE_DATA = {
    "en": "I like spicy food",
    "zh": "我喜欢吃辣的",
    "py": "wǒ xǐ huan chī là de",
-   "phon": "wor shee hwahn chr LAH duh",
+   "phon": "waw shee hwahn chr LAH duh",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 2,
      "sandhi": true,
      "say_py": "wó"
@@ -4902,13 +5328,13 @@ window.PHRASE_DATA = {
    "en": "I love Chengdu",
    "zh": "我爱成都",
    "py": "wǒ ài chéng dū",
-   "phon": "wor eye chung DOO",
+   "phon": "waw eye chung DOO",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -5257,13 +5683,13 @@ window.PHRASE_DATA = {
    "en": "Sweet dreams",
    "zh": "做个好梦",
    "py": "zuò ge hǎo mèng",
-   "phon": "dzwor guh how MUNG",
+   "phon": "dzwaw guh how MUNG",
    "syllables": [
     {
      "han": "做",
      "py": "zuò",
      "tone": 4,
-     "say": "dzwor",
+     "say": "dzwaw",
      "said": 4
     },
     {
@@ -5341,20 +5767,20 @@ window.PHRASE_DATA = {
    "en": "I'm going to bed",
    "zh": "我去睡觉了",
    "py": "wǒ qù shuì jiào le",
-   "phon": "wor chü shway JYOW luh",
+   "phon": "waw chyoo shway JYOW luh",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
      "han": "去",
      "py": "qù",
      "tone": 4,
-     "say": "chü",
+     "say": "chyoo",
      "said": 4
     },
     {
@@ -5442,13 +5868,13 @@ window.PHRASE_DATA = {
    "en": "I'm home",
    "zh": "我回来了",
    "py": "wǒ huí lái le",
-   "phon": "wor hway LYE luh",
+   "phon": "waw hway LYE luh",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -5613,13 +6039,13 @@ window.PHRASE_DATA = {
    "en": "I'm heading out",
    "zh": "我出门了",
    "py": "wǒ chū mén le",
-   "phon": "wor choo MUN luh",
+   "phon": "waw choo MUN luh",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -5782,13 +6208,13 @@ window.PHRASE_DATA = {
    "en": "I'll be back soon",
    "zh": "我很快就回来",
    "py": "wǒ hěn kuài jiù huí lái",
-   "phon": "wor hun kwye jyoh hway LYE",
+   "phon": "waw hun kwye jyoh hway LYE",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 2,
      "sandhi": true,
      "say_py": "wó"
@@ -6309,7 +6735,7 @@ window.PHRASE_DATA = {
    "en": "I'll cook tonight",
    "zh": "今晚我做饭",
    "py": "jīn wǎn wǒ zuò fàn",
-   "phon": "jin wahn wor dzwor FAHN",
+   "phon": "jin wahn waw dzwaw FAHN",
    "syllables": [
     {
      "han": "今",
@@ -6331,13 +6757,13 @@ window.PHRASE_DATA = {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor"
+     "say": "waw"
     },
     {
      "han": "做",
      "py": "zuò",
      "tone": 4,
-     "say": "dzwor",
+     "say": "dzwaw",
      "said": 4
     },
     {
@@ -6512,13 +6938,13 @@ window.PHRASE_DATA = {
    "en": "I'm full",
    "zh": "我吃饱了",
    "py": "wǒ chī bǎo le",
-   "phon": "wor chr BAOW luh",
+   "phon": "waw chr BAOW luh",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -6596,7 +7022,7 @@ window.PHRASE_DATA = {
    "en": "How was your day?",
    "zh": "今天过得怎么样？",
    "py": "jīn tiān guò de zěn me yàng",
-   "phon": "jin tyen gwor duh DZUN muh yahng",
+   "phon": "jin tyen gwaw duh DZUN muh yahng",
    "syllables": [
     {
      "han": "今",
@@ -6616,7 +7042,7 @@ window.PHRASE_DATA = {
      "han": "过",
      "py": "guò",
      "tone": 4,
-     "say": "gwor",
+     "say": "gwaw",
      "said": 4
     },
     {
@@ -7134,7 +7560,7 @@ window.PHRASE_DATA = {
    "en": "It's my fault",
    "zh": "是我不好",
    "py": "shì wǒ bù hǎo",
-   "phon": "shr wor boo HOW",
+   "phon": "shr waw boo HOW",
    "syllables": [
     {
      "han": "是",
@@ -7147,7 +7573,7 @@ window.PHRASE_DATA = {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -7218,13 +7644,13 @@ window.PHRASE_DATA = {
    "en": "I'm listening",
    "zh": "我在听",
    "py": "wǒ zài tīng",
-   "phon": "wor dzye TING",
+   "phon": "waw dzye TING",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -7285,13 +7711,13 @@ window.PHRASE_DATA = {
    "en": "I'll do the dishes",
    "zh": "我来洗碗",
    "py": "wǒ lái xǐ wǎn",
-   "phon": "wor lye SHEE wahn",
+   "phon": "waw lye SHEE wahn",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -7370,13 +7796,13 @@ window.PHRASE_DATA = {
    "en": "Let me help you",
    "zh": "我来帮你",
    "py": "wǒ lái bāng nǐ",
-   "phon": "wor lye BAHNG nee",
+   "phon": "waw lye BAHNG nee",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -7454,20 +7880,20 @@ window.PHRASE_DATA = {
    "en": "I'll take out the trash",
    "zh": "我去倒垃圾",
    "py": "wǒ qù dào lā jī",
-   "phon": "wor chü daow lah JEE",
+   "phon": "waw chyoo daow lah JEE",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
      "han": "去",
      "py": "qù",
      "tone": 4,
-     "say": "chü",
+     "say": "chyoo",
      "said": 4
     },
     {
@@ -7555,13 +7981,13 @@ window.PHRASE_DATA = {
    "en": "Let's go for a walk",
    "zh": "我们去散步吧",
    "py": "wǒ men qù sàn bù ba",
-   "phon": "wor mun chü sahn BOO bah",
+   "phon": "waw mun chyoo sahn BOO bah",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -7575,7 +8001,7 @@ window.PHRASE_DATA = {
      "han": "去",
      "py": "qù",
      "tone": 4,
-     "say": "chü",
+     "say": "chyoo",
      "said": 4
     },
     {
@@ -7775,13 +8201,13 @@ window.PHRASE_DATA = {
    "en": "I'm still learning Chinese",
    "zh": "我还在学中文",
    "py": "wǒ hái zài xué zhōng wén",
-   "phon": "wor hye dzye shweh jong WUN",
+   "phon": "waw hye dzye shweh jong WUN",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -7895,7 +8321,7 @@ window.PHRASE_DATA = {
    "en": "Can you say it slower?",
    "zh": "你可以说慢一点吗？",
    "py": "nǐ kě yǐ shuō màn yì diǎn ma",
-   "phon": "nee kuh yee shwor mahn yee DYEN mah",
+   "phon": "nee kuh yee shwaw mahn yee DYEN mah",
    "syllables": [
     {
      "han": "你",
@@ -7923,7 +8349,7 @@ window.PHRASE_DATA = {
      "han": "说",
      "py": "shuō",
      "tone": 1,
-     "say": "shwor",
+     "say": "shwaw",
      "said": 1
     },
     {
@@ -8048,7 +8474,7 @@ window.PHRASE_DATA = {
    "en": "How do you say this in Chinese?",
    "zh": "这个中文怎么说？",
    "py": "zhè ge zhōng wén zěn me shuō",
-   "phon": "juh guh jong wun DZUN muh shwor",
+   "phon": "juh guh jong wun DZUN muh shwaw",
    "syllables": [
     {
      "han": "这",
@@ -8096,7 +8522,7 @@ window.PHRASE_DATA = {
      "han": "说",
      "py": "shuō",
      "tone": 1,
-     "say": "shwor",
+     "say": "shwaw",
      "said": 1
     }
    ],
@@ -8178,18 +8604,120 @@ window.PHRASE_DATA = {
    }
   },
   {
+   "id": "say-again",
+   "cat": "learning",
+   "en": "Please say that again",
+   "zh": "请再说一遍",
+   "py": "qǐng zài shuō yí biàn",
+   "phon": "ching dzye shwaw yee BYEN",
+   "syllables": [
+    {
+     "han": "请",
+     "py": "qǐng",
+     "tone": 3,
+     "say": "ching",
+     "said": 3
+    },
+    {
+     "han": "再",
+     "py": "zài",
+     "tone": 4,
+     "say": "dzye",
+     "said": 4
+    },
+    {
+     "han": "说",
+     "py": "shuō",
+     "tone": 1,
+     "say": "shwaw",
+     "said": 1
+    },
+    {
+     "han": "一",
+     "py": "yí",
+     "tone": 2,
+     "say": "yee",
+     "said": 2
+    },
+    {
+     "han": "遍",
+     "py": "biàn",
+     "tone": 4,
+     "say": "BYEN",
+     "said": 4
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.225,
+      "word": 0
+     },
+     {
+      "t": 0.338,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.519,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.713,
+      "d": 0.138,
+      "word": 2
+     },
+     {
+      "t": 0.85,
+      "d": 0.287,
+      "word": 3
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.409,
+      "word": 0
+     },
+     {
+      "t": 0.573,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 0.902,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 1.255,
+      "d": 0.25,
+      "word": 2
+     },
+     {
+      "t": 1.505,
+      "d": 0.523,
+      "word": 3
+     }
+    ]
+   },
+   "note": "Said with a smile, repair phrases like this buy more goodwill than any impressive sentence."
+  },
+  {
    "id": "dont-understand",
    "cat": "learning",
    "en": "I don't understand",
    "zh": "我听不懂",
    "py": "wǒ tīng bu dǒng",
-   "phon": "wor ting boo DONG",
+   "phon": "waw ting boo DONG",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
@@ -8268,20 +8796,20 @@ window.PHRASE_DATA = {
    "en": "Did I say that right?",
    "zh": "我说得对吗？",
    "py": "wǒ shuō de duì ma",
-   "phon": "wor shwor duh DWAY mah",
+   "phon": "waw shwaw duh DWAY mah",
    "syllables": [
     {
      "han": "我",
      "py": "wǒ",
      "tone": 3,
-     "say": "wor",
+     "say": "waw",
      "said": 3
     },
     {
      "han": "说",
      "py": "shuō",
      "tone": 1,
-     "say": "shwor",
+     "say": "shwaw",
      "said": 1
     },
     {

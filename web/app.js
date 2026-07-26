@@ -468,7 +468,7 @@ function openSheet(phrase) {
     el.dSandhi.innerHTML =
       `<b>${shifts.map(s => esc(s.say)).join(', ')}</b> ` +
       `${shifts.length === 1 ? 'is' : 'are'} underlined because the tone changes here. ` +
-      `A dipping tone turns into a rising one when another dipping tone follows it — ` +
+      `A low tone turns into a rising one when another low tone follows it — ` +
       `so 你好 is said <b>ní hǎo</b>, never <b>nǐ hǎo</b>. The colour shows what to actually say.`;
   }
   el.favBtn.setAttribute('aria-pressed', String(favs.has(phrase.id)));
