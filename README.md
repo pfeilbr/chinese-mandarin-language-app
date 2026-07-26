@@ -25,9 +25,15 @@ route — so the app just tells you where to tap.)
 - **62 everyday phrases** across affection, sweet talk, meals, coming and going,
   checking in, chores, and the "I'm still learning, say it slower" repair kit.
 - **Continuous speed control**, 40% to 110% of native pace.
-- **Tone colouring and contour marks** on every character and syllable. Tones are
-  what decide whether you're understood, so they're the most visible thing on screen.
-- **Tap any character** to hear just that syllable, in its real phrase context.
+- **Written in English you can just read.** Every phrase is respelled
+  syllable-by-syllable the way it actually sounds — `nee how kuh EYE`, with
+  CAPITALS marking the stressed syllable. Chinese characters and pinyin are both
+  off by default: two scripts you can't read yet are noise around the one line
+  you're trying to say. Turn either back on in Settings.
+- **Tone colouring and contour marks** on every syllable. Tones are what decide
+  whether you're understood, so they're the most visible thing on screen — and
+  they ride on the English respelling, so they work with both scripts hidden.
+- **Tap any syllable** to hear just that sound, in its real phrase context.
 - **Syllable mode** steps through one sound at a time.
 - **Shadow mode** plays the phrase, leaves a silent gap for you to say it out loud,
   then plays it again — indefinitely. This is the one to use with AirPods in.
@@ -104,13 +110,19 @@ Each entry needs one pinyin syllable per sounded character:
 }
 ```
 
-The build **fails loudly** if the hanzi and pinyin counts disagree. That check is
-deliberate: a silent misalignment would mislabel the tone on every later syllable
-in the phrase, which is exactly the kind of error that teaches you to say something
-wrong without ever noticing. Tone numbers are derived from the pinyin tone marks,
-so write the pinyin as it's actually spoken — apply sandhi (`yí xià`, `yì qǐ`).
+All three of `zh`, `py` and `phon` must line up **one chunk per sounded
+character** — the build fails loudly if they don't. That check is deliberate: a
+silent misalignment would attach the wrong tone and the wrong pronunciation to
+every later syllable in the phrase, which is exactly the kind of error that
+teaches you to say something wrong without ever noticing.
 
-`phon` is an English-approximation respelling; capitalise the stressed syllable.
+- `py` — pinyin, one space-separated syllable per character. Tone numbers are
+  derived from the marks, so write it as actually spoken and apply sandhi
+  (`yí xià`, `yì qǐ`).
+- `phon` — the English respelling, and the line the app shows biggest, because
+  it's the one that gets read out loud. One space-separated chunk per syllable.
+  Capitalise the syllable that takes the stress. Spell for an English reader
+  who has never seen pinyin: `chr` not `chi`, `shyahng` not `xiǎng`.
 
 ## Layout
 

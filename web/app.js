@@ -278,36 +278,32 @@ const toneSvg = tone => `<svg class="syl-tone" viewBox="0 0 15 9" aria-hidden="t
 
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-/** Colour each hanzi by its tone so the shape of the word is visible at a glance. */
-function hanziHtml(phrase, { interactive }) {
-  const sounded = phrase.syllables;
+/** One column per syllable. The English respelling is the headline: it's the
+ *  thing you actually read out loud. Hanzi and pinyin sit underneath as
+ *  optional reference — useful to show someone, useless to read from if you
+ *  can't read either script. Tone shows as colour plus a contour mark, so it
+ *  survives even with both scripts switched off. */
+function syllablesHtml(phrase, { interactive }) {
   const timing = phrase.timing.slow;
-  let si = 0, out = '';
-  for (const ch of phrase.zh) {
-    if (/[\s，。？！、：；]/.test(ch)) {
-      if (ch.trim()) out += `<span class="syl-punct">${esc(ch)}</span>`;
-      continue;
-    }
-    const s = sounded[si];
-    if (!s) break;
-    const wordEnd = timing[si + 1] && timing[si + 1].word !== timing[si].word;
+  return phrase.syllables.map((s, i) => {
+    const wordEnd = timing[i + 1] && timing[i + 1].word !== timing[i].word;
     const tag = interactive ? 'button' : 'span';
-    out += `<${tag} class="syl t${s.tone}${wordEnd ? ' word-end' : ''}"` +
-           (interactive ? ` data-syl="${si}" aria-label="${esc(s.py)}"` : '') + '>' +
+    return `<${tag} class="syl t${s.tone}${wordEnd ? ' word-end' : ''}"` +
+           (interactive ? ` data-syl="${i}" aria-label="${esc(s.say)}"` : '') + '>' +
+             `<span class="syl-say">${esc(s.say)}</span>` +
+             toneSvg(s.tone) +
              `<span class="syl-han">${esc(s.han)}</span>` +
              `<span class="syl-py">${esc(s.py)}</span>` +
-             toneSvg(s.tone) +
            `</${tag}>`;
-    si++;
-  }
-  return out;
+  }).join('');
 }
 
-/** Compact inline hanzi for list cards. Colours come from classes, not inline
- *  styles, so the display preferences can override them. */
+/** Compact preview for list cards — respelling first, script second. */
 function inlineZh(phrase) {
-  return phrase.syllables.map(s => `<span class="t${s.tone}">${esc(s.han)}</span>`).join('')
-       + `<span class="card-py"> · ${esc(phrase.py)}</span>`;
+  return `<span class="card-say">`
+       + phrase.syllables.map(s => `<span class="t${s.tone}">${esc(s.say)}</span>`).join(' ')
+       + `</span>`
+       + `<span class="card-script"> ${esc(phrase.zh)}</span>`;
 }
 
 const PLAY_ICON = '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
@@ -421,8 +417,10 @@ function openSheet(phrase) {
   el.dEn.textContent = phrase.en;
   el.dNote.textContent = phrase.note || '';
   el.dNote.hidden = !phrase.note;
-  el.dHanzi.innerHTML = hanziHtml(phrase, { interactive: true });
-  el.dPhon.innerHTML = phrase.phon ? `Sounds like <b>${esc(phrase.phon)}</b>` : '';
+  el.dHanzi.innerHTML = syllablesHtml(phrase, { interactive: true });
+  el.dPhon.innerHTML = phrase.phon
+    ? `Read it out loud: <b>${esc(phrase.phon)}</b> &nbsp;·&nbsp; CAPITALS get the stress`
+    : '';
   el.favBtn.setAttribute('aria-pressed', String(favs.has(phrase.id)));
   showSheet(el.sheet);
   setMediaSession(phrase);
@@ -528,12 +526,14 @@ const BUILD_LABEL = (!BUILD || BUILD.startsWith('__')) ? 'dev' : BUILD;
 
 const DISPLAY_OPTS = {
   tones:  { key: 'opt-tones',  cls: 'no-tone-colour', invert: true },
+  hanzi:  { key: 'opt-hanzi',  cls: 'hide-hanzi',     invert: true },
   pinyin: { key: 'opt-pinyin', cls: 'hide-pinyin',    invert: true },
-  phon:   { key: 'opt-phon',   cls: 'hide-phon',      invert: true },
 };
 
+// Hanzi and pinyin default off: the English respelling is what you read, and
+// two scripts you can't read yet are just noise around it.
 let prefs = Object.assign(
-  { tones: true, pinyin: true, phon: true, autocheck: true },
+  { tones: true, hanzi: false, pinyin: false, autocheck: true },
   store.get('prefs', {})
 );
 
@@ -703,9 +703,18 @@ $('#clear-favs-btn').addEventListener('click', () => {
 let swReg = null;
 let acceptedUpdate = false;
 
+/* Whether a worker already controlled this page distinguishes an update from a
+ * first install, and it is only unambiguous here — read at script evaluation,
+ * before any registration. Later the initial worker's clients.claim() sets a
+ * controller mid-install, and a first install briefly parks in `waiting` before
+ * auto-activating; both would otherwise make a brand new visitor's first load
+ * look like an update and offer to update them to what they just downloaded. */
+const HAD_CONTROLLER = 'serviceWorker' in navigator && !!navigator.serviceWorker.controller;
+
 function setUpdateStatus(text) { $('#update-status').textContent = text; }
 
 function showUpdatePrompt() {
+  if (!HAD_CONTROLLER) return;   // a first install is not an update
   $('#update-bar').hidden = false;
   setUpdateStatus('Update ready to install');
 }

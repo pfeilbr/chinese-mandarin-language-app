@@ -59,17 +59,20 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "爱",
      "py": "ài",
-     "tone": 4
+     "tone": 4,
+     "say": "EYE"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     }
    ],
    "timing": {
@@ -120,22 +123,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "how"
     },
     {
      "han": "爱",
      "py": "ài",
-     "tone": 4
+     "tone": 4,
+     "say": "EYE"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     }
    ],
    "timing": {
@@ -197,22 +204,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "喜",
      "py": "xǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "SHEE"
     },
     {
      "han": "欢",
      "py": "huan",
-     "tone": 5
+     "tone": 5,
+     "say": "hwahn"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     }
    ],
    "timing": {
@@ -273,22 +284,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "想",
      "py": "xiǎng",
-     "tone": 3
+     "tone": 3,
+     "say": "SHYAHNG"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -349,12 +364,14 @@ window.PHRASE_DATA = {
     {
      "han": "宝",
      "py": "bǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "BAOW"
     },
     {
      "han": "贝",
      "py": "bèi",
-     "tone": 4
+     "tone": 4,
+     "say": "bay"
     }
    ],
    "timing": {
@@ -395,17 +412,20 @@ window.PHRASE_DATA = {
     {
      "han": "亲",
      "py": "qīn",
-     "tone": 1
+     "tone": 1,
+     "say": "chin"
     },
     {
      "han": "爱",
      "py": "ài",
-     "tone": 4
+     "tone": 4,
+     "say": "EYE"
     },
     {
      "han": "的",
      "py": "de",
-     "tone": 5
+     "tone": 5,
+     "say": "duh"
     }
    ],
    "timing": {
@@ -456,22 +476,26 @@ window.PHRASE_DATA = {
     {
      "han": "过",
      "py": "guò",
-     "tone": 4
+     "tone": 4,
+     "say": "gwor"
     },
     {
      "han": "来",
      "py": "lái",
-     "tone": 2
+     "tone": 2,
+     "say": "lye"
     },
     {
      "han": "抱",
      "py": "bào",
-     "tone": 4
+     "tone": 4,
+     "say": "BAOW"
     },
     {
      "han": "抱",
      "py": "bao",
-     "tone": 5
+     "tone": 5,
+     "say": "baow"
     }
    ],
    "timing": {
@@ -533,22 +557,26 @@ window.PHRASE_DATA = {
     {
      "han": "亲",
      "py": "qīn",
-     "tone": 1
+     "tone": 1,
+     "say": "chin"
     },
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "一",
      "py": "yí",
-     "tone": 2
+     "tone": 2,
+     "say": "yee"
     },
     {
      "han": "下",
      "py": "xià",
-     "tone": 4
+     "tone": 4,
+     "say": "SHYAH"
     }
    ],
    "timing": {
@@ -609,47 +637,56 @@ window.PHRASE_DATA = {
     {
      "han": "和",
      "py": "hé",
-     "tone": 2
+     "tone": 2,
+     "say": "huh"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "在",
      "py": "zài",
-     "tone": 4
+     "tone": 4,
+     "say": "dzye"
     },
     {
      "han": "一",
      "py": "yì",
-     "tone": 4
+     "tone": 4,
+     "say": "yee"
     },
     {
      "han": "起",
      "py": "qǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "chee"
     },
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "很",
      "py": "hěn",
-     "tone": 3
+     "tone": 3,
+     "say": "hun"
     },
     {
      "han": "开",
      "py": "kāi",
-     "tone": 1
+     "tone": 1,
+     "say": "kye"
     },
     {
      "han": "心",
      "py": "xīn",
-     "tone": 1
+     "tone": 1,
+     "say": "SHIN"
     }
    ],
    "timing": {
@@ -760,47 +797,56 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "想",
      "py": "xiǎng",
-     "tone": 3
+     "tone": 3,
+     "say": "shyahng"
     },
     {
      "han": "一",
      "py": "yì",
-     "tone": 4
+     "tone": 4,
+     "say": "yee"
     },
     {
      "han": "直",
      "py": "zhí",
-     "tone": 2
+     "tone": 2,
+     "say": "jr"
     },
     {
      "han": "和",
      "py": "hé",
-     "tone": 2
+     "tone": 2,
+     "say": "huh"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "在",
      "py": "zài",
-     "tone": 4
+     "tone": 4,
+     "say": "dzye"
     },
     {
      "han": "一",
      "py": "yì",
-     "tone": 4
+     "tone": 4,
+     "say": "yee"
     },
     {
      "han": "起",
      "py": "qǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "CHEE"
     }
    ],
    "timing": {
@@ -911,42 +957,50 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "是",
      "py": "shì",
-     "tone": 4
+     "tone": 4,
+     "say": "shr"
     },
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "最",
      "py": "zuì",
-     "tone": 4
+     "tone": 4,
+     "say": "dzway"
     },
     {
      "han": "喜",
      "py": "xǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "shee"
     },
     {
      "han": "欢",
      "py": "huan",
-     "tone": 5
+     "tone": 5,
+     "say": "hwahn"
     },
     {
      "han": "的",
      "py": "de",
-     "tone": 5
+     "tone": 5,
+     "say": "duh"
     },
     {
      "han": "人",
      "py": "rén",
-     "tone": 2
+     "tone": 2,
+     "say": "RUN"
     }
    ],
    "timing": {
@@ -1047,22 +1101,26 @@ window.PHRASE_DATA = {
     {
      "han": "有",
      "py": "yǒu",
-     "tone": 3
+     "tone": 3,
+     "say": "yoh"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "真",
      "py": "zhēn",
-     "tone": 1
+     "tone": 1,
+     "say": "jun"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     }
    ],
    "timing": {
@@ -1123,22 +1181,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "how"
     },
     {
      "han": "可",
      "py": "kě",
-     "tone": 3
+     "tone": 3,
+     "say": "kuh"
     },
     {
      "han": "爱",
      "py": "ài",
-     "tone": 4
+     "tone": 4,
+     "say": "EYE"
     }
    ],
    "timing": {
@@ -1200,22 +1262,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "真",
      "py": "zhēn",
-     "tone": 1
+     "tone": 1,
+     "say": "jun"
     },
     {
      "han": "漂",
      "py": "piào",
-     "tone": 4
+     "tone": 4,
+     "say": "PYAOW"
     },
     {
      "han": "亮",
      "py": "liang",
-     "tone": 5
+     "tone": 5,
+     "say": "lyahng"
     }
    ],
    "timing": {
@@ -1277,27 +1343,32 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "今",
      "py": "jīn",
-     "tone": 1
+     "tone": 1,
+     "say": "jin"
     },
     {
      "han": "天",
      "py": "tiān",
-     "tone": 1
+     "tone": 1,
+     "say": "tyen"
     },
     {
      "han": "很",
      "py": "hěn",
-     "tone": 3
+     "tone": 3,
+     "say": "hun"
     },
     {
      "han": "帅",
      "py": "shuài",
-     "tone": 4
+     "tone": 4,
+     "say": "SHWYE"
     }
    ],
    "timing": {
@@ -1368,32 +1439,38 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "今",
      "py": "jīn",
-     "tone": 1
+     "tone": 1,
+     "say": "jin"
     },
     {
      "han": "天",
      "py": "tiān",
-     "tone": 1
+     "tone": 1,
+     "say": "tyen"
     },
     {
      "han": "真",
      "py": "zhēn",
-     "tone": 1
+     "tone": 1,
+     "say": "jun"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     },
     {
      "han": "看",
      "py": "kàn",
-     "tone": 4
+     "tone": 4,
+     "say": "kahn"
     }
    ],
    "timing": {
@@ -1475,37 +1552,44 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "笑",
      "py": "xiào",
-     "tone": 4
+     "tone": 4,
+     "say": "shyaow"
     },
     {
      "han": "起",
      "py": "qǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "chee"
     },
     {
      "han": "来",
      "py": "lái",
-     "tone": 2
+     "tone": 2,
+     "say": "lye"
     },
     {
      "han": "真",
      "py": "zhēn",
-     "tone": 1
+     "tone": 1,
+     "say": "jun"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     },
     {
      "han": "看",
      "py": "kàn",
-     "tone": 4
+     "tone": 4,
+     "say": "kahn"
     }
    ],
    "timing": {
@@ -1596,42 +1680,50 @@ window.PHRASE_DATA = {
     {
      "han": "这",
      "py": "zhè",
-     "tone": 4
+     "tone": 4,
+     "say": "juh"
     },
     {
      "han": "件",
      "py": "jiàn",
-     "tone": 4
+     "tone": 4,
+     "say": "jyen"
     },
     {
      "han": "衣",
      "py": "yī",
-     "tone": 1
+     "tone": 1,
+     "say": "ee"
     },
     {
      "han": "服",
      "py": "fu",
-     "tone": 5
+     "tone": 5,
+     "say": "foo"
     },
     {
      "han": "很",
      "py": "hěn",
-     "tone": 3
+     "tone": 3,
+     "say": "hun"
     },
     {
      "han": "适",
      "py": "shì",
-     "tone": 4
+     "tone": 4,
+     "say": "shr"
     },
     {
      "han": "合",
      "py": "hé",
-     "tone": 2
+     "tone": 2,
+     "say": "huh"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "NEE"
     }
    ],
    "timing": {
@@ -1732,17 +1824,20 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "how"
     },
     {
      "han": "香",
      "py": "xiāng",
-     "tone": 1
+     "tone": 1,
+     "say": "SHYAHNG"
     }
    ],
    "timing": {
@@ -1794,27 +1889,32 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "对",
      "py": "duì",
-     "tone": 4
+     "tone": 4,
+     "say": "dway"
     },
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "真",
      "py": "zhēn",
-     "tone": 1
+     "tone": 1,
+     "say": "jun"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     }
    ],
    "timing": {
@@ -1885,22 +1985,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "太",
      "py": "tài",
-     "tone": 4
+     "tone": 4,
+     "say": "tye"
     },
     {
      "han": "棒",
      "py": "bàng",
-     "tone": 4
+     "tone": 4,
+     "say": "BAHNG"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -1961,27 +2065,32 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "为",
      "py": "wèi",
-     "tone": 4
+     "tone": 4,
+     "say": "way"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "骄",
      "py": "jiāo",
-     "tone": 1
+     "tone": 1,
+     "say": "jyaow"
     },
     {
      "han": "傲",
      "py": "ào",
-     "tone": 4
+     "tone": 4,
+     "say": "AOW"
     }
    ],
    "timing": {
@@ -2052,27 +2161,32 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "做",
      "py": "zuò",
-     "tone": 4
+     "tone": 4,
+     "say": "dzwor"
     },
     {
      "han": "得",
      "py": "de",
-     "tone": 5
+     "tone": 5,
+     "say": "duh"
     },
     {
      "han": "很",
      "py": "hěn",
-     "tone": 3
+     "tone": 3,
+     "say": "hun"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     }
    ],
    "timing": {
@@ -2143,17 +2257,20 @@ window.PHRASE_DATA = {
     {
      "han": "谢",
      "py": "xiè",
-     "tone": 4
+     "tone": 4,
+     "say": "SHYEH"
     },
     {
      "han": "谢",
      "py": "xie",
-     "tone": 5
+     "tone": 5,
+     "say": "shyeh"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     }
    ],
    "timing": {
@@ -2204,12 +2321,14 @@ window.PHRASE_DATA = {
     {
      "han": "早",
      "py": "zǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "DZAOW"
     },
     {
      "han": "安",
      "py": "ān",
-     "tone": 1
+     "tone": 1,
+     "say": "ahn"
     }
    ],
    "timing": {
@@ -2251,17 +2370,20 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "醒",
      "py": "xǐng",
-     "tone": 3
+     "tone": 3,
+     "say": "SHING"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -2312,27 +2434,32 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "睡",
      "py": "shuì",
-     "tone": 4
+     "tone": 4,
+     "say": "shway"
     },
     {
      "han": "得",
      "py": "de",
-     "tone": 5
+     "tone": 5,
+     "say": "duh"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     },
     {
      "han": "吗",
      "py": "ma",
-     "tone": 5
+     "tone": 5,
+     "say": "mah"
     }
    ],
    "timing": {
@@ -2403,12 +2530,14 @@ window.PHRASE_DATA = {
     {
      "han": "晚",
      "py": "wǎn",
-     "tone": 3
+     "tone": 3,
+     "say": "wahn"
     },
     {
      "han": "安",
      "py": "ān",
-     "tone": 1
+     "tone": 1,
+     "say": "AHN"
     }
    ],
    "timing": {
@@ -2449,22 +2578,26 @@ window.PHRASE_DATA = {
     {
      "han": "做",
      "py": "zuò",
-     "tone": 4
+     "tone": 4,
+     "say": "dzwor"
     },
     {
      "han": "个",
      "py": "ge",
-     "tone": 5
+     "tone": 5,
+     "say": "guh"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "how"
     },
     {
      "han": "梦",
      "py": "mèng",
-     "tone": 4
+     "tone": 4,
+     "say": "MUNG"
     }
    ],
    "timing": {
@@ -2525,27 +2658,32 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "去",
      "py": "qù",
-     "tone": 4
+     "tone": 4,
+     "say": "chü"
     },
     {
      "han": "睡",
      "py": "shuì",
-     "tone": 4
+     "tone": 4,
+     "say": "shway"
     },
     {
      "han": "觉",
      "py": "jiào",
-     "tone": 4
+     "tone": 4,
+     "say": "JYOW"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -2616,22 +2754,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "回",
      "py": "huí",
-     "tone": 2
+     "tone": 2,
+     "say": "hway"
     },
     {
      "han": "来",
      "py": "lái",
-     "tone": 2
+     "tone": 2,
+     "say": "LYE"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -2692,22 +2834,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "回",
      "py": "huí",
-     "tone": 2
+     "tone": 2,
+     "say": "hway"
     },
     {
      "han": "来",
      "py": "lái",
-     "tone": 2
+     "tone": 2,
+     "say": "LYE"
     },
     {
      "han": "啦",
      "py": "la",
-     "tone": 5
+     "tone": 5,
+     "say": "lah"
     }
    ],
    "timing": {
@@ -2769,22 +2915,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "出",
      "py": "chū",
-     "tone": 1
+     "tone": 1,
+     "say": "choo"
     },
     {
      "han": "门",
      "py": "mén",
-     "tone": 2
+     "tone": 2,
+     "say": "MUN"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -2845,22 +2995,26 @@ window.PHRASE_DATA = {
     {
      "han": "路",
      "py": "lù",
-     "tone": 4
+     "tone": 4,
+     "say": "loo"
     },
     {
      "han": "上",
      "py": "shang",
-     "tone": 5
+     "tone": 5,
+     "say": "shahng"
     },
     {
      "han": "小",
      "py": "xiǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "SHYAOW"
     },
     {
      "han": "心",
      "py": "xīn",
-     "tone": 1
+     "tone": 1,
+     "say": "shin"
     }
    ],
    "timing": {
@@ -2922,32 +3076,38 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "很",
      "py": "hěn",
-     "tone": 3
+     "tone": 3,
+     "say": "hun"
     },
     {
      "han": "快",
      "py": "kuài",
-     "tone": 4
+     "tone": 4,
+     "say": "kwye"
     },
     {
      "han": "就",
      "py": "jiù",
-     "tone": 4
+     "tone": 4,
+     "say": "jyoh"
     },
     {
      "han": "回",
      "py": "huí",
-     "tone": 2
+     "tone": 2,
+     "say": "hway"
     },
     {
      "han": "来",
      "py": "lái",
-     "tone": 2
+     "tone": 2,
+     "say": "LYE"
     }
    ],
    "timing": {
@@ -3028,22 +3188,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "在",
      "py": "zài",
-     "tone": 4
+     "tone": 4,
+     "say": "dzye"
     },
     {
      "han": "哪",
      "py": "nǎ",
-     "tone": 3
+     "tone": 3,
+     "say": "NAH"
     },
     {
      "han": "里",
      "py": "lǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "lee"
     }
    ],
    "timing": {
@@ -3104,22 +3268,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "饿",
      "py": "è",
-     "tone": 4
+     "tone": 4,
+     "say": "UH"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     },
     {
      "han": "吗",
      "py": "ma",
-     "tone": 5
+     "tone": 5,
+     "say": "mah"
     }
    ],
    "timing": {
@@ -3180,17 +3348,20 @@ window.PHRASE_DATA = {
     {
      "han": "吃",
      "py": "chī",
-     "tone": 1
+     "tone": 1,
+     "say": "chr"
     },
     {
      "han": "饭",
      "py": "fàn",
-     "tone": 4
+     "tone": 4,
+     "say": "FAHN"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -3242,27 +3413,32 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "想",
      "py": "xiǎng",
-     "tone": 3
+     "tone": 3,
+     "say": "shyahng"
     },
     {
      "han": "吃",
      "py": "chī",
-     "tone": 1
+     "tone": 1,
+     "say": "chr"
     },
     {
      "han": "什",
      "py": "shén",
-     "tone": 2
+     "tone": 2,
+     "say": "SHUN"
     },
     {
      "han": "么",
      "py": "me",
-     "tone": 5
+     "tone": 5,
+     "say": "muh"
     }
    ],
    "timing": {
@@ -3333,17 +3509,20 @@ window.PHRASE_DATA = {
     {
      "han": "真",
      "py": "zhēn",
-     "tone": 1
+     "tone": 1,
+     "say": "jun"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     },
     {
      "han": "吃",
      "py": "chī",
-     "tone": 1
+     "tone": 1,
+     "say": "chr"
     }
    ],
    "timing": {
@@ -3394,27 +3573,32 @@ window.PHRASE_DATA = {
     {
      "han": "今",
      "py": "jīn",
-     "tone": 1
+     "tone": 1,
+     "say": "jin"
     },
     {
      "han": "晚",
      "py": "wǎn",
-     "tone": 3
+     "tone": 3,
+     "say": "wahn"
     },
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "做",
      "py": "zuò",
-     "tone": 4
+     "tone": 4,
+     "say": "dzwor"
     },
     {
      "han": "饭",
      "py": "fàn",
-     "tone": 4
+     "tone": 4,
+     "say": "FAHN"
     }
    ],
    "timing": {
@@ -3485,27 +3669,32 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "要",
      "py": "yào",
-     "tone": 4
+     "tone": 4,
+     "say": "yaow"
     },
     {
      "han": "喝",
      "py": "hē",
-     "tone": 1
+     "tone": 1,
+     "say": "huh"
     },
     {
      "han": "水",
      "py": "shuǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "SHWAY"
     },
     {
      "han": "吗",
      "py": "ma",
-     "tone": 5
+     "tone": 5,
+     "say": "mah"
     }
    ],
    "timing": {
@@ -3576,22 +3765,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "吃",
      "py": "chī",
-     "tone": 1
+     "tone": 1,
+     "say": "chr"
     },
     {
      "han": "饱",
      "py": "bǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "BAOW"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     }
    ],
    "timing": {
@@ -3652,37 +3845,44 @@ window.PHRASE_DATA = {
     {
      "han": "今",
      "py": "jīn",
-     "tone": 1
+     "tone": 1,
+     "say": "jin"
     },
     {
      "han": "天",
      "py": "tiān",
-     "tone": 1
+     "tone": 1,
+     "say": "tyen"
     },
     {
      "han": "过",
      "py": "guò",
-     "tone": 4
+     "tone": 4,
+     "say": "gwor"
     },
     {
      "han": "得",
      "py": "de",
-     "tone": 5
+     "tone": 5,
+     "say": "duh"
     },
     {
      "han": "怎",
      "py": "zěn",
-     "tone": 3
+     "tone": 3,
+     "say": "DZUN"
     },
     {
      "han": "么",
      "py": "me",
-     "tone": 5
+     "tone": 5,
+     "say": "muh"
     },
     {
      "han": "样",
      "py": "yàng",
-     "tone": 4
+     "tone": 4,
+     "say": "yahng"
     }
    ],
    "timing": {
@@ -3773,22 +3973,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "累",
      "py": "lèi",
-     "tone": 4
+     "tone": 4,
+     "say": "LAY"
     },
     {
      "han": "了",
      "py": "le",
-     "tone": 5
+     "tone": 5,
+     "say": "luh"
     },
     {
      "han": "吗",
      "py": "ma",
-     "tone": 5
+     "tone": 5,
+     "say": "mah"
     }
    ],
    "timing": {
@@ -3849,22 +4053,26 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "还",
      "py": "hái",
-     "tone": 2
+     "tone": 2,
+     "say": "hye"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     },
     {
      "han": "吗",
      "py": "ma",
-     "tone": 5
+     "tone": 5,
+     "say": "mah"
     }
    ],
    "timing": {
@@ -3925,17 +4133,20 @@ window.PHRASE_DATA = {
     {
      "han": "别",
      "py": "bié",
-     "tone": 2
+     "tone": 2,
+     "say": "byeh"
     },
     {
      "han": "担",
      "py": "dān",
-     "tone": 1
+     "tone": 1,
+     "say": "dahn"
     },
     {
      "han": "心",
      "py": "xīn",
-     "tone": 1
+     "tone": 1,
+     "say": "SHIN"
     }
    ],
    "timing": {
@@ -3986,27 +4197,32 @@ window.PHRASE_DATA = {
     {
      "han": "休",
      "py": "xiū",
-     "tone": 1
+     "tone": 1,
+     "say": "shyoh"
     },
     {
      "han": "息",
      "py": "xi",
-     "tone": 5
+     "tone": 5,
+     "say": "shee"
     },
     {
      "han": "一",
      "py": "yí",
-     "tone": 2
+     "tone": 2,
+     "say": "yee"
     },
     {
      "han": "下",
      "py": "xià",
-     "tone": 4
+     "tone": 4,
+     "say": "SHYAH"
     },
     {
      "han": "吧",
      "py": "ba",
-     "tone": 5
+     "tone": 5,
+     "say": "bah"
     }
    ],
    "timing": {
@@ -4077,17 +4293,20 @@ window.PHRASE_DATA = {
     {
      "han": "对",
      "py": "duì",
-     "tone": 4
+     "tone": 4,
+     "say": "dway"
     },
     {
      "han": "不",
      "py": "bu",
-     "tone": 5
+     "tone": 5,
+     "say": "boo"
     },
     {
      "han": "起",
      "py": "qǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "CHEE"
     }
    ],
    "timing": {
@@ -4138,22 +4357,26 @@ window.PHRASE_DATA = {
     {
      "han": "是",
      "py": "shì",
-     "tone": 4
+     "tone": 4,
+     "say": "shr"
     },
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "不",
      "py": "bù",
-     "tone": 4
+     "tone": 4,
+     "say": "boo"
     },
     {
      "han": "好",
      "py": "hǎo",
-     "tone": 3
+     "tone": 3,
+     "say": "HOW"
     }
    ],
    "timing": {
@@ -4214,17 +4437,20 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "在",
      "py": "zài",
-     "tone": 4
+     "tone": 4,
+     "say": "dzye"
     },
     {
      "han": "听",
      "py": "tīng",
-     "tone": 1
+     "tone": 1,
+     "say": "TING"
     }
    ],
    "timing": {
@@ -4275,22 +4501,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "来",
      "py": "lái",
-     "tone": 2
+     "tone": 2,
+     "say": "lye"
     },
     {
      "han": "洗",
      "py": "xǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "SHEE"
     },
     {
      "han": "碗",
      "py": "wǎn",
-     "tone": 3
+     "tone": 3,
+     "say": "wahn"
     }
    ],
    "timing": {
@@ -4351,22 +4581,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "来",
      "py": "lái",
-     "tone": 2
+     "tone": 2,
+     "say": "lye"
     },
     {
      "han": "帮",
      "py": "bāng",
-     "tone": 1
+     "tone": 1,
+     "say": "BAHNG"
     },
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     }
    ],
    "timing": {
@@ -4427,27 +4661,32 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "去",
      "py": "qù",
-     "tone": 4
+     "tone": 4,
+     "say": "chü"
     },
     {
      "han": "倒",
      "py": "dào",
-     "tone": 4
+     "tone": 4,
+     "say": "daow"
     },
     {
      "han": "垃",
      "py": "lā",
-     "tone": 1
+     "tone": 1,
+     "say": "lah"
     },
     {
      "han": "圾",
      "py": "jī",
-     "tone": 1
+     "tone": 1,
+     "say": "JEE"
     }
    ],
    "timing": {
@@ -4518,32 +4757,38 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "们",
      "py": "men",
-     "tone": 5
+     "tone": 5,
+     "say": "mun"
     },
     {
      "han": "去",
      "py": "qù",
-     "tone": 4
+     "tone": 4,
+     "say": "chü"
     },
     {
      "han": "散",
      "py": "sàn",
-     "tone": 4
+     "tone": 4,
+     "say": "sahn"
     },
     {
      "han": "步",
      "py": "bù",
-     "tone": 4
+     "tone": 4,
+     "say": "BOO"
     },
     {
      "han": "吧",
      "py": "ba",
-     "tone": 5
+     "tone": 5,
+     "say": "bah"
     }
    ],
    "timing": {
@@ -4624,27 +4869,32 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "想",
      "py": "xiǎng",
-     "tone": 3
+     "tone": 3,
+     "say": "shyahng"
     },
     {
      "han": "看",
      "py": "kàn",
-     "tone": 4
+     "tone": 4,
+     "say": "kahn"
     },
     {
      "han": "什",
      "py": "shén",
-     "tone": 2
+     "tone": 2,
+     "say": "SHUN"
     },
     {
      "han": "么",
      "py": "me",
-     "tone": 5
+     "tone": 5,
+     "say": "muh"
     }
    ],
    "timing": {
@@ -4715,32 +4965,38 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "还",
      "py": "hái",
-     "tone": 2
+     "tone": 2,
+     "say": "hye"
     },
     {
      "han": "在",
      "py": "zài",
-     "tone": 4
+     "tone": 4,
+     "say": "dzye"
     },
     {
      "han": "学",
      "py": "xué",
-     "tone": 2
+     "tone": 2,
+     "say": "shweh"
     },
     {
      "han": "中",
      "py": "zhōng",
-     "tone": 1
+     "tone": 1,
+     "say": "jong"
     },
     {
      "han": "文",
      "py": "wén",
-     "tone": 2
+     "tone": 2,
+     "say": "WUN"
     }
    ],
    "timing": {
@@ -4822,42 +5078,50 @@ window.PHRASE_DATA = {
     {
      "han": "你",
      "py": "nǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "nee"
     },
     {
      "han": "可",
      "py": "kě",
-     "tone": 3
+     "tone": 3,
+     "say": "kuh"
     },
     {
      "han": "以",
      "py": "yǐ",
-     "tone": 3
+     "tone": 3,
+     "say": "yee"
     },
     {
      "han": "说",
      "py": "shuō",
-     "tone": 1
+     "tone": 1,
+     "say": "shwor"
     },
     {
      "han": "慢",
      "py": "màn",
-     "tone": 4
+     "tone": 4,
+     "say": "mahn"
     },
     {
      "han": "一",
      "py": "yì",
-     "tone": 4
+     "tone": 4,
+     "say": "yee"
     },
     {
      "han": "点",
      "py": "diǎn",
-     "tone": 3
+     "tone": 3,
+     "say": "DYEN"
     },
     {
      "han": "吗",
      "py": "ma",
-     "tone": 5
+     "tone": 5,
+     "say": "mah"
     }
    ],
    "timing": {
@@ -4958,37 +5222,44 @@ window.PHRASE_DATA = {
     {
      "han": "这",
      "py": "zhè",
-     "tone": 4
+     "tone": 4,
+     "say": "juh"
     },
     {
      "han": "个",
      "py": "ge",
-     "tone": 5
+     "tone": 5,
+     "say": "guh"
     },
     {
      "han": "中",
      "py": "zhōng",
-     "tone": 1
+     "tone": 1,
+     "say": "jong"
     },
     {
      "han": "文",
      "py": "wén",
-     "tone": 2
+     "tone": 2,
+     "say": "wun"
     },
     {
      "han": "怎",
      "py": "zěn",
-     "tone": 3
+     "tone": 3,
+     "say": "DZUN"
     },
     {
      "han": "么",
      "py": "me",
-     "tone": 5
+     "tone": 5,
+     "say": "muh"
     },
     {
      "han": "说",
      "py": "shuō",
-     "tone": 1
+     "tone": 1,
+     "say": "shwor"
     }
    ],
    "timing": {
@@ -5079,22 +5350,26 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "听",
      "py": "tīng",
-     "tone": 1
+     "tone": 1,
+     "say": "ting"
     },
     {
      "han": "不",
      "py": "bu",
-     "tone": 5
+     "tone": 5,
+     "say": "boo"
     },
     {
      "han": "懂",
      "py": "dǒng",
-     "tone": 3
+     "tone": 3,
+     "say": "DONG"
     }
    ],
    "timing": {
@@ -5155,27 +5430,32 @@ window.PHRASE_DATA = {
     {
      "han": "我",
      "py": "wǒ",
-     "tone": 3
+     "tone": 3,
+     "say": "wor"
     },
     {
      "han": "说",
      "py": "shuō",
-     "tone": 1
+     "tone": 1,
+     "say": "shwor"
     },
     {
      "han": "得",
      "py": "de",
-     "tone": 5
+     "tone": 5,
+     "say": "duh"
     },
     {
      "han": "对",
      "py": "duì",
-     "tone": 4
+     "tone": 4,
+     "say": "DWAY"
     },
     {
      "han": "吗",
      "py": "ma",
-     "tone": 5
+     "tone": 5,
+     "say": "mah"
     }
    ],
    "timing": {
@@ -5246,17 +5526,20 @@ window.PHRASE_DATA = {
     {
      "han": "没",
      "py": "méi",
-     "tone": 2
+     "tone": 2,
+     "say": "may"
     },
     {
      "han": "问",
      "py": "wèn",
-     "tone": 4
+     "tone": 4,
+     "say": "wun"
     },
     {
      "han": "题",
      "py": "tí",
-     "tone": 2
+     "tone": 2,
+     "say": "TEE"
     }
    ],
    "timing": {

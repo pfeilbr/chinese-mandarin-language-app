@@ -49,18 +49,29 @@ def hanzi_chars(zh: str) -> list[str]:
 
 
 def build_syllables(phrase: dict) -> list[dict]:
-    """Zip hanzi against pinyin syllables. Mismatches are a hard error -- a
-    silent misalignment would teach the wrong tone for every later syllable."""
+    """Zip hanzi against pinyin and the English respelling. Mismatches are a
+    hard error -- a silent misalignment would attach the wrong tone and the
+    wrong pronunciation to every later syllable in the phrase."""
     chars = hanzi_chars(phrase["zh"])
     pys = phrase["py"].split()
+    phons = phrase.get("phon", "").split()
     if len(chars) != len(pys):
         raise ValueError(
             f"[{phrase['id']}] {len(chars)} hanzi but {len(pys)} pinyin syllables\n"
             f"    zh: {phrase['zh']}  -> {' '.join(chars)}\n"
             f"    py: {phrase['py']}"
         )
+    if len(phons) != len(chars):
+        raise ValueError(
+            f"[{phrase['id']}] {len(chars)} syllables but {len(phons)} respelled\n"
+            f"    zh:   {phrase['zh']}\n"
+            f"    phon: {phrase.get('phon', '')}\n"
+            "    The respelling is what gets read aloud, so it needs one\n"
+            "    space-separated chunk per syllable."
+        )
     return [
-        {"han": c, "py": p, "tone": tone_of(p)} for c, p in zip(chars, pys)
+        {"han": c, "py": p, "tone": tone_of(p), "say": s}
+        for c, p, s in zip(chars, pys, phons)
     ]
 
 

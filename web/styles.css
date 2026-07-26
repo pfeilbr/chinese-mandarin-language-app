@@ -141,10 +141,11 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .card-zh { margin-top: 3px; font-size: 15px; }
-.card-zh .t1 { color: var(--t1); } .card-zh .t2 { color: var(--t2); }
-.card-zh .t3 { color: var(--t3); } .card-zh .t4 { color: var(--t4); }
-.card-zh .t5 { color: var(--t5); }
-.card-py { color: var(--text-faint); }
+.card-say { font-weight: 600; }
+.card-say .t1 { color: var(--t1); } .card-say .t2 { color: var(--t2); }
+.card-say .t3 { color: var(--t3); } .card-say .t4 { color: var(--t4); }
+.card-say .t5 { color: var(--t5); }
+.card-script { color: var(--text-faint); }
 .card-fav { flex: none; width: 15px; height: 15px; color: var(--accent); fill: var(--accent); }
 
 .card-play {
@@ -222,16 +223,20 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
   transform: translateY(-2px);
 }
 
-.syl-han { font-size: 34px; line-height: 1.1; font-weight: 500; }
-.syl-py  { font-size: 14px; font-weight: 600; letter-spacing: .01em; }
+/* The respelling is the headline — it's what actually gets read aloud. */
+.syl-say {
+  font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -.015em;
+}
+.syl-han { font-size: 20px; line-height: 1.2; font-weight: 500; opacity: .85; }
+.syl-py  { font-size: 13px; font-weight: 600; letter-spacing: .01em; opacity: .85; }
 .syl-tone { width: 15px; height: 9px; opacity: .85; }
 .syl-tone path { stroke-width: 2.4; }
 
-.t1 .syl-han, .t1 .syl-py, .t1 .syl-tone { color: var(--t1); }
-.t2 .syl-han, .t2 .syl-py, .t2 .syl-tone { color: var(--t2); }
-.t3 .syl-han, .t3 .syl-py, .t3 .syl-tone { color: var(--t3); }
-.t4 .syl-han, .t4 .syl-py, .t4 .syl-tone { color: var(--t4); }
-.t5 .syl-han, .t5 .syl-py, .t5 .syl-tone { color: var(--t5); }
+.t1 .syl-say, .t1 .syl-han, .t1 .syl-py, .t1 .syl-tone { color: var(--t1); }
+.t2 .syl-say, .t2 .syl-han, .t2 .syl-py, .t2 .syl-tone { color: var(--t2); }
+.t3 .syl-say, .t3 .syl-han, .t3 .syl-py, .t3 .syl-tone { color: var(--t3); }
+.t4 .syl-say, .t4 .syl-han, .t4 .syl-py, .t4 .syl-tone { color: var(--t4); }
+.t5 .syl-say, .t5 .syl-han, .t5 .syl-py, .t5 .syl-tone { color: var(--t5); }
 
 .syl-punct {
   align-self: center;
@@ -442,18 +447,19 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 
 /* Tone colouring off: fall back to plain text, but keep the contour marks,
    which still carry the tone without relying on colour. */
+html.no-tone-colour .syl-say,
 html.no-tone-colour .syl-han,
 html.no-tone-colour .syl-py,
-html.no-tone-colour .card-zh .t1,
-html.no-tone-colour .card-zh .t2,
-html.no-tone-colour .card-zh .t3,
-html.no-tone-colour .card-zh .t4,
-html.no-tone-colour .card-zh .t5 { color: var(--text); }
+html.no-tone-colour .card-say .t1,
+html.no-tone-colour .card-say .t2,
+html.no-tone-colour .card-say .t3,
+html.no-tone-colour .card-say .t4,
+html.no-tone-colour .card-say .t5 { color: var(--text); }
 
-html.hide-pinyin .syl-py,
-html.hide-pinyin .card-py { display: none; }
+html.hide-pinyin .syl-py { display: none; }
 
-html.hide-phon .d-phon { display: none; }
+html.hide-hanzi .syl-han,
+html.hide-hanzi .card-script { display: none; }
 
 /* ── Toast ───────────────────────────────────────────────── */
 
