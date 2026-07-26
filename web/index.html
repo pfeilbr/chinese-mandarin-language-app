@@ -107,6 +107,23 @@
       Plays, then leaves you a silent gap to say it out loud, then plays again. Put your AirPods in and let it run.
     </p>
 
+    <!-- Record yourself and hear it back against the native clip -->
+    <section id="compare" class="compare" hidden>
+      <button id="rec-btn" class="rec-btn">
+        <span class="rec-dot" aria-hidden="true"></span>
+        <span id="rec-label">Record yourself</span>
+      </button>
+      <div id="cmp-actions" class="cmp-actions" hidden>
+        <button id="cmp-both" class="cmp-btn accent">Hear both</button>
+        <button id="cmp-mine" class="cmp-btn">Just me</button>
+        <button id="cmp-redo" class="cmp-btn">Redo</button>
+      </div>
+      <p id="cmp-hint" class="hint" hidden>
+        Listen to the <b>shape</b> of each syllable — whether it stays flat, rises, dips or falls.
+        Tones decide whether you're understood; the consonants matter far less.
+      </p>
+    </section>
+
     <div class="tone-key">
       <span class="tone-key-label">Tones</span>
       <span class="tk t1"><i></i>1 flat</span>

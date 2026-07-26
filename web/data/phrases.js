@@ -17,6 +17,21 @@ window.PHRASE_DATA = {
    "emoji": "💐"
   },
   {
+   "id": "family",
+   "name": "Meeting Family",
+   "emoji": "👪"
+  },
+  {
+   "id": "occasions",
+   "name": "Occasions & Toasts",
+   "emoji": "🎉"
+  },
+  {
+   "id": "chengdu",
+   "name": "Chengdu & Spice",
+   "emoji": "🌶️"
+  },
+  {
    "id": "morning-night",
    "name": "Morning & Night",
    "emoji": "🌙"
@@ -2306,6 +2321,2406 @@ window.PHRASE_DATA = {
       "t": 0.959,
       "d": 0.523,
       "word": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": "hello-parents",
+   "cat": "family",
+   "en": "Hello (to her parents)",
+   "zh": "叔叔阿姨好",
+   "py": "shū shu ā yí hǎo",
+   "phon": "shoo shoo ah yee HOW",
+   "syllables": [
+    {
+     "han": "叔",
+     "py": "shū",
+     "tone": 1,
+     "say": "shoo"
+    },
+    {
+     "han": "叔",
+     "py": "shu",
+     "tone": 5,
+     "say": "shoo"
+    },
+    {
+     "han": "阿",
+     "py": "ā",
+     "tone": 1,
+     "say": "ah"
+    },
+    {
+     "han": "姨",
+     "py": "yí",
+     "tone": 2,
+     "say": "yee"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "HOW"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.2,
+      "word": 0
+     },
+     {
+      "t": 0.3,
+      "d": 0.2,
+      "word": 0
+     },
+     {
+      "t": 0.512,
+      "d": 0.156,
+      "word": 1
+     },
+     {
+      "t": 0.668,
+      "d": 0.156,
+      "word": 1
+     },
+     {
+      "t": 0.825,
+      "d": 0.375,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.363,
+      "word": 0
+     },
+     {
+      "t": 0.504,
+      "d": 0.363,
+      "word": 0
+     },
+     {
+      "t": 0.891,
+      "d": 0.284,
+      "word": 1
+     },
+     {
+      "t": 1.175,
+      "d": 0.284,
+      "word": 1
+     },
+     {
+      "t": 1.459,
+      "d": 0.682,
+      "word": 2
+     }
+    ]
+   },
+   "note": "The safe, warm way to greet her mum and dad. Don't use their names."
+  },
+  {
+   "id": "glad-to-meet-you",
+   "cat": "family",
+   "en": "So glad to meet you",
+   "zh": "很高兴见到您",
+   "py": "hěn gāo xìng jiàn dào nín",
+   "phon": "hun gaow shing jyen daow NEEN",
+   "syllables": [
+    {
+     "han": "很",
+     "py": "hěn",
+     "tone": 3,
+     "say": "hun"
+    },
+    {
+     "han": "高",
+     "py": "gāo",
+     "tone": 1,
+     "say": "gaow"
+    },
+    {
+     "han": "兴",
+     "py": "xìng",
+     "tone": 4,
+     "say": "shing"
+    },
+    {
+     "han": "见",
+     "py": "jiàn",
+     "tone": 4,
+     "say": "jyen"
+    },
+    {
+     "han": "到",
+     "py": "dào",
+     "tone": 4,
+     "say": "daow"
+    },
+    {
+     "han": "您",
+     "py": "nín",
+     "tone": 2,
+     "say": "NEEN"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.237,
+      "word": 0
+     },
+     {
+      "t": 0.338,
+      "d": 0.206,
+      "word": 1
+     },
+     {
+      "t": 0.544,
+      "d": 0.206,
+      "word": 1
+     },
+     {
+      "t": 0.775,
+      "d": 0.163,
+      "word": 2
+     },
+     {
+      "t": 0.938,
+      "d": 0.163,
+      "word": 2
+     },
+     {
+      "t": 1.1,
+      "d": 0.3,
+      "word": 3
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.432,
+      "word": 0
+     },
+     {
+      "t": 0.573,
+      "d": 0.375,
+      "word": 1
+     },
+     {
+      "t": 0.948,
+      "d": 0.375,
+      "word": 1
+     },
+     {
+      "t": 1.368,
+      "d": 0.295,
+      "word": 2
+     },
+     {
+      "t": 1.663,
+      "d": 0.295,
+      "word": 2
+     },
+     {
+      "t": 1.959,
+      "d": 0.545,
+      "word": 3
+     }
+    ]
+   },
+   "note": "您 is the respectful \"you\" — use it with anyone older."
+  },
+  {
+   "id": "thanks-for-having",
+   "cat": "family",
+   "en": "Thank you for having me",
+   "zh": "谢谢您的招待",
+   "py": "xiè xie nín de zhāo dài",
+   "phon": "shyeh shyeh neen duh jaow DYE",
+   "syllables": [
+    {
+     "han": "谢",
+     "py": "xiè",
+     "tone": 4,
+     "say": "shyeh"
+    },
+    {
+     "han": "谢",
+     "py": "xie",
+     "tone": 5,
+     "say": "shyeh"
+    },
+    {
+     "han": "您",
+     "py": "nín",
+     "tone": 2,
+     "say": "neen"
+    },
+    {
+     "han": "的",
+     "py": "de",
+     "tone": 5,
+     "say": "duh"
+    },
+    {
+     "han": "招",
+     "py": "zhāo",
+     "tone": 1,
+     "say": "jaow"
+    },
+    {
+     "han": "待",
+     "py": "dài",
+     "tone": 4,
+     "say": "DYE"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.225,
+      "word": 0
+     },
+     {
+      "t": 0.325,
+      "d": 0.225,
+      "word": 0
+     },
+     {
+      "t": 0.562,
+      "d": 0.138,
+      "word": 1
+     },
+     {
+      "t": 0.7,
+      "d": 0.087,
+      "word": 2
+     },
+     {
+      "t": 0.8,
+      "d": 0.219,
+      "word": 3
+     },
+     {
+      "t": 1.019,
+      "d": 0.219,
+      "word": 3
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.409,
+      "word": 0
+     },
+     {
+      "t": 0.55,
+      "d": 0.409,
+      "word": 0
+     },
+     {
+      "t": 0.982,
+      "d": 0.25,
+      "word": 1
+     },
+     {
+      "t": 1.232,
+      "d": 0.159,
+      "word": 2
+     },
+     {
+      "t": 1.414,
+      "d": 0.398,
+      "word": 3
+     },
+     {
+      "t": 1.811,
+      "d": 0.398,
+      "word": 3
+     }
+    ]
+   }
+  },
+  {
+   "id": "youve-worked-hard",
+   "cat": "family",
+   "en": "You've gone to so much trouble",
+   "zh": "您辛苦了",
+   "py": "nín xīn kǔ le",
+   "phon": "neen shin KOO luh",
+   "syllables": [
+    {
+     "han": "您",
+     "py": "nín",
+     "tone": 2,
+     "say": "neen"
+    },
+    {
+     "han": "辛",
+     "py": "xīn",
+     "tone": 1,
+     "say": "shin"
+    },
+    {
+     "han": "苦",
+     "py": "kǔ",
+     "tone": 3,
+     "say": "KOO"
+    },
+    {
+     "han": "了",
+     "py": "le",
+     "tone": 5,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.175,
+      "word": 0
+     },
+     {
+      "t": 0.287,
+      "d": 0.232,
+      "word": 1
+     },
+     {
+      "t": 0.518,
+      "d": 0.232,
+      "word": 1
+     },
+     {
+      "t": 0.75,
+      "d": 0.237,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.318,
+      "word": 0
+     },
+     {
+      "t": 0.482,
+      "d": 0.42,
+      "word": 1
+     },
+     {
+      "t": 0.902,
+      "d": 0.42,
+      "word": 1
+     },
+     {
+      "t": 1.323,
+      "d": 0.432,
+      "word": 2
+     }
+    ]
+   },
+   "note": "Says \"I see how much effort you put in.\" Lands beautifully with parents."
+  },
+  {
+   "id": "let-me-help-out",
+   "cat": "family",
+   "en": "Let me help",
+   "zh": "我来帮忙",
+   "py": "wǒ lái bāng máng",
+   "phon": "wor lye bahng MAHNG",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "wor"
+    },
+    {
+     "han": "来",
+     "py": "lái",
+     "tone": 2,
+     "say": "lye"
+    },
+    {
+     "han": "帮",
+     "py": "bāng",
+     "tone": 1,
+     "say": "bahng"
+    },
+    {
+     "han": "忙",
+     "py": "máng",
+     "tone": 2,
+     "say": "MAHNG"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.15,
+      "word": 0
+     },
+     {
+      "t": 0.25,
+      "d": 0.15,
+      "word": 1
+     },
+     {
+      "t": 0.412,
+      "d": 0.269,
+      "word": 2
+     },
+     {
+      "t": 0.68,
+      "d": 0.269,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.273,
+      "word": 0
+     },
+     {
+      "t": 0.414,
+      "d": 0.273,
+      "word": 1
+     },
+     {
+      "t": 0.709,
+      "d": 0.488,
+      "word": 2
+     },
+     {
+      "t": 1.198,
+      "d": 0.488,
+      "word": 2
+     }
+    ]
+   },
+   "note": "Offer this at the table. They'll refuse. Offer anyway."
+  },
+  {
+   "id": "so-delicious",
+   "cat": "family",
+   "en": "This is so delicious",
+   "zh": "太好吃了",
+   "py": "tài hǎo chī le",
+   "phon": "tye how CHR luh",
+   "syllables": [
+    {
+     "han": "太",
+     "py": "tài",
+     "tone": 4,
+     "say": "tye"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "how"
+    },
+    {
+     "han": "吃",
+     "py": "chī",
+     "tone": 1,
+     "say": "CHR"
+    },
+    {
+     "han": "了",
+     "py": "le",
+     "tone": 5,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.225,
+      "word": 0
+     },
+     {
+      "t": 0.325,
+      "d": 0.219,
+      "word": 1
+     },
+     {
+      "t": 0.544,
+      "d": 0.219,
+      "word": 1
+     },
+     {
+      "t": 0.762,
+      "d": 0.225,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.409,
+      "word": 0
+     },
+     {
+      "t": 0.55,
+      "d": 0.398,
+      "word": 1
+     },
+     {
+      "t": 0.948,
+      "d": 0.398,
+      "word": 1
+     },
+     {
+      "t": 1.345,
+      "d": 0.409,
+      "word": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "im-full-thanks",
+   "cat": "family",
+   "en": "I'm full, thank you",
+   "zh": "我吃饱了，谢谢",
+   "py": "wǒ chī bǎo le xiè xie",
+   "phon": "wor chr BAOW luh shyeh shyeh",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "wor"
+    },
+    {
+     "han": "吃",
+     "py": "chī",
+     "tone": 1,
+     "say": "chr"
+    },
+    {
+     "han": "饱",
+     "py": "bǎo",
+     "tone": 3,
+     "say": "BAOW"
+    },
+    {
+     "han": "了",
+     "py": "le",
+     "tone": 5,
+     "say": "luh"
+    },
+    {
+     "han": "谢",
+     "py": "xiè",
+     "tone": 4,
+     "say": "shyeh"
+    },
+    {
+     "han": "谢",
+     "py": "xie",
+     "tone": 5,
+     "say": "shyeh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.138,
+      "word": 0
+     },
+     {
+      "t": 0.237,
+      "d": 0.2,
+      "word": 1
+     },
+     {
+      "t": 0.437,
+      "d": 0.2,
+      "word": 1
+     },
+     {
+      "t": 0.637,
+      "d": 0.225,
+      "word": 2
+     },
+     {
+      "t": 1.175,
+      "d": 0.25,
+      "word": 3
+     },
+     {
+      "t": 1.425,
+      "d": 0.25,
+      "word": 3
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.391,
+      "d": 0.363,
+      "word": 1
+     },
+     {
+      "t": 0.754,
+      "d": 0.363,
+      "word": 1
+     },
+     {
+      "t": 1.118,
+      "d": 0.409,
+      "word": 2
+     },
+     {
+      "t": 2.095,
+      "d": 0.455,
+      "word": 3
+     },
+     {
+      "t": 2.55,
+      "d": 0.455,
+      "word": 3
+     }
+    ]
+   },
+   "note": "You will need this several times. They will keep feeding you."
+  },
+  {
+   "id": "care-for-her",
+   "cat": "family",
+   "en": "I'll take good care of her",
+   "zh": "我会好好照顾她",
+   "py": "wǒ huì hǎo hǎo zhào gù tā",
+   "phon": "wor hway how how jaow goo TAH",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "wor"
+    },
+    {
+     "han": "会",
+     "py": "huì",
+     "tone": 4,
+     "say": "hway"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "how"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "how"
+    },
+    {
+     "han": "照",
+     "py": "zhào",
+     "tone": 4,
+     "say": "jaow"
+    },
+    {
+     "han": "顾",
+     "py": "gù",
+     "tone": 4,
+     "say": "goo"
+    },
+    {
+     "han": "她",
+     "py": "tā",
+     "tone": 1,
+     "say": "TAH"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.138,
+      "word": 0
+     },
+     {
+      "t": 0.237,
+      "d": 0.138,
+      "word": 1
+     },
+     {
+      "t": 0.388,
+      "d": 0.208,
+      "word": 2
+     },
+     {
+      "t": 0.596,
+      "d": 0.208,
+      "word": 2
+     },
+     {
+      "t": 0.803,
+      "d": 0.208,
+      "word": 2
+     },
+     {
+      "t": 1.011,
+      "d": 0.208,
+      "word": 2
+     },
+     {
+      "t": 1.218,
+      "d": 0.208,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.391,
+      "d": 0.25,
+      "word": 1
+     },
+     {
+      "t": 0.664,
+      "d": 0.377,
+      "word": 2
+     },
+     {
+      "t": 1.041,
+      "d": 0.377,
+      "word": 2
+     },
+     {
+      "t": 1.418,
+      "d": 0.377,
+      "word": 2
+     },
+     {
+      "t": 1.796,
+      "d": 0.377,
+      "word": 2
+     },
+     {
+      "t": 2.173,
+      "d": 0.377,
+      "word": 2
+     }
+    ]
+   },
+   "note": "The big one. Say it to her parents and mean it."
+  },
+  {
+   "id": "look-after-me",
+   "cat": "family",
+   "en": "Please look after me",
+   "zh": "请多关照",
+   "py": "qǐng duō guān zhào",
+   "phon": "ching dwor gwahn JAOW",
+   "syllables": [
+    {
+     "han": "请",
+     "py": "qǐng",
+     "tone": 3,
+     "say": "ching"
+    },
+    {
+     "han": "多",
+     "py": "duō",
+     "tone": 1,
+     "say": "dwor"
+    },
+    {
+     "han": "关",
+     "py": "guān",
+     "tone": 1,
+     "say": "gwahn"
+    },
+    {
+     "han": "照",
+     "py": "zhào",
+     "tone": 4,
+     "say": "JAOW"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.237,
+      "word": 0
+     },
+     {
+      "t": 0.338,
+      "d": 0.175,
+      "word": 1
+     },
+     {
+      "t": 0.525,
+      "d": 0.25,
+      "word": 2
+     },
+     {
+      "t": 0.775,
+      "d": 0.25,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.432,
+      "word": 0
+     },
+     {
+      "t": 0.573,
+      "d": 0.318,
+      "word": 1
+     },
+     {
+      "t": 0.914,
+      "d": 0.455,
+      "word": 2
+     },
+     {
+      "t": 1.369,
+      "d": 0.455,
+      "word": 2
+     }
+    ]
+   },
+   "note": "A humble set phrase for being the new person. Very well received."
+  },
+  {
+   "id": "hello-grandma",
+   "cat": "family",
+   "en": "Hello, Grandma",
+   "zh": "奶奶好",
+   "py": "nǎi nai hǎo",
+   "phon": "nye nye HOW",
+   "syllables": [
+    {
+     "han": "奶",
+     "py": "nǎi",
+     "tone": 3,
+     "say": "nye"
+    },
+    {
+     "han": "奶",
+     "py": "nai",
+     "tone": 5,
+     "say": "nye"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "HOW"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.169,
+      "word": 0
+     },
+     {
+      "t": 0.269,
+      "d": 0.169,
+      "word": 0
+     },
+     {
+      "t": 0.438,
+      "d": 0.375,
+      "word": 1
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.307,
+      "word": 0
+     },
+     {
+      "t": 0.448,
+      "d": 0.307,
+      "word": 0
+     },
+     {
+      "t": 0.755,
+      "d": 0.682,
+      "word": 1
+     }
+    ]
+   },
+   "note": "奶奶 is dad's mum. Mum's mum is 外婆 — see below."
+  },
+  {
+   "id": "hello-waipo",
+   "cat": "family",
+   "en": "Hello, Grandma (mum's side)",
+   "zh": "外婆好",
+   "py": "wài pó hǎo",
+   "phon": "wye por HOW",
+   "syllables": [
+    {
+     "han": "外",
+     "py": "wài",
+     "tone": 4,
+     "say": "wye"
+    },
+    {
+     "han": "婆",
+     "py": "pó",
+     "tone": 2,
+     "say": "por"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "HOW"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.2,
+      "word": 0
+     },
+     {
+      "t": 0.3,
+      "d": 0.2,
+      "word": 0
+     },
+     {
+      "t": 0.5,
+      "d": 0.362,
+      "word": 1
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.363,
+      "word": 0
+     },
+     {
+      "t": 0.504,
+      "d": 0.363,
+      "word": 0
+     },
+     {
+      "t": 0.868,
+      "d": 0.659,
+      "word": 1
+     }
+    ]
+   },
+   "note": "Chinese splits the grandparents by side. Getting this right gets noticed."
+  },
+  {
+   "id": "happy-new-year",
+   "cat": "occasions",
+   "en": "Happy New Year",
+   "zh": "新年快乐",
+   "py": "xīn nián kuài lè",
+   "phon": "shin nyen KWYE luh",
+   "syllables": [
+    {
+     "han": "新",
+     "py": "xīn",
+     "tone": 1,
+     "say": "shin"
+    },
+    {
+     "han": "年",
+     "py": "nián",
+     "tone": 2,
+     "say": "nyen"
+    },
+    {
+     "han": "快",
+     "py": "kuài",
+     "tone": 4,
+     "say": "KWYE"
+    },
+    {
+     "han": "乐",
+     "py": "lè",
+     "tone": 4,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.35,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.6,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.85,
+      "d": 0.25,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.455,
+      "word": 0
+     },
+     {
+      "t": 0.596,
+      "d": 0.455,
+      "word": 0
+     },
+     {
+      "t": 1.05,
+      "d": 0.455,
+      "word": 0
+     },
+     {
+      "t": 1.505,
+      "d": 0.455,
+      "word": 0
+     }
+    ]
+   }
+  },
+  {
+   "id": "prosperity",
+   "cat": "occasions",
+   "en": "Wishing you prosperity",
+   "zh": "恭喜发财",
+   "py": "gōng xǐ fā cái",
+   "phon": "gong shee fah TSYE",
+   "syllables": [
+    {
+     "han": "恭",
+     "py": "gōng",
+     "tone": 1,
+     "say": "gong"
+    },
+    {
+     "han": "喜",
+     "py": "xǐ",
+     "tone": 3,
+     "say": "shee"
+    },
+    {
+     "han": "发",
+     "py": "fā",
+     "tone": 1,
+     "say": "fah"
+    },
+    {
+     "han": "财",
+     "py": "cái",
+     "tone": 2,
+     "say": "TSYE"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.256,
+      "word": 0
+     },
+     {
+      "t": 0.356,
+      "d": 0.256,
+      "word": 0
+     },
+     {
+      "t": 0.612,
+      "d": 0.256,
+      "word": 0
+     },
+     {
+      "t": 0.869,
+      "d": 0.256,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.466,
+      "word": 0
+     },
+     {
+      "t": 0.607,
+      "d": 0.466,
+      "word": 0
+     },
+     {
+      "t": 1.073,
+      "d": 0.466,
+      "word": 0
+     },
+     {
+      "t": 1.539,
+      "d": 0.466,
+      "word": 0
+     }
+    ]
+   },
+   "note": "The classic New Year greeting. Say it to everyone."
+  },
+  {
+   "id": "good-health",
+   "cat": "occasions",
+   "en": "Wishing you good health",
+   "zh": "身体健康",
+   "py": "shēn tǐ jiàn kāng",
+   "phon": "shun tee jyen KAHNG",
+   "syllables": [
+    {
+     "han": "身",
+     "py": "shēn",
+     "tone": 1,
+     "say": "shun"
+    },
+    {
+     "han": "体",
+     "py": "tǐ",
+     "tone": 3,
+     "say": "tee"
+    },
+    {
+     "han": "健",
+     "py": "jiàn",
+     "tone": 4,
+     "say": "jyen"
+    },
+    {
+     "han": "康",
+     "py": "kāng",
+     "tone": 1,
+     "say": "KAHNG"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.232,
+      "word": 0
+     },
+     {
+      "t": 0.332,
+      "d": 0.232,
+      "word": 0
+     },
+     {
+      "t": 0.575,
+      "d": 0.256,
+      "word": 1
+     },
+     {
+      "t": 0.831,
+      "d": 0.256,
+      "word": 1
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.42,
+      "word": 0
+     },
+     {
+      "t": 0.561,
+      "d": 0.42,
+      "word": 0
+     },
+     {
+      "t": 1.005,
+      "d": 0.466,
+      "word": 1
+     },
+     {
+      "t": 1.471,
+      "d": 0.466,
+      "word": 1
+     }
+    ]
+   },
+   "note": "The right wish for grandparents and older relatives."
+  },
+  {
+   "id": "happy-birthday",
+   "cat": "occasions",
+   "en": "Happy birthday",
+   "zh": "生日快乐",
+   "py": "shēng rì kuài lè",
+   "phon": "shung r KWYE luh",
+   "syllables": [
+    {
+     "han": "生",
+     "py": "shēng",
+     "tone": 1,
+     "say": "shung"
+    },
+    {
+     "han": "日",
+     "py": "rì",
+     "tone": 4,
+     "say": "r"
+    },
+    {
+     "han": "快",
+     "py": "kuài",
+     "tone": 4,
+     "say": "KWYE"
+    },
+    {
+     "han": "乐",
+     "py": "lè",
+     "tone": 4,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.247,
+      "word": 0
+     },
+     {
+      "t": 0.347,
+      "d": 0.247,
+      "word": 0
+     },
+     {
+      "t": 0.594,
+      "d": 0.247,
+      "word": 0
+     },
+     {
+      "t": 0.841,
+      "d": 0.247,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.449,
+      "word": 0
+     },
+     {
+      "t": 0.59,
+      "d": 0.449,
+      "word": 0
+     },
+     {
+      "t": 1.038,
+      "d": 0.449,
+      "word": 0
+     },
+     {
+      "t": 1.487,
+      "d": 0.449,
+      "word": 0
+     }
+    ]
+   }
+  },
+  {
+   "id": "mid-autumn",
+   "cat": "occasions",
+   "en": "Happy Mid-Autumn Festival",
+   "zh": "中秋节快乐",
+   "py": "zhōng qiū jié kuài lè",
+   "phon": "jong chyoh jyeh KWYE luh",
+   "syllables": [
+    {
+     "han": "中",
+     "py": "zhōng",
+     "tone": 1,
+     "say": "jong"
+    },
+    {
+     "han": "秋",
+     "py": "qiū",
+     "tone": 1,
+     "say": "chyoh"
+    },
+    {
+     "han": "节",
+     "py": "jié",
+     "tone": 2,
+     "say": "jyeh"
+    },
+    {
+     "han": "快",
+     "py": "kuài",
+     "tone": 4,
+     "say": "KWYE"
+    },
+    {
+     "han": "乐",
+     "py": "lè",
+     "tone": 4,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.187,
+      "word": 0
+     },
+     {
+      "t": 0.287,
+      "d": 0.187,
+      "word": 0
+     },
+     {
+      "t": 0.475,
+      "d": 0.187,
+      "word": 0
+     },
+     {
+      "t": 0.675,
+      "d": 0.281,
+      "word": 1
+     },
+     {
+      "t": 0.956,
+      "d": 0.281,
+      "word": 1
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.341,
+      "word": 0
+     },
+     {
+      "t": 0.482,
+      "d": 0.341,
+      "word": 0
+     },
+     {
+      "t": 0.823,
+      "d": 0.341,
+      "word": 0
+     },
+     {
+      "t": 1.186,
+      "d": 0.511,
+      "word": 1
+     },
+     {
+      "t": 1.697,
+      "d": 0.511,
+      "word": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": "valentines",
+   "cat": "occasions",
+   "en": "Happy Valentine's Day",
+   "zh": "情人节快乐",
+   "py": "qíng rén jié kuài lè",
+   "phon": "ching run jyeh KWYE luh",
+   "syllables": [
+    {
+     "han": "情",
+     "py": "qíng",
+     "tone": 2,
+     "say": "ching"
+    },
+    {
+     "han": "人",
+     "py": "rén",
+     "tone": 2,
+     "say": "run"
+    },
+    {
+     "han": "节",
+     "py": "jié",
+     "tone": 2,
+     "say": "jyeh"
+    },
+    {
+     "han": "快",
+     "py": "kuài",
+     "tone": 4,
+     "say": "KWYE"
+    },
+    {
+     "han": "乐",
+     "py": "lè",
+     "tone": 4,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.23,
+      "word": 0
+     },
+     {
+      "t": 0.33,
+      "d": 0.23,
+      "word": 0
+     },
+     {
+      "t": 0.56,
+      "d": 0.23,
+      "word": 0
+     },
+     {
+      "t": 0.79,
+      "d": 0.23,
+      "word": 0
+     },
+     {
+      "t": 1.02,
+      "d": 0.23,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.418,
+      "word": 0
+     },
+     {
+      "t": 0.559,
+      "d": 0.418,
+      "word": 0
+     },
+     {
+      "t": 0.977,
+      "d": 0.418,
+      "word": 0
+     },
+     {
+      "t": 1.396,
+      "d": 0.418,
+      "word": 0
+     },
+     {
+      "t": 1.814,
+      "d": 0.418,
+      "word": 0
+     }
+    ]
+   }
+  },
+  {
+   "id": "anniversary",
+   "cat": "occasions",
+   "en": "Happy anniversary",
+   "zh": "纪念日快乐",
+   "py": "jì niàn rì kuài lè",
+   "phon": "jee nyen r KWYE luh",
+   "syllables": [
+    {
+     "han": "纪",
+     "py": "jì",
+     "tone": 4,
+     "say": "jee"
+    },
+    {
+     "han": "念",
+     "py": "niàn",
+     "tone": 4,
+     "say": "nyen"
+    },
+    {
+     "han": "日",
+     "py": "rì",
+     "tone": 4,
+     "say": "r"
+    },
+    {
+     "han": "快",
+     "py": "kuài",
+     "tone": 4,
+     "say": "KWYE"
+    },
+    {
+     "han": "乐",
+     "py": "lè",
+     "tone": 4,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.162,
+      "word": 0
+     },
+     {
+      "t": 0.262,
+      "d": 0.162,
+      "word": 0
+     },
+     {
+      "t": 0.425,
+      "d": 0.162,
+      "word": 0
+     },
+     {
+      "t": 0.6,
+      "d": 0.275,
+      "word": 1
+     },
+     {
+      "t": 0.875,
+      "d": 0.275,
+      "word": 1
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.295,
+      "word": 0
+     },
+     {
+      "t": 0.436,
+      "d": 0.295,
+      "word": 0
+     },
+     {
+      "t": 0.732,
+      "d": 0.295,
+      "word": 0
+     },
+     {
+      "t": 1.05,
+      "d": 0.5,
+      "word": 1
+     },
+     {
+      "t": 1.55,
+      "d": 0.5,
+      "word": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": "cheers",
+   "cat": "occasions",
+   "en": "Cheers!",
+   "zh": "干杯",
+   "py": "gān bēi",
+   "phon": "gahn BAY",
+   "syllables": [
+    {
+     "han": "干",
+     "py": "gān",
+     "tone": 1,
+     "say": "gahn"
+    },
+    {
+     "han": "杯",
+     "py": "bēi",
+     "tone": 1,
+     "say": "BAY"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.281,
+      "word": 0
+     },
+     {
+      "t": 0.381,
+      "d": 0.281,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.511,
+      "word": 0
+     },
+     {
+      "t": 0.652,
+      "d": 0.511,
+      "word": 0
+     }
+    ]
+   }
+  },
+  {
+   "id": "a-toast-to-you",
+   "cat": "occasions",
+   "en": "A toast to you",
+   "zh": "我敬您一杯",
+   "py": "wǒ jìng nín yì bēi",
+   "phon": "wor jing neen yee BAY",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "wor"
+    },
+    {
+     "han": "敬",
+     "py": "jìng",
+     "tone": 4,
+     "say": "jing"
+    },
+    {
+     "han": "您",
+     "py": "nín",
+     "tone": 2,
+     "say": "neen"
+    },
+    {
+     "han": "一",
+     "py": "yì",
+     "tone": 4,
+     "say": "yee"
+    },
+    {
+     "han": "杯",
+     "py": "bēi",
+     "tone": 1,
+     "say": "BAY"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.163,
+      "word": 0
+     },
+     {
+      "t": 0.263,
+      "d": 0.212,
+      "word": 1
+     },
+     {
+      "t": 0.475,
+      "d": 0.138,
+      "word": 2
+     },
+     {
+      "t": 0.625,
+      "d": 0.163,
+      "word": 3
+     },
+     {
+      "t": 0.787,
+      "d": 0.3,
+      "word": 4
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.295,
+      "word": 0
+     },
+     {
+      "t": 0.436,
+      "d": 0.386,
+      "word": 1
+     },
+     {
+      "t": 0.823,
+      "d": 0.25,
+      "word": 2
+     },
+     {
+      "t": 1.095,
+      "d": 0.295,
+      "word": 3
+     },
+     {
+      "t": 1.391,
+      "d": 0.545,
+      "word": 4
+     }
+    ]
+   },
+   "note": "Raise your glass lower than theirs. That detail matters."
+  },
+  {
+   "id": "bashi",
+   "cat": "chengdu",
+   "en": "Perfect! / Awesome!",
+   "zh": "巴适",
+   "py": "bā shì",
+   "phon": "bah SHR",
+   "syllables": [
+    {
+     "han": "巴",
+     "py": "bā",
+     "tone": 1,
+     "say": "bah"
+    },
+    {
+     "han": "适",
+     "py": "shì",
+     "tone": 4,
+     "say": "SHR"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.325,
+      "word": 0
+     },
+     {
+      "t": 0.425,
+      "d": 0.325,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.591,
+      "word": 0
+     },
+     {
+      "t": 0.732,
+      "d": 0.591,
+      "word": 0
+     }
+    ]
+   },
+   "note": "Sichuanese, not standard Mandarin — the most Chengdu word there is. Ask her to teach you the local pronunciation; it differs from this."
+  },
+  {
+   "id": "anyi",
+   "cat": "chengdu",
+   "en": "So nice / so comfy",
+   "zh": "安逸",
+   "py": "ān yì",
+   "phon": "ahn YEE",
+   "syllables": [
+    {
+     "han": "安",
+     "py": "ān",
+     "tone": 1,
+     "say": "ahn"
+    },
+    {
+     "han": "逸",
+     "py": "yì",
+     "tone": 4,
+     "say": "YEE"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.294,
+      "word": 0
+     },
+     {
+      "t": 0.394,
+      "d": 0.294,
+      "word": 0
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.534,
+      "word": 0
+     },
+     {
+      "t": 0.675,
+      "d": 0.534,
+      "word": 0
+     }
+    ]
+   },
+   "note": "The other great Sichuan word. Use it about food, weather, a lazy afternoon."
+  },
+  {
+   "id": "want-hotpot",
+   "cat": "chengdu",
+   "en": "I want hotpot",
+   "zh": "我想吃火锅",
+   "py": "wǒ xiǎng chī huǒ guō",
+   "phon": "wor shyahng chr hwor GWOR",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "wor"
+    },
+    {
+     "han": "想",
+     "py": "xiǎng",
+     "tone": 3,
+     "say": "shyahng"
+    },
+    {
+     "han": "吃",
+     "py": "chī",
+     "tone": 1,
+     "say": "chr"
+    },
+    {
+     "han": "火",
+     "py": "huǒ",
+     "tone": 3,
+     "say": "hwor"
+    },
+    {
+     "han": "锅",
+     "py": "guō",
+     "tone": 1,
+     "say": "GWOR"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.138,
+      "word": 0
+     },
+     {
+      "t": 0.237,
+      "d": 0.2,
+      "word": 1
+     },
+     {
+      "t": 0.45,
+      "d": 0.163,
+      "word": 2
+     },
+     {
+      "t": 0.613,
+      "d": 0.281,
+      "word": 3
+     },
+     {
+      "t": 0.894,
+      "d": 0.281,
+      "word": 3
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.391,
+      "d": 0.364,
+      "word": 1
+     },
+     {
+      "t": 0.777,
+      "d": 0.295,
+      "word": 2
+     },
+     {
+      "t": 1.073,
+      "d": 0.511,
+      "word": 3
+     },
+     {
+      "t": 1.584,
+      "d": 0.511,
+      "word": 3
+     }
+    ]
+   }
+  },
+  {
+   "id": "i-like-spicy",
+   "cat": "chengdu",
+   "en": "I like spicy food",
+   "zh": "我喜欢吃辣的",
+   "py": "wǒ xǐ huan chī là de",
+   "phon": "wor shee hwahn chr LAH duh",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "wor"
+    },
+    {
+     "han": "喜",
+     "py": "xǐ",
+     "tone": 3,
+     "say": "shee"
+    },
+    {
+     "han": "欢",
+     "py": "huan",
+     "tone": 5,
+     "say": "hwahn"
+    },
+    {
+     "han": "吃",
+     "py": "chī",
+     "tone": 1,
+     "say": "chr"
+    },
+    {
+     "han": "辣",
+     "py": "là",
+     "tone": 4,
+     "say": "LAH"
+    },
+    {
+     "han": "的",
+     "py": "de",
+     "tone": 5,
+     "say": "duh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.138,
+      "word": 0
+     },
+     {
+      "t": 0.25,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.431,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.637,
+      "d": 0.206,
+      "word": 2
+     },
+     {
+      "t": 0.843,
+      "d": 0.206,
+      "word": 2
+     },
+     {
+      "t": 1.05,
+      "d": 0.225,
+      "word": 3
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.414,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 0.744,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 1.118,
+      "d": 0.375,
+      "word": 2
+     },
+     {
+      "t": 1.493,
+      "d": 0.375,
+      "word": 2
+     },
+     {
+      "t": 1.868,
+      "d": 0.409,
+      "word": 3
+     }
+    ]
+   },
+   "note": "In Chengdu this is practically a declaration of loyalty."
+  },
+  {
+   "id": "too-spicy",
+   "cat": "chengdu",
+   "en": "That's too spicy!",
+   "zh": "太辣了",
+   "py": "tài là le",
+   "phon": "tye LAH luh",
+   "syllables": [
+    {
+     "han": "太",
+     "py": "tài",
+     "tone": 4,
+     "say": "tye"
+    },
+    {
+     "han": "辣",
+     "py": "là",
+     "tone": 4,
+     "say": "LAH"
+    },
+    {
+     "han": "了",
+     "py": "le",
+     "tone": 5,
+     "say": "luh"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.287,
+      "word": 0
+     },
+     {
+      "t": 0.388,
+      "d": 0.225,
+      "word": 1
+     },
+     {
+      "t": 0.613,
+      "d": 0.225,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.523,
+      "word": 0
+     },
+     {
+      "t": 0.664,
+      "d": 0.409,
+      "word": 1
+     },
+     {
+      "t": 1.073,
+      "d": 0.409,
+      "word": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "mild-is-fine",
+   "cat": "chengdu",
+   "en": "Mild is fine for me",
+   "zh": "微辣就好",
+   "py": "wēi là jiù hǎo",
+   "phon": "way lah jyoh HOW",
+   "syllables": [
+    {
+     "han": "微",
+     "py": "wēi",
+     "tone": 1,
+     "say": "way"
+    },
+    {
+     "han": "辣",
+     "py": "là",
+     "tone": 4,
+     "say": "lah"
+    },
+    {
+     "han": "就",
+     "py": "jiù",
+     "tone": 4,
+     "say": "jyoh"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "HOW"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.206,
+      "word": 0
+     },
+     {
+      "t": 0.306,
+      "d": 0.206,
+      "word": 0
+     },
+     {
+      "t": 0.525,
+      "d": 0.15,
+      "word": 1
+     },
+     {
+      "t": 0.675,
+      "d": 0.35,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.375,
+      "word": 0
+     },
+     {
+      "t": 0.516,
+      "d": 0.375,
+      "word": 0
+     },
+     {
+      "t": 0.914,
+      "d": 0.273,
+      "word": 1
+     },
+     {
+      "t": 1.186,
+      "d": 0.636,
+      "word": 2
+     }
+    ]
+   },
+   "note": "Chengdu \"mild\" is still spicy. Be ready."
+  },
+  {
+   "id": "chengdu-beautiful",
+   "cat": "chengdu",
+   "en": "Chengdu is beautiful",
+   "zh": "成都很漂亮",
+   "py": "chéng dū hěn piào liang",
+   "phon": "chung doo hun PYAOW lyahng",
+   "syllables": [
+    {
+     "han": "成",
+     "py": "chéng",
+     "tone": 2,
+     "say": "chung"
+    },
+    {
+     "han": "都",
+     "py": "dū",
+     "tone": 1,
+     "say": "doo"
+    },
+    {
+     "han": "很",
+     "py": "hěn",
+     "tone": 3,
+     "say": "hun"
+    },
+    {
+     "han": "漂",
+     "py": "piào",
+     "tone": 4,
+     "say": "PYAOW"
+    },
+    {
+     "han": "亮",
+     "py": "liang",
+     "tone": 5,
+     "say": "lyahng"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.206,
+      "word": 0
+     },
+     {
+      "t": 0.306,
+      "d": 0.206,
+      "word": 0
+     },
+     {
+      "t": 0.537,
+      "d": 0.2,
+      "word": 1
+     },
+     {
+      "t": 0.738,
+      "d": 0.275,
+      "word": 2
+     },
+     {
+      "t": 1.013,
+      "d": 0.275,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.375,
+      "word": 0
+     },
+     {
+      "t": 0.516,
+      "d": 0.375,
+      "word": 0
+     },
+     {
+      "t": 0.936,
+      "d": 0.364,
+      "word": 1
+     },
+     {
+      "t": 1.3,
+      "d": 0.5,
+      "word": 2
+     },
+     {
+      "t": 1.8,
+      "d": 0.5,
+      "word": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "i-love-chengdu",
+   "cat": "chengdu",
+   "en": "I love Chengdu",
+   "zh": "我爱成都",
+   "py": "wǒ ài chéng dū",
+   "phon": "wor eye chung DOO",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "wor"
+    },
+    {
+     "han": "爱",
+     "py": "ài",
+     "tone": 4,
+     "say": "eye"
+    },
+    {
+     "han": "成",
+     "py": "chéng",
+     "tone": 2,
+     "say": "chung"
+    },
+    {
+     "han": "都",
+     "py": "dū",
+     "tone": 1,
+     "say": "DOO"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.15,
+      "word": 0
+     },
+     {
+      "t": 0.25,
+      "d": 0.163,
+      "word": 1
+     },
+     {
+      "t": 0.425,
+      "d": 0.275,
+      "word": 2
+     },
+     {
+      "t": 0.7,
+      "d": 0.275,
+      "word": 2
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.273,
+      "word": 0
+     },
+     {
+      "t": 0.414,
+      "d": 0.295,
+      "word": 1
+     },
+     {
+      "t": 0.732,
+      "d": 0.5,
+      "word": 2
+     },
+     {
+      "t": 1.232,
+      "d": 0.5,
+      "word": 2
      }
     ]
    }

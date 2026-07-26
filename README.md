@@ -22,8 +22,11 @@ route — so the app just tells you where to tap.)
 
 ## What it does
 
-- **62 everyday phrases** across affection, sweet talk, meals, coming and going,
-  checking in, chores, and the "I'm still learning, say it slower" repair kit.
+- **90 phrases** across affection, sweet talk, meeting the family, occasions and
+  toasts, Chengdu and spice, meals, coming and going, checking in, chores, and
+  the "I'm still learning, say it slower" repair kit.
+- **Record yourself and hear it back** against the native clip, so you don't
+  drill a wrong tone in without noticing.
 - **Continuous speed control**, 40% to 110% of native pace.
 - **Written in English you can just read.** Every phrase is respelled
   syllable-by-syllable the way it actually sounds — `nee how kuh EYE`, with
@@ -42,6 +45,32 @@ route — so the app just tells you where to tap.)
 - **Favourites** and search across English, pinyin, and hanzi.
 - **Settings** (☰): install, updates, offline audio and storage, and display
   toggles — turn pinyin off to test yourself on the characters.
+
+## Checking your pronunciation
+
+The phrase screen has **Record yourself**; when you stop, it plays the native
+clip and your attempt back to back. Listen to the *shape* of each syllable —
+flat, rising, dipping, falling. Tones decide whether you're understood; the
+consonants matter far less.
+
+It's a plain A/B rather than speech recognition on purpose: `SpeechRecognition`
+is unreliable-to-absent in iOS Safari, which is the one browser this has to work
+in. Recordings live in memory for the session only, and the mic stream is
+released the moment you stop — iOS keeps showing the in-use indicator otherwise.
+
+## A note on the phrase content
+
+The phrases were written without a native speaker checking them. Register and
+regional flavour are judgement calls, and a few are worth confirming before you
+lean on them — `早安` reads slightly Taiwanese where mainland speakers say
+`早上好`, and `我喜欢你` is closer to "I like you" (a confession-stage phrase)
+than the app's gloss suggests. Getting a native speaker to read the list is the
+single highest-value change available to this project.
+
+The Chengdu section is standard Mandarin, including `巴适` and `安逸`, which are
+Sichuanese words. Their real Sichuanese pronunciation differs from what the
+voice produces — Microsoft's neural voices cover Liaoning and Shaanxi dialects
+but not Sichuanese, so that part has to come from a person.
 
 ## Updates
 

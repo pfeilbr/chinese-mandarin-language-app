@@ -406,6 +406,7 @@ function hideSheet() {
   activeSheet = null;
   document.body.style.overflow = '';
   if (wasDetail) {
+    stopRecording();   // never leave the mic live behind a closed sheet
     stopPlayback();
     current = null;
     renderList();
@@ -422,6 +423,7 @@ function openSheet(phrase) {
     ? `Read it out loud: <b>${esc(phrase.phon)}</b> &nbsp;·&nbsp; CAPITALS get the stress`
     : '';
   el.favBtn.setAttribute('aria-pressed', String(favs.has(phrase.id)));
+  refreshCompareUI();
   showSheet(el.sheet);
   setMediaSession(phrase);
 }
@@ -515,6 +517,151 @@ document.addEventListener('keydown', e => {
     e.preventDefault();
     (!audio.paused || rafId) ? stopPlayback() : play(current);
   }
+});
+
+/* ── Record & compare ────────────────────────────────────────────────
+   Hearing yourself straight after the native clip is the only reliable way to
+   notice you've been drilling a wrong tone. Deliberately a plain A/B rather
+   than speech recognition: SpeechRecognition is unreliable-to-absent in iOS
+   Safari, which is the one browser this has to work in. */
+
+const myAudio = new Audio();
+const recordings = new Map();   // phrase id -> { url }
+let mediaRecorder = null;
+let recTimer = null;
+
+const REC_MIME = ('MediaRecorder' in window)
+  ? ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm', 'audio/ogg']
+      .find(t => { try { return MediaRecorder.isTypeSupported(t); } catch { return false; } })
+  : undefined;
+
+const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia
+                     && 'MediaRecorder' in window);
+
+function refreshCompareUI() {
+  $('#compare').hidden = !canRecord;
+  if (!canRecord) return;
+  const has = current && recordings.has(current.id);
+  $('#cmp-actions').hidden = !has;
+  $('#cmp-hint').hidden = !has;
+  $('#rec-btn').hidden = !!has;
+}
+
+async function startRecording() {
+  stopPlayback();
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch {
+    return toast('Microphone access is needed to record');
+  }
+
+  const chunks = [];
+  try {
+    mediaRecorder = REC_MIME ? new MediaRecorder(stream, { mimeType: REC_MIME })
+                             : new MediaRecorder(stream);
+  } catch {
+    stream.getTracks().forEach(t => t.stop());
+    return toast("This browser can't record audio");
+  }
+
+  const phraseId = current.id;
+  mediaRecorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+  mediaRecorder.onstop = () => {
+    // Releasing the mic matters on iOS, which otherwise keeps showing the
+    // in-use indicator for as long as the tab is open.
+    stream.getTracks().forEach(t => t.stop());
+    clearInterval(recTimer);
+    mediaRecorder = null;
+
+    const old = recordings.get(phraseId);
+    if (old) URL.revokeObjectURL(old.url);
+    if (chunks.length) {
+      const blob = new Blob(chunks, { type: chunks[0].type || REC_MIME || 'audio/webm' });
+      recordings.set(phraseId, { url: URL.createObjectURL(blob) });
+    }
+    $('#rec-btn').classList.remove('recording');
+    $('#rec-label').textContent = 'Record yourself';
+    refreshCompareUI();
+    if (current && current.id === phraseId && recordings.has(phraseId)) playComparison(true);
+  };
+
+  mediaRecorder.start();
+  const started = Date.now();
+  $('#rec-btn').classList.add('recording');
+  $('#rec-label').textContent = 'Stop  0:00';
+  recTimer = setInterval(() => {
+    const s = Math.floor((Date.now() - started) / 1000);
+    $('#rec-label').textContent = `Stop  0:${String(s).padStart(2, '0')}`;
+    if (s >= 15) stopRecording();          // safety cap
+  }, 250);
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+}
+
+/** Play a recording, resolving when it finishes or is cancelled. */
+function playBlob(url, gen) {
+  return new Promise(resolve => {
+    let settled = false;
+    const done = ok => {
+      if (settled) return;
+      settled = true;
+      myAudio.removeEventListener('ended', onEnd);
+      myAudio.pause();
+      resolve(ok);
+    };
+    function onEnd() { done(gen === generation); }
+    myAudio.addEventListener('ended', onEnd);
+    myAudio.src = url;
+    myAudio.playbackRate = 1;
+    myAudio.play()
+      .then(() => { cancelActive = done; })
+      .catch(() => done(false));
+  });
+}
+
+async function playComparison(includeNative) {
+  const rec = current && recordings.get(current.id);
+  if (!rec) return;
+  stopPlayback();
+  const gen = ++generation;
+  setPlayingUI(true);
+
+  try {
+    if (includeNative) {
+      const plan = playbackPlan(current, speed);
+      if (!audio.src.endsWith(plan.src)) audio.src = plan.src;
+      audio.playbackRate = plan.rate;
+      const timing = current.timing[plan.track];
+      const last = timing[timing.length - 1];
+      const ok = await playRange(0, last.t + last.d + 0.2, gen, t => {
+        let idx = -1;
+        for (let i = 0; i < timing.length; i++) if (t >= timing[i].t - 0.02) idx = i;
+        highlight(idx);
+      });
+      highlight(-1);
+      if (!ok) return;
+      if (!(await sleep(450, gen))) return;
+    }
+    await playBlob(rec.url, gen);
+  } finally {
+    if (gen === generation) { setPlayingUI(false); highlight(-1); }
+  }
+}
+
+$('#rec-btn').addEventListener('click', () => {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') stopRecording();
+  else if (current) startRecording();
+});
+$('#cmp-both').addEventListener('click', () => playComparison(true));
+$('#cmp-mine').addEventListener('click', () => playComparison(false));
+$('#cmp-redo').addEventListener('click', () => {
+  const rec = current && recordings.get(current.id);
+  if (rec) { URL.revokeObjectURL(rec.url); recordings.delete(current.id); }
+  refreshCompareUI();
+  startRecording();
 });
 
 /* ── Settings ────────────────────────────────────────────────────────── */
