@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Say It In Mandarin</title>
+<meta name="theme-color" content="#0e1116">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Say It">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app">
+
+  <header class="topbar">
+    <div class="topbar-row">
+      <h1>Say It In Mandarin</h1>
+      <button id="offline-btn" class="ghost-btn" title="Save all audio for offline use">Save offline</button>
+    </div>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Search English or pinyin…" autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+    <nav id="chips" class="chips" aria-label="Categories"></nav>
+  </header>
+
+  <main id="list" class="list"></main>
+
+  <p id="empty" class="empty" hidden>No phrases match that.</p>
+
+</div>
+
+<!-- Phrase detail / practice sheet -->
+<section id="detail" class="sheet" hidden aria-modal="true" role="dialog">
+  <div class="sheet-inner">
+
+    <div class="sheet-head">
+      <button id="close-btn" class="icon-btn" aria-label="Back">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button id="fav-btn" class="icon-btn star" aria-label="Save to favourites">
+        <svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg>
+      </button>
+    </div>
+
+    <p id="d-en" class="d-en"></p>
+    <p id="d-note" class="d-note" hidden></p>
+
+    <div id="d-hanzi" class="hanzi-row" aria-label="Tap a character to hear it"></div>
+
+    <p id="d-phon" class="d-phon"></p>
+
+    <div class="player">
+      <button id="play-btn" class="play-btn" aria-label="Play">
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+        <svg class="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
+      </button>
+
+      <div class="speed">
+        <div class="speed-head">
+          <label for="speed">Speed</label>
+          <output id="speed-val">55%</output>
+        </div>
+        <input id="speed" type="range" min="40" max="110" step="5" value="55">
+        <div class="speed-ticks"><span>slowest</span><span>native</span></div>
+      </div>
+    </div>
+
+    <div class="modes">
+      <button id="mode-step" class="mode-btn" aria-pressed="false">
+        <span class="mode-title">Syllable</span>
+        <span class="mode-sub">one at a time</span>
+      </button>
+      <button id="mode-loop" class="mode-btn" aria-pressed="false">
+        <span class="mode-title">Loop</span>
+        <span class="mode-sub">over and over</span>
+      </button>
+      <button id="mode-shadow" class="mode-btn" aria-pressed="false">
+        <span class="mode-title">Shadow</span>
+        <span class="mode-sub">gap to repeat</span>
+      </button>
+    </div>
+
+    <p id="shadow-hint" class="hint" hidden>
+      Plays, then leaves you a silent gap to say it out loud, then plays again. Put your AirPods in and let it run.
+    </p>
+
+    <div class="tone-key">
+      <span class="tone-key-label">Tones</span>
+      <span class="tk t1"><i></i>1 flat</span>
+      <span class="tk t2"><i></i>2 rising</span>
+      <span class="tk t3"><i></i>3 dip</span>
+      <span class="tk t4"><i></i>4 falling</span>
+      <span class="tk t5"><i></i>5 light</span>
+    </div>
+
+  </div>
+</section>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="data/phrases.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
