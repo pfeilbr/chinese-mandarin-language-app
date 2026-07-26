@@ -8,8 +8,17 @@ your partner is in the next room.
 
 **Live app:** https://pfeilbr.github.io/chinese-mandarin-language-app/
 
-Open it on your phone and use **Share → Add to Home Screen**. It installs as a
-standalone app and, once you tap **Save offline**, works with no signal at all.
+## Install it on your phone
+
+Open the link in **Safari** on iPhone, tap the Share button, and choose
+**Add to Home Screen**. It then launches full screen with no browser chrome.
+
+Open the **☰ menu → Offline audio → Save all audio** once, and it works with no
+signal at all.
+
+(On Android or desktop Chrome the menu offers a one-tap **Install** button
+instead. iOS has no programmatic install — Safari's Share sheet is the only
+route — so the app just tells you where to tap.)
 
 ## What it does
 
@@ -25,6 +34,28 @@ standalone app and, once you tap **Save offline**, works with no signal at all.
 - **Lock-screen and AirPods controls.** Squeeze the stem to replay without taking
   your phone out.
 - **Favourites** and search across English, pinyin, and hanzi.
+- **Settings** (☰): install, updates, offline audio and storage, and display
+  toggles — turn pinyin off to test yourself on the characters.
+
+## Updates
+
+The app checks for a new version on launch and offers it rather than applying it
+silently: you get an **Update available** prompt with *Update* and *Later*. You
+can also check by hand from **☰ menu → Updates**. Accepting swaps in the new
+version and reloads; the downloaded audio is kept, so an update never costs you
+the 2 MB again.
+
+The mechanics are worth knowing if you change the deploy:
+
+- The service worker deliberately does **not** call `skipWaiting()` on install.
+  A new version parks in `waiting` until you accept it, so the app can't swap
+  itself out mid-sentence. Accepting posts `SKIP_WAITING` and reloads.
+- The deploy workflow stamps the commit SHA into `sw.js`. This is load-bearing:
+  browsers decide an update exists by byte-comparing that one file, so without
+  the stamp an unchanged `sw.js` would hide new versions no matter what else
+  changed.
+- Registration uses `updateViaCache: 'none'`, otherwise the browser may serve
+  `sw.js` from its HTTP cache and miss updates for up to 24 hours.
 
 ## Audio
 

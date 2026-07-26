@@ -59,12 +59,21 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 
 .ghost-btn {
   flex: none;
-  padding: 7px 12px;
-  font-size: 13px; font-weight: 600; color: var(--text-dim);
+  padding: 9px 14px;
+  font-size: 14px; font-weight: 600; color: var(--text-dim);
   border: 1px solid var(--line); border-radius: 999px;
 }
 .ghost-btn:active { background: var(--bg-hover); }
-.ghost-btn[data-state="done"] { color: var(--t3); border-color: color-mix(in srgb, var(--t3) 40%, transparent); }
+
+.primary-btn {
+  flex: none;
+  padding: 9px 18px;
+  font-size: 14px; font-weight: 700; color: #fff;
+  background: var(--accent); border-radius: 999px;
+}
+.primary-btn:active { filter: brightness(.92); }
+
+.menu-btn { margin: 0 -8px 0 0; }
 
 .search-wrap { position: relative; margin-top: 12px; }
 .search-icon {
@@ -132,6 +141,10 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .card-zh { margin-top: 3px; font-size: 15px; }
+.card-zh .t1 { color: var(--t1); } .card-zh .t2 { color: var(--t2); }
+.card-zh .t3 { color: var(--t3); } .card-zh .t4 { color: var(--t4); }
+.card-zh .t5 { color: var(--t5); }
+.card-py { color: var(--text-faint); }
 .card-fav { flex: none; width: 15px; height: 15px; color: var(--accent); fill: var(--accent); }
 
 .card-play {
@@ -330,6 +343,117 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 .tk.t1 i { background: var(--t1); } .tk.t2 i { background: var(--t2); }
 .tk.t3 i { background: var(--t3); } .tk.t4 i { background: var(--t4); }
 .tk.t5 i { background: var(--t5); }
+
+/* ── Settings ────────────────────────────────────────────── */
+
+.sheet-title {
+  margin: 10px 0 4px;
+  font-size: 28px; font-weight: 700; letter-spacing: -.025em;
+}
+
+.group { margin-top: 26px; }
+
+.group-head {
+  margin: 0 2px 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.group-body {
+  background: var(--bg-raised);
+  border: 1px solid var(--line); border-radius: 14px;
+  overflow: hidden;
+}
+
+.row {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; padding: 14px;
+  text-align: left;
+  border-top: 1px solid var(--line);
+}
+.row:first-child { border-top: none; }
+.row.action:active { background: var(--bg-hover); }
+
+.row-text { flex: 1; min-width: 0; }
+.row-title { display: block; font-size: 15px; font-weight: 600; }
+.row-sub {
+  display: block; margin-top: 3px;
+  font-size: 13px; line-height: 1.45; color: var(--text-dim);
+}
+.row-sub a { color: var(--accent); }
+.row.block { display: block; }
+.row.block .row-title { margin-bottom: 4px; }
+.row-sub b { color: var(--text); font-weight: 600; }
+
+.inline-ico {
+  width: 15px; height: 15px; vertical-align: -3px;
+  color: var(--accent);
+}
+
+.pill {
+  flex: none;
+  padding: 7px 14px;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+  color: #fff; background: var(--accent);
+  border-radius: 999px;
+}
+.pill.danger { color: var(--text-dim); background: var(--bg-hover); }
+.pill[data-state="busy"] { color: var(--text-dim); background: var(--bg-hover); }
+.pill[data-state="done"] { color: #fff; background: var(--t3); }
+
+/* Toggle switch */
+.row.toggle { cursor: pointer; }
+.row.toggle input { position: absolute; opacity: 0; pointer-events: none; }
+
+.switch {
+  flex: none; position: relative;
+  width: 50px; height: 30px;
+  background: var(--bg-hover);
+  border: 1px solid var(--line); border-radius: 999px;
+  transition: background .16s, border-color .16s;
+}
+.switch::after {
+  content: ""; position: absolute; top: 3px; left: 3px;
+  width: 22px; height: 22px;
+  background: var(--text-dim); border-radius: 50%;
+  transition: transform .16s, background .16s;
+}
+.row.toggle input:checked ~ .switch { background: var(--accent); border-color: var(--accent); }
+.row.toggle input:checked ~ .switch::after { transform: translateX(20px); background: #fff; }
+.row.toggle input:focus-visible ~ .switch { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ── Update prompt ───────────────────────────────────────── */
+
+.update-bar {
+  position: fixed; left: 12px; right: 12px; bottom: calc(var(--safe-b) + 12px); z-index: 70;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  max-width: 560px; margin: 0 auto; padding: 14px 16px;
+  background: var(--bg-hover);
+  border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(0,0,0,.55);
+  animation: rise .24s cubic-bezier(.22,.75,.3,1);
+}
+.update-text { flex: 1; min-width: 150px; }
+.update-text strong { display: block; font-size: 15px; }
+.update-text span { font-size: 13px; color: var(--text-dim); }
+.update-actions { display: flex; gap: 8px; }
+
+/* ── Display preferences ─────────────────────────────────── */
+
+/* Tone colouring off: fall back to plain text, but keep the contour marks,
+   which still carry the tone without relying on colour. */
+html.no-tone-colour .syl-han,
+html.no-tone-colour .syl-py,
+html.no-tone-colour .card-zh .t1,
+html.no-tone-colour .card-zh .t2,
+html.no-tone-colour .card-zh .t3,
+html.no-tone-colour .card-zh .t4,
+html.no-tone-colour .card-zh .t5 { color: var(--text); }
+
+html.hide-pinyin .syl-py,
+html.hide-pinyin .card-py { display: none; }
+
+html.hide-phon .d-phon { display: none; }
 
 /* ── Toast ───────────────────────────────────────────────── */
 

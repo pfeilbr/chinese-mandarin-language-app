@@ -1,21 +1,28 @@
-/* Offline cache.
+/* Offline cache and update channel.
  *
- * Two strategies, because the two kinds of asset have opposite needs:
+ * BUILD is rewritten by the deploy workflow with the commit SHA. That matters
+ * for more than cache naming: the browser decides whether an update exists by
+ * byte-comparing this file, so if sw.js were identical between deploys no
+ * update would ever be detected no matter what else changed.
+ */
+
+const BUILD = '__BUILD__';
+
+const SHELL_CACHE = `sim-shell-${BUILD}`;
+const AUDIO_CACHE = 'sim-audio';   // unversioned: a clip's bytes never change
+
+/* Two strategies, because the two kinds of asset have opposite needs:
  *
  *   audio/*.mp3  — cache-first. A clip is immutable: its content is fully
  *                  determined by the phrase id and track in its filename, so a
- *                  cache hit is always correct and we should never spend a
- *                  round trip on it.
+ *                  cache hit is always correct and never worth a round trip.
+ *                  Kept across updates so an upgrade doesn't re-download 2 MB.
  *
  *   app shell    — network-first, falling back to cache. Cache-first here would
  *                  pin users to whatever HTML/CSS/JS they first loaded, with no
- *                  way to ship a fix short of renaming files. The cache is the
- *                  offline safety net, not the source of truth.
+ *                  way to ship a fix. The cache is the offline safety net, not
+ *                  the source of truth.
  */
-
-const VERSION = 'v2';
-const SHELL_CACHE = `sim-shell-${VERSION}`;
-const AUDIO_CACHE = 'sim-audio';   // unversioned: clips never change
 
 const SHELL = [
   './',
@@ -26,14 +33,14 @@ const SHELL = [
   'manifest.webmanifest',
   'icons/icon-192.png',
   'icons/icon-512.png',
+  'icons/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(SHELL_CACHE)
-      .then(c => c.addAll(SHELL))
-      .then(() => self.skipWaiting())
-  );
+  // Deliberately no skipWaiting() here. The new worker parks in `waiting` so
+  // the page can offer the user an update rather than swapping the app out
+  // from under them mid-sentence. app.js sends SKIP_WAITING when they accept.
+  e.waitUntil(caches.open(SHELL_CACHE).then(c => c.addAll(SHELL)));
 });
 
 self.addEventListener('activate', e => {
@@ -44,6 +51,12 @@ self.addEventListener('activate', e => {
       ))
       .then(() => self.clients.claim())
   );
+});
+
+self.addEventListener('message', e => {
+  const type = e.data && e.data.type;
+  if (type === 'SKIP_WAITING') self.skipWaiting();
+  if (type === 'GET_BUILD') e.source.postMessage({ type: 'BUILD', build: BUILD });
 });
 
 const cachePut = (cacheName, req, res) => {

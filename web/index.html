@@ -4,12 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
 <title>Say It In Mandarin</title>
+
+<!-- Rewritten by the deploy workflow with the commit SHA. -->
+<meta name="app-build" content="__BUILD__">
+
+<meta name="description" content="Pick an English phrase, hear it spoken in Mandarin at any speed, and say it back.">
 <meta name="theme-color" content="#0e1116">
+
+<!-- Home-screen install. iOS reads the apple-* tags and ignores the manifest
+     icons, so apple-touch-icon must be a square, fully opaque PNG. -->
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Say It">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,7 +30,9 @@
   <header class="topbar">
     <div class="topbar-row">
       <h1>Say It In Mandarin</h1>
-      <button id="offline-btn" class="ghost-btn" title="Save all audio for offline use">Save offline</button>
+      <button id="menu-btn" class="icon-btn menu-btn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
     <div class="search-wrap">
       <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -36,11 +48,11 @@
 </div>
 
 <!-- Phrase detail / practice sheet -->
-<section id="detail" class="sheet" hidden aria-modal="true" role="dialog">
+<section id="detail" class="sheet" hidden aria-modal="true" role="dialog" aria-label="Phrase">
   <div class="sheet-inner">
 
     <div class="sheet-head">
-      <button id="close-btn" class="icon-btn" aria-label="Back">
+      <button class="icon-btn close-btn" aria-label="Back">
         <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
       <button id="fav-btn" class="icon-btn star" aria-label="Save to favourites">
@@ -101,6 +113,161 @@
 
   </div>
 </section>
+
+<!-- Settings -->
+<section id="settings" class="sheet" hidden aria-modal="true" role="dialog" aria-label="Settings">
+  <div class="sheet-inner">
+
+    <div class="sheet-head">
+      <button class="icon-btn close-btn" aria-label="Back">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+    </div>
+
+    <h2 class="sheet-title">Settings</h2>
+
+    <!-- Install -->
+    <section id="install-group" class="group" hidden>
+      <h3 class="group-head">Install</h3>
+      <div class="group-body">
+        <div id="ios-install" class="row block" hidden>
+          <p class="row-title">Add to your Home Screen</p>
+          <p class="row-sub">
+            Tap the Share button
+            <svg class="inline-ico" viewBox="0 0 24 24"><path d="M12 15V4M8.5 7.5L12 4l3.5 3.5"/><path d="M6 12v6.5h12V12"/></svg>
+            at the bottom of Safari, then choose <b>Add to Home Screen</b>.
+          </p>
+          <p class="row-sub">It opens full screen, works offline, and keeps your favourites.</p>
+        </div>
+        <button id="install-btn" class="row action" hidden>
+          <span class="row-text">
+            <span class="row-title">Install app</span>
+            <span class="row-sub">Add it to your device</span>
+          </span>
+          <span class="pill">Install</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Updates -->
+    <section class="group">
+      <h3 class="group-head">Updates</h3>
+      <div class="group-body">
+        <button id="check-btn" class="row action">
+          <span class="row-text">
+            <span class="row-title">Check for updates</span>
+            <span class="row-sub" id="update-status">Checked on launch</span>
+          </span>
+          <span class="pill" id="check-pill">Check</span>
+        </button>
+        <label class="row toggle">
+          <span class="row-text">
+            <span class="row-title">Check on launch</span>
+            <span class="row-sub">Look for a new version each time you open the app</span>
+          </span>
+          <input type="checkbox" id="opt-autocheck" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Offline -->
+    <section class="group">
+      <h3 class="group-head">Offline audio</h3>
+      <div class="group-body">
+        <button id="offline-btn" class="row action">
+          <span class="row-text">
+            <span class="row-title">Save all audio</span>
+            <span class="row-sub" id="offline-sub">Works with no signal once saved</span>
+          </span>
+          <span class="pill" id="offline-pill">Save</span>
+        </button>
+        <button id="clear-audio-btn" class="row action">
+          <span class="row-text">
+            <span class="row-title">Clear saved audio</span>
+            <span class="row-sub">Frees space; clips re-download when played</span>
+          </span>
+          <span class="pill danger">Clear</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Display -->
+    <section class="group">
+      <h3 class="group-head">Display</h3>
+      <div class="group-body">
+        <label class="row toggle">
+          <span class="row-text">
+            <span class="row-title">Tone colours</span>
+            <span class="row-sub">Colour each character by its tone</span>
+          </span>
+          <input type="checkbox" id="opt-tones" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <label class="row toggle">
+          <span class="row-text">
+            <span class="row-title">Show pinyin</span>
+            <span class="row-sub">Turn off to test yourself on the characters</span>
+          </span>
+          <input type="checkbox" id="opt-pinyin" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <label class="row toggle">
+          <span class="row-text">
+            <span class="row-title">Sounds-like spelling</span>
+            <span class="row-sub">English approximation under each phrase</span>
+          </span>
+          <input type="checkbox" id="opt-phon" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Data -->
+    <section class="group">
+      <h3 class="group-head">Data</h3>
+      <div class="group-body">
+        <button id="clear-favs-btn" class="row action">
+          <span class="row-text">
+            <span class="row-title">Clear favourites</span>
+            <span class="row-sub" id="favs-sub">No favourites saved</span>
+          </span>
+          <span class="pill danger">Clear</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="group">
+      <h3 class="group-head">About</h3>
+      <div class="group-body">
+        <div class="row block">
+          <p class="row-sub">
+            Version <b id="about-build">dev</b><br>
+            Voice <b id="about-voice">—</b><br>
+            <b id="about-count">0</b> phrases
+          </p>
+          <p class="row-sub">
+            <a id="repo-link" href="https://github.com/pfeilbr/chinese-mandarin-language-app" target="_blank" rel="noopener">Source on GitHub</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<!-- Update prompt -->
+<div id="update-bar" class="update-bar" hidden role="alertdialog" aria-labelledby="update-title">
+  <div class="update-text">
+    <strong id="update-title">Update available</strong>
+    <span>A newer version is ready to install.</span>
+  </div>
+  <div class="update-actions">
+    <button id="update-later" class="ghost-btn">Later</button>
+    <button id="update-now" class="primary-btn">Update</button>
+  </div>
+</div>
 
 <div id="toast" class="toast" hidden></div>
 

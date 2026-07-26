@@ -27,7 +27,9 @@ def font_at(size: int):
     return ImageFont.load_default()
 
 
-def draw_icon(size: int, *, maskable: bool) -> Image.Image:
+def draw_icon(size: int, *, shape: str) -> Image.Image:
+    """shape: "rounded" (own corners), "square" (full-bleed), "maskable"
+    (full-bleed, content kept inside the inner 80% safe zone)."""
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
 
@@ -39,17 +41,14 @@ def draw_icon(size: int, *, maskable: bool) -> Image.Image:
             fill=tuple(round(a + (b - a) * t) for a, b in zip(BG_TOP, BG_BOT)) + (255,),
         )
 
-    if not maskable:
-        # Rounded-square mask for the plain icon; maskable stays full-bleed so
-        # the launcher can crop it to whatever shape it wants.
+    if shape == "rounded":
         mask = Image.new("L", (size, size), 0)
         ImageDraw.Draw(mask).rounded_rectangle(
             [0, 0, size - 1, size - 1], radius=int(size * 0.225), fill=255
         )
         img.putalpha(mask)
 
-    # Maskable icons must keep content inside the safe zone (inner 80%).
-    scale = 0.44 if maskable else 0.58
+    scale = 0.44 if shape == "maskable" else 0.58
     f = font_at(int(size * scale))
     box = ImageDraw.Draw(img).textbbox((0, 0), GLYPH, font=f)
     x = (size - (box[2] - box[0])) / 2 - box[0]
@@ -58,8 +57,15 @@ def draw_icon(size: int, *, maskable: bool) -> Image.Image:
     return img
 
 
-for size in (180, 192, 512):
-    draw_icon(size, maskable=False).save(OUT / f"icon-{size}.png")
-draw_icon(512, maskable=True).save(OUT / "icon-maskable-512.png")
+for size in (192, 512):
+    draw_icon(size, shape="rounded").save(OUT / f"icon-{size}.png")
+
+draw_icon(512, shape="maskable").save(OUT / "icon-maskable-512.png")
+
+# iOS applies its own rounded mask to the home-screen icon and composites the
+# result over black. A rounded icon with transparent corners therefore shows
+# black wedges inside Apple's mask, so this one must be square and fully
+# opaque -- RGB, no alpha channel at all.
+draw_icon(180, shape="square").convert("RGB").save(OUT / "apple-touch-icon.png")
 
 print(f"Wrote {len(list(OUT.glob('*.png')))} icons to {OUT.relative_to(ROOT)}")

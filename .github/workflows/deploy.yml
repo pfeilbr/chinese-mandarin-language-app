@@ -26,6 +26,16 @@ jobs:
 
       - uses: actions/configure-pages@v5
 
+      # The browser decides an update exists by byte-comparing sw.js, so it has
+      # to differ between deploys or no update is ever detected. Stamping the
+      # commit SHA guarantees that, and gives the app a version to display.
+      - name: Stamp build id
+        run: |
+          BUILD="$(git rev-parse --short HEAD)"
+          sed -i "s/__BUILD__/${BUILD}/g" web/sw.js web/index.html
+          echo "Stamped build ${BUILD}"
+          grep -n "${BUILD}" web/sw.js web/index.html
+
       # The site is fully static and pre-built; `web/` is published as-is.
       - uses: actions/upload-pages-artifact@v3
         with:

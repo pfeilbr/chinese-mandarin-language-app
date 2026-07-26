@@ -35,8 +35,7 @@ const el = {
   list: $('#list'), chips: $('#chips'), search: $('#search'), empty: $('#empty'),
   sheet: $('#detail'), dEn: $('#d-en'), dNote: $('#d-note'), dHanzi: $('#d-hanzi'),
   dPhon: $('#d-phon'), playBtn: $('#play-btn'), speed: $('#speed'), speedVal: $('#speed-val'),
-  favBtn: $('#fav-btn'), toast: $('#toast'), offlineBtn: $('#offline-btn'),
-  shadowHint: $('#shadow-hint'),
+  favBtn: $('#fav-btn'), toast: $('#toast'), shadowHint: $('#shadow-hint'),
 };
 
 /* ── Audio engine ────────────────────────────────────────────────────────
@@ -304,11 +303,11 @@ function hanziHtml(phrase, { interactive }) {
   return out;
 }
 
-/** Compact inline hanzi for list cards. */
+/** Compact inline hanzi for list cards. Colours come from classes, not inline
+ *  styles, so the display preferences can override them. */
 function inlineZh(phrase) {
-  return phrase.syllables
-    .map(s => `<span class="t${s.tone}" style="color:var(--t${s.tone})">${esc(s.han)}</span>`)
-    .join('') + `<span style="color:var(--text-faint)"> · ${esc(phrase.py)}</span>`;
+  return phrase.syllables.map(s => `<span class="t${s.tone}">${esc(s.han)}</span>`).join('')
+       + `<span class="card-py"> · ${esc(phrase.py)}</span>`;
 }
 
 const PLAY_ICON = '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
@@ -391,6 +390,32 @@ function updateModeUI() {
 
 /* ── Sheet ───────────────────────────────────────────────────────────── */
 
+/* Sheets (phrase detail, settings) are modal and back-dismissable. Only one is
+   ever open, so a single slot plus one history entry is enough. */
+let activeSheet = null;
+
+function showSheet(node) {
+  if (activeSheet) hideSheet();
+  activeSheet = node;
+  node.hidden = false;
+  node.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  history.pushState({ sheet: true }, '');
+}
+
+function hideSheet() {
+  if (!activeSheet) return;
+  const wasDetail = activeSheet === el.sheet;
+  activeSheet.hidden = true;
+  activeSheet = null;
+  document.body.style.overflow = '';
+  if (wasDetail) {
+    stopPlayback();
+    current = null;
+    renderList();
+  }
+}
+
 function openSheet(phrase) {
   current = phrase;
   el.dEn.textContent = phrase.en;
@@ -399,19 +424,8 @@ function openSheet(phrase) {
   el.dHanzi.innerHTML = hanziHtml(phrase, { interactive: true });
   el.dPhon.innerHTML = phrase.phon ? `Sounds like <b>${esc(phrase.phon)}</b>` : '';
   el.favBtn.setAttribute('aria-pressed', String(favs.has(phrase.id)));
-  el.sheet.hidden = false;
-  el.sheet.scrollTop = 0;
-  document.body.style.overflow = 'hidden';
-  history.pushState({ sheet: true }, '');
+  showSheet(el.sheet);
   setMediaSession(phrase);
-}
-
-function closeSheet() {
-  stopPlayback();
-  el.sheet.hidden = true;
-  document.body.style.overflow = '';
-  current = null;
-  renderList();
 }
 
 function toast(msg) {
@@ -491,45 +505,306 @@ el.favBtn.addEventListener('click', () => {
   toast(favs.has(current.id) ? 'Saved to favourites' : 'Removed from favourites');
 });
 
-$('#close-btn').addEventListener('click', () => history.back());
+for (const btn of document.querySelectorAll('.close-btn')) {
+  btn.addEventListener('click', () => history.back());
+}
 
-window.addEventListener('popstate', () => { if (!el.sheet.hidden) closeSheet(); });
+window.addEventListener('popstate', hideSheet);
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && !el.sheet.hidden) history.back();
-  if (e.key === ' ' && current && !el.sheet.hidden && e.target === document.body) {
+  if (e.key === 'Escape' && activeSheet) history.back();
+  if (e.key === ' ' && current && activeSheet === el.sheet && e.target === document.body) {
     e.preventDefault();
     (!audio.paused || rafId) ? stopPlayback() : play(current);
   }
 });
 
+/* ── Settings ────────────────────────────────────────────────────────── */
+
+const BUILD = (document.querySelector('meta[name="app-build"]') || {}).content || '';
+// The deploy workflow substitutes the placeholder; if it's still there we're
+// running an unstamped local copy.
+const BUILD_LABEL = (!BUILD || BUILD.startsWith('__')) ? 'dev' : BUILD;
+
+const DISPLAY_OPTS = {
+  tones:  { key: 'opt-tones',  cls: 'no-tone-colour', invert: true },
+  pinyin: { key: 'opt-pinyin', cls: 'hide-pinyin',    invert: true },
+  phon:   { key: 'opt-phon',   cls: 'hide-phon',      invert: true },
+};
+
+let prefs = Object.assign(
+  { tones: true, pinyin: true, phon: true, autocheck: true },
+  store.get('prefs', {})
+);
+
+function applyPrefs() {
+  for (const [name, o] of Object.entries(DISPLAY_OPTS)) {
+    const on = prefs[name] !== false;
+    // Each class *disables* a feature, so it's applied when the toggle is off.
+    document.documentElement.classList.toggle(o.cls, o.invert ? !on : on);
+    const input = $('#' + o.key);
+    if (input) input.checked = on;
+  }
+  $('#opt-autocheck').checked = prefs.autocheck !== false;
+}
+
+function savePrefs() { store.set('prefs', prefs); }
+
+const isStandalone = () =>
+  window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+
+const isIOS = () =>
+  /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+let deferredInstall = null;   // Chrome/Android beforeinstallprompt event
+
+function refreshInstallSection() {
+  const group = $('#install-group');
+  const iosCard = $('#ios-install');
+  const btn = $('#install-btn');
+
+  // Already installed — nothing useful to offer.
+  if (isStandalone()) { group.hidden = true; return; }
+
+  // iOS has no programmatic install; Safari's Share sheet is the only route,
+  // so the honest thing is to say exactly where to tap.
+  const showIOS = isIOS() && !deferredInstall;
+  iosCard.hidden = !showIOS;
+  btn.hidden = !deferredInstall;
+  group.hidden = iosCard.hidden && btn.hidden;
+}
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredInstall = e;
+  refreshInstallSection();
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstall = null;
+  refreshInstallSection();
+  toast('Installed — open it from your home screen');
+});
+
+$('#install-btn').addEventListener('click', async () => {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  await deferredInstall.userChoice;
+  deferredInstall = null;
+  refreshInstallSection();
+});
+
+function bytes(n) {
+  if (!n) return '0 MB';
+  return n > 1e9 ? (n / 1e9).toFixed(1) + ' GB' : Math.max(1, Math.round(n / 1e6)) + ' MB';
+}
+
+async function refreshStorage() {
+  const sub = $('#offline-sub');
+  const total = DATA.phrases.length * Object.keys(DATA.tracks).length;
+  try {
+    const cache = await caches.open('sim-audio');
+    const saved = (await cache.keys()).length;
+    if (saved >= total) {
+      sub.textContent = `All ${total} clips saved`;
+      $('#offline-pill').textContent = 'Saved';
+      $('#offline-pill').dataset.state = 'done';
+    } else {
+      sub.textContent = saved
+        ? `${saved} of ${total} clips saved`
+        : 'Works with no signal once saved';
+      $('#offline-pill').textContent = 'Save';
+      delete $('#offline-pill').dataset.state;
+    }
+  } catch {
+    sub.textContent = 'Works with no signal once saved';
+  }
+  if (navigator.storage && navigator.storage.estimate) {
+    try {
+      const { usage } = await navigator.storage.estimate();
+      if (usage) sub.textContent += ` · ${bytes(usage)} used`;
+    } catch {}
+  }
+}
+
+function refreshFavsRow() {
+  $('#favs-sub').textContent = favs.size
+    ? `${favs.size} phrase${favs.size === 1 ? '' : 's'} saved`
+    : 'No favourites saved';
+}
+
+function openSettings() {
+  $('#about-build').textContent = BUILD_LABEL;
+  $('#about-voice').textContent = DATA.voice;
+  $('#about-count').textContent = String(DATA.phrases.length);
+  refreshInstallSection();
+  refreshFavsRow();
+  refreshStorage();
+  showSheet($('#settings'));
+}
+
+$('#menu-btn').addEventListener('click', openSettings);
+
+for (const [name, o] of Object.entries(DISPLAY_OPTS)) {
+  $('#' + o.key).addEventListener('change', e => {
+    prefs[name] = e.target.checked;
+    savePrefs();
+    applyPrefs();
+  });
+}
+
+$('#opt-autocheck').addEventListener('change', e => {
+  prefs.autocheck = e.target.checked;
+  savePrefs();
+});
+
 /* Pre-download every clip so the app works with no signal at all. */
-el.offlineBtn.addEventListener('click', async () => {
+$('#offline-btn').addEventListener('click', async e => {
+  const pill = $('#offline-pill');
+  const sub = $('#offline-sub');
+  if (pill.dataset.state === 'busy') return;
+
   const urls = [];
   for (const p of DATA.phrases) for (const t of Object.keys(DATA.tracks)) urls.push(`audio/${p.id}.${t}.mp3`);
-  el.offlineBtn.disabled = true;
-  let done = 0;
+
+  pill.dataset.state = 'busy';
+  pill.textContent = '0%';
+  let done = 0, failed = 0;
   for (const u of urls) {
-    try { await fetch(u, { cache: 'force-cache' }); } catch {}
-    el.offlineBtn.textContent = `${Math.round((++done / urls.length) * 100)}%`;
+    try { const r = await fetch(u); if (!r.ok) failed++; } catch { failed++; }
+    done++;
+    pill.textContent = Math.round((done / urls.length) * 100) + '%';
+    sub.textContent = `Saving ${done} of ${urls.length}…`;
   }
-  el.offlineBtn.textContent = 'Saved ✓';
-  el.offlineBtn.dataset.state = 'done';
-  el.offlineBtn.disabled = false;
-  toast('All audio available offline');
+  await refreshStorage();
+  toast(failed ? `Saved, but ${failed} clip${failed === 1 ? '' : 's'} failed` : 'All audio available offline');
 });
+
+$('#clear-audio-btn').addEventListener('click', async () => {
+  await caches.delete('sim-audio');
+  await refreshStorage();
+  toast('Saved audio cleared');
+});
+
+$('#clear-favs-btn').addEventListener('click', () => {
+  if (!favs.size) return;
+  favs.clear();
+  store.set('favs', []);
+  refreshFavsRow();
+  renderList();
+  toast('Favourites cleared');
+});
+
+/* ── Updates ─────────────────────────────────────────────────────────
+   The worker no longer calls skipWaiting() on install, so a new version parks
+   in `waiting` until the user accepts it here. */
+
+let swReg = null;
+let acceptedUpdate = false;
+
+function setUpdateStatus(text) { $('#update-status').textContent = text; }
+
+function showUpdatePrompt() {
+  $('#update-bar').hidden = false;
+  setUpdateStatus('Update ready to install');
+}
+
+$('#update-later').addEventListener('click', () => {
+  $('#update-bar').hidden = true;
+  toast('You can update from the menu any time');
+});
+
+$('#update-now').addEventListener('click', () => {
+  const waiting = swReg && swReg.waiting;
+  if (!waiting) { $('#update-bar').hidden = true; return location.reload(); }
+  acceptedUpdate = true;
+  $('#update-now').textContent = 'Updating…';
+  waiting.postMessage({ type: 'SKIP_WAITING' });
+});
+
+$('#check-btn').addEventListener('click', () => checkForUpdate(true));
+
+async function checkForUpdate(manual) {
+  if (!swReg) return;
+  const pill = $('#check-pill');
+  if (manual) { pill.dataset.state = 'busy'; pill.textContent = 'Checking'; setUpdateStatus('Checking…'); }
+  try {
+    await swReg.update();
+    // `update()` resolves once the check completes, but a newly found worker
+    // still has to install before it reaches `waiting`.
+    if (swReg.installing) {
+      await new Promise(res => {
+        const w = swReg.installing;
+        w.addEventListener('statechange', function on() {
+          if (w.state === 'installed' || w.state === 'redundant') {
+            w.removeEventListener('statechange', on); res();
+          }
+        });
+        setTimeout(res, 12000);
+      });
+    }
+    if (swReg.waiting) {
+      showUpdatePrompt();
+      if (manual) { delete pill.dataset.state; pill.textContent = 'Update'; }
+    } else if (manual) {
+      pill.dataset.state = 'done';
+      pill.textContent = 'Latest';
+      setUpdateStatus(`You're on the newest version (${BUILD_LABEL})`);
+      setTimeout(() => { delete pill.dataset.state; pill.textContent = 'Check'; }, 2600);
+    }
+  } catch {
+    if (manual) {
+      delete pill.dataset.state;
+      pill.textContent = 'Check';
+      setUpdateStatus('Could not check — you may be offline');
+    }
+  }
+}
+
+function initServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    // Only reload for an update the user actually asked for; the very first
+    // registration also fires this when it claims the page.
+    if (acceptedUpdate) location.reload();
+  });
+
+  // updateViaCache:'none' keeps the browser from serving sw.js out of the HTTP
+  // cache, which would otherwise hide new versions for up to 24 hours.
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
+    .then(reg => {
+      swReg = reg;
+      if (reg.waiting && navigator.serviceWorker.controller) showUpdatePrompt();
+
+      reg.addEventListener('updatefound', () => {
+        const nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', () => {
+          // A worker reaching `installed` while one already controls the page
+          // means this is an update, not a first install.
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) showUpdatePrompt();
+        });
+      });
+
+      if (prefs.autocheck !== false) checkForUpdate(false);
+      else setUpdateStatus('Automatic checking is off');
+    })
+    .catch(() => setUpdateStatus('Updates unavailable'));
+}
 
 /* ── Boot ────────────────────────────────────────────────────────────── */
 
 playbackFailed = msg => { stopPlayback(); toast(msg); };
 
+applyPrefs();
 renderChips();
 renderList();
 updateSpeedUI();
 updateModeUI();
+refreshInstallSection();
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
+window.addEventListener('load', initServiceWorker);
 
 })();
