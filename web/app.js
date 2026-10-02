@@ -314,11 +314,12 @@ function syllablesHtml(phrase, { interactive }) {
 function inlineZh(phrase) {
   return `<span class="card-say">`
        + phrase.syllables.map(s => `<span class="t${s.said || s.tone}">${esc(s.say)}</span>`).join(' ')
-       + `</span>`
-       + `<span class="card-script"> ${esc(phrase.zh)}</span>`;
+       + `</span>`;
 }
 
 const PLAY_ICON = '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
+const COPY_ICON = '<svg class="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>'
+                + '<svg class="i-done" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 const BEAR_ICON = '<span class="card-bear" role="img" aria-label="bear">🐻</span>';
 const STAR_ICON = '<svg class="card-fav" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg>';
 
@@ -359,6 +360,10 @@ function cardHtml(p) {
     <span class="card-text">
       <span class="card-en">${p.bear ? BEAR_ICON : ''}${esc(p.en)}${favs.has(p.id) ? ' ' + STAR_ICON : ''}</span>
       <span class="card-zh">${inlineZh(p)}</span>
+      <span class="card-han">
+        <span class="card-script" lang="zh-CN">${esc(p.zh)}</span>
+        <span class="card-copy" data-copy="${p.id}" role="button" aria-label="Copy ${esc(p.zh)}">${COPY_ICON}</span>
+      </span>
     </span>
     <span class="card-play" data-play="${p.id}" role="button" aria-label="Play ${esc(p.en)}">${PLAY_ICON}</span>
   </button>`;
@@ -497,9 +502,41 @@ function toast(msg) {
   toast.t = setTimeout(() => { el.toast.hidden = true; }, 2200);
 }
 
+/** Clipboard API where available (needs a secure context); otherwise the old
+ *  select-and-execCommand route, which still works in older iOS Safari. */
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch {}
+    ta.remove();
+    return ok;
+  }
+}
+
 /* ── Events ──────────────────────────────────────────────────────────── */
 
-el.list.addEventListener('click', e => {
+el.list.addEventListener('click', async e => {
+  const copyNode = e.target.closest('[data-copy]');
+  if (copyNode) {
+    e.stopPropagation();
+    const p = BY_ID.get(copyNode.dataset.copy);
+    if (!await copyText(p.zh)) return toast("Couldn't copy");
+    toast(`Copied ${p.zh}`);
+    copyNode.classList.add('done');
+    clearTimeout(copyNode.t);
+    copyNode.t = setTimeout(() => copyNode.classList.remove('done'), 1400);
+    return;
+  }
   const playNode = e.target.closest('[data-play]');
   if (playNode) {
     e.stopPropagation();

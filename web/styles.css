@@ -173,7 +173,24 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 .card-say .t1 { color: var(--t1); } .card-say .t2 { color: var(--t2); }
 .card-say .t3 { color: var(--t3); } .card-say .t4 { color: var(--t4); }
 .card-say .t5 { color: var(--t5); }
-.card-script { color: var(--text-faint); }
+/* Characters on their own line under the respelling, with a copy button —
+   for pasting into WeChat or a translator. Always shown here, whatever the
+   Chinese-characters setting says: that toggle is about the practice sheet. */
+.card-han { display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+.card-script { font-size: 17px; color: var(--text-dim); letter-spacing: .04em; }
+.card-copy {
+  flex: none;
+  display: grid; place-items: center;
+  width: 32px; height: 32px; margin: -6px 0;
+  color: var(--text-faint);
+  border-radius: 8px;
+}
+.card-copy svg { grid-area: 1 / 1; width: 16px; height: 16px; }
+.card-copy:active { color: var(--text); background: var(--bg-hover); }
+.card-copy .i-done { display: none; }
+.card-copy.done { color: var(--t2); }
+.card-copy.done .i-copy { display: none; }
+.card-copy.done .i-done { display: block; }
 .card-fav { flex: none; width: 15px; height: 15px; color: var(--accent); fill: var(--accent); }
 .card-bear { margin-right: 4px; }
 
@@ -532,8 +549,7 @@ html.no-tone-colour .card-say .t5 { color: var(--text); }
 
 html.hide-pinyin .syl-py { display: none; }
 
-html.hide-hanzi .syl-han,
-html.hide-hanzi .card-script { display: none; }
+html.hide-hanzi .syl-han { display: none; }
 
 /* ── Ear training ────────────────────────────────────────── */
 

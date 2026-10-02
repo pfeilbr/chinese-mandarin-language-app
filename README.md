@@ -30,9 +30,10 @@ route — so the app just tells you where to tap.)
 - **Continuous speed control**, 40% to 110% of native pace.
 - **Written in English you can just read.** Every phrase is respelled
   syllable-by-syllable the way it actually sounds — `nee how kuh EYE`, with
-  CAPITALS marking the stressed syllable. Chinese characters and pinyin are both
-  off by default: two scripts you can't read yet are noise around the one line
-  you're trying to say. Turn either back on in Settings.
+  CAPITALS marking the stressed syllable. On the practice screen, Chinese
+  characters and pinyin are both off by default: two scripts you can't read yet
+  are noise around the one line you're trying to say. Turn either back on in
+  Settings.
 - **Tone colouring and contour marks** on every syllable. Tones are what decide
   whether you're understood, so they're the most visible thing on screen — and
   they ride on the English respelling, so they work with both scripts hidden.
@@ -43,6 +44,8 @@ route — so the app just tells you where to tap.)
 - **Lock-screen and AirPods controls.** Squeeze the stem to replay without taking
   your phone out.
 - **Favourites** and search across English, pinyin, and hanzi.
+- **Copy the characters.** Each list card shows the phrase in 汉字 under the
+  respelling, with a copy button — for pasting into WeChat or a translator.
 - **🐻 phrases.** Phrases flagged `"bear": true` show a bear in the list, and
   the 🐻 checkbox next to search shows just those, across every category.
 - **Settings** (☰): install, updates, offline audio and storage, and display
