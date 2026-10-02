@@ -30,12 +30,15 @@ let recent = store.get('recent', []);         // phrase ids, most recently playe
 // Ninety phrases is a lot to face cold, so a first-time visitor lands on the
 // starter set rather than the full list.
 let filter = store.get('filter', 'start');
+// The 🐻 checkbox: only the bear-marked phrases, across every category.
+let bearOnly = store.get('bear', false);
 let query  = '';
 let current = null;                            // phrase object shown in the sheet
 
 const $ = sel => document.querySelector(sel);
 const el = {
   list: $('#list'), chips: $('#chips'), search: $('#search'), empty: $('#empty'),
+  bearOnly: $('#bear-only'),
   sheet: $('#detail'), dEn: $('#d-en'), dNote: $('#d-note'), dHanzi: $('#d-hanzi'),
   dPhon: $('#d-phon'), dSandhi: $('#d-sandhi'),
   playBtn: $('#play-btn'), speed: $('#speed'), speedVal: $('#speed-val'),
@@ -316,6 +319,7 @@ function inlineZh(phrase) {
 }
 
 const PLAY_ICON = '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
+const BEAR_ICON = '<span class="card-bear" role="img" aria-label="bear">🐻</span>';
 const STAR_ICON = '<svg class="card-fav" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg>';
 
 const VIRTUAL_FILTERS = {
@@ -326,8 +330,14 @@ const VIRTUAL_FILTERS = {
 };
 
 function matches(p) {
-  const virtual = VIRTUAL_FILTERS[filter];
-  if (virtual ? !virtual(p) : p.cat !== filter) return false;
+  // Bear-only overrides the category chip: the point is to find every one of
+  // them at once, and most aren't in the starter set the list opens on.
+  if (bearOnly) {
+    if (!p.bear) return false;
+  } else {
+    const virtual = VIRTUAL_FILTERS[filter];
+    if (virtual ? !virtual(p) : p.cat !== filter) return false;
+  }
   if (!query) return true;
   const hay = `${p.en} ${p.py} ${p.zh} ${p.phon}`.toLowerCase();
   return query.split(/\s+/).every(w => hay.includes(w));
@@ -347,7 +357,7 @@ function noteUsed(id) {
 function cardHtml(p) {
   return `<button class="card" data-id="${p.id}">
     <span class="card-text">
-      <span class="card-en">${esc(p.en)}${favs.has(p.id) ? ' ' + STAR_ICON : ''}</span>
+      <span class="card-en">${p.bear ? BEAR_ICON : ''}${esc(p.en)}${favs.has(p.id) ? ' ' + STAR_ICON : ''}</span>
       <span class="card-zh">${inlineZh(p)}</span>
     </span>
     <span class="card-play" data-play="${p.id}" role="button" aria-label="Play ${esc(p.en)}">${PLAY_ICON}</span>
@@ -358,17 +368,18 @@ function renderList() {
   let hits = DATA.phrases.filter(matches);
   el.empty.hidden = hits.length > 0;
 
-  if (filter === 'start') hits.sort((a, b) => a.starter - b.starter);
-  if (filter === 'recent') hits.sort((a, b) => recent.indexOf(a.id) - recent.indexOf(b.id));
+  const view = bearOnly ? 'bear' : filter;
+  if (view === 'start') hits.sort((a, b) => a.starter - b.starter);
+  if (view === 'recent') hits.sort((a, b) => recent.indexOf(a.id) - recent.indexOf(b.id));
 
-  const intro = (filter === 'start' && !query)
+  const intro = (view === 'start' && !query)
     ? `<p class="list-intro">Twelve to learn first — the ones you'll use nearly every day.
        Once these feel easy, work through the categories.</p>`
     : '';
 
   // Group under headings only when browsing everything; a filtered or searched
   // view is short enough that headings would be more noise than signal.
-  if (filter === 'all' && !query) {
+  if (view === 'all' && !query) {
     el.list.innerHTML = DATA.categories.map(c => {
       const items = hits.filter(p => p.cat === c.id);
       if (!items.length) return '';
@@ -389,7 +400,7 @@ function renderChips() {
     ...DATA.categories,
   ];
   el.chips.innerHTML = all.map(c =>
-    `<button class="chip" data-cat="${c.id}" aria-pressed="${filter === c.id}">${c.emoji} ${esc(c.name)}</button>`
+    `<button class="chip" data-cat="${c.id}" aria-pressed="${!bearOnly && filter === c.id}">${c.emoji} ${esc(c.name)}</button>`
   ).join('');
 }
 
@@ -457,7 +468,7 @@ function hideSheet() {
 
 function openSheet(phrase) {
   current = phrase;
-  el.dEn.textContent = phrase.en;
+  el.dEn.textContent = (phrase.bear ? '🐻 ' : '') + phrase.en;
   el.dNote.textContent = phrase.note || '';
   el.dNote.hidden = !phrase.note;
   el.dHanzi.innerHTML = syllablesHtml(phrase, { interactive: true });
@@ -506,9 +517,22 @@ el.chips.addEventListener('click', e => {
   if (!chip) return;
   filter = chip.dataset.cat;
   store.set('filter', filter);
+  setBearOnly(false);
   renderChips();
   renderList();
   el.list.scrollIntoView({ block: 'start' });
+});
+
+function setBearOnly(on) {
+  bearOnly = on;
+  el.bearOnly.checked = on;
+  store.set('bear', on);
+}
+
+el.bearOnly.addEventListener('change', () => {
+  setBearOnly(el.bearOnly.checked);
+  renderChips();
+  renderList();
 });
 
 el.search.addEventListener('input', () => {
@@ -758,6 +782,7 @@ function applyDeepLink() {
   const cat = q.get('cat');
   if (cat && (CATS.has(cat) || VIRTUAL_FILTERS[cat])) {
     filter = cat;
+    setBearOnly(false);
     renderChips();
     renderList();
   }
@@ -1210,6 +1235,7 @@ function initServiceWorker() {
 playbackFailed = msg => { stopPlayback(); toast(msg); };
 
 applyPrefs();
+el.bearOnly.checked = bearOnly;
 renderChips();
 renderList();
 updateSpeedUI();

@@ -22,7 +22,7 @@ route — so the app just tells you where to tap.)
 
 ## What it does
 
-- **90 phrases** across affection, sweet talk, meeting the family, occasions and
+- **102 phrases** across affection, sweet talk, meeting the family, occasions and
   toasts, Chengdu and spice, meals, coming and going, checking in, chores, and
   the "I'm still learning, say it slower" repair kit.
 - **Record yourself and hear it back** against the native clip, so you don't
@@ -43,6 +43,8 @@ route — so the app just tells you where to tap.)
 - **Lock-screen and AirPods controls.** Squeeze the stem to replay without taking
   your phone out.
 - **Favourites** and search across English, pinyin, and hanzi.
+- **🐻 phrases.** Phrases flagged `"bear": true` show a bear in the list, and
+  the 🐻 checkbox next to search shows just those, across every category.
 - **Settings** (☰): install, updates, offline audio and storage, and display
   toggles — turn pinyin off to test yourself on the characters.
 
@@ -148,6 +150,8 @@ teaches you to say something wrong without ever noticing.
 - `py` — pinyin, one space-separated syllable per character. Tone numbers are
   derived from the marks, so write it as actually spoken and apply sandhi
   (`yí xià`, `yì qǐ`).
+- `bear` — optional; `true` puts a 🐻 next to the phrase and includes it in
+  the bear-only filter.
 - `phon` — the English respelling, and the line the app shows biggest, because
   it's the one that gets read out loud. One space-separated chunk per syllable.
   Capitalise the syllable that takes the stress. Spell for an English reader
@@ -159,6 +163,7 @@ teaches you to say something wrong without ever noticing.
 data/phrases.json      source of truth — the only file you edit to add phrases
 scripts/build.py       renders MP3s + timings, emits web/data/phrases.js
 scripts/make_icons.py  regenerates the PWA icons
+tests/                 build tests: uv run --with pytest --with edge-tts pytest tests/
 web/                   the deployed site (static, no build step, no dependencies)
   audio/               pre-rendered clips, two rates per phrase
   data/phrases.js      generated — do not edit by hand

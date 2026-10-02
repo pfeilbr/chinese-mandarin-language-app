@@ -165,8 +165,8 @@ def map_words_to_syllables(words: list[dict], n_syllables: int) -> list[dict]:
     return out[:n_syllables]
 
 
-async def process(phrase: dict, cfg: dict, force: bool, sem: asyncio.Semaphore) -> dict:
-    syllables = build_syllables(phrase)
+def phrase_entry(phrase: dict) -> dict:
+    """The front-end record for one phrase, minus timings (added per track)."""
     out = {
         "id": phrase["id"],
         "cat": phrase["cat"],
@@ -174,13 +174,22 @@ async def process(phrase: dict, cfg: dict, force: bool, sem: asyncio.Semaphore) 
         "zh": phrase["zh"],
         "py": phrase["py"],
         "phon": phrase.get("phon", ""),
-        "syllables": syllables,
+        "syllables": build_syllables(phrase),
         "timing": {},
     }
     if phrase.get("note"):
         out["note"] = phrase["note"]
     if phrase.get("starter") is not None:
         out["starter"] = phrase["starter"]
+    # 🐻 marks a phrase in the app's list and drives its bear-only filter.
+    if phrase.get("bear"):
+        out["bear"] = True
+    return out
+
+
+async def process(phrase: dict, cfg: dict, force: bool, sem: asyncio.Semaphore) -> dict:
+    out = phrase_entry(phrase)
+    syllables = out["syllables"]
 
     async with sem:
         for track, rate in cfg["tracks"].items():

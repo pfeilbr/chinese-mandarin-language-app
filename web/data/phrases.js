@@ -1318,7 +1318,8 @@ window.PHRASE_DATA = {
      }
     ]
    },
-   "note": "A cute, playful way to ask your partner for a kiss."
+   "note": "A cute, playful way to ask your partner for a kiss.",
+   "bear": true
   },
   {
    "id": "really-want-a-hug",
@@ -1472,7 +1473,8 @@ window.PHRASE_DATA = {
      }
     ]
    },
-   "note": "Soft and affectionate — asking your partner to hold you."
+   "note": "Soft and affectionate — asking your partner to hold you.",
+   "bear": true
   },
   {
    "id": "come-hold-you",
@@ -1607,7 +1609,8 @@ window.PHRASE_DATA = {
       "word": 4
      }
     ]
-   }
+   },
+   "bear": true
   },
   {
    "id": "thinking-all-day",
@@ -1760,7 +1763,8 @@ window.PHRASE_DATA = {
       "word": 5
      }
     ]
-   }
+   },
+   "bear": true
   },
   {
    "id": "youre-cute",
@@ -8298,7 +8302,8 @@ window.PHRASE_DATA = {
       "word": 5
      }
     ]
-   }
+   },
+   "bear": true
   },
   {
    "id": "im-listening",
