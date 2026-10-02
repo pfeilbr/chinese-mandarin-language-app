@@ -1253,6 +1253,516 @@ window.PHRASE_DATA = {
    }
   },
   {
+   "id": "kiss-me-cute",
+   "cat": "affection",
+   "en": "Kiss me",
+   "zh": "亲亲我",
+   "py": "qīn qīn wǒ",
+   "phon": "chin chin WAW",
+   "syllables": [
+    {
+     "han": "亲",
+     "py": "qīn",
+     "tone": 1,
+     "say": "chin",
+     "said": 1
+    },
+    {
+     "han": "亲",
+     "py": "qīn",
+     "tone": 1,
+     "say": "chin",
+     "said": 1
+    },
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "WAW",
+     "said": 3
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.232,
+      "word": 0
+     },
+     {
+      "t": 0.332,
+      "d": 0.232,
+      "word": 0
+     },
+     {
+      "t": 0.562,
+      "d": 0.3,
+      "word": 1
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.42,
+      "word": 0
+     },
+     {
+      "t": 0.561,
+      "d": 0.42,
+      "word": 0
+     },
+     {
+      "t": 0.982,
+      "d": 0.545,
+      "word": 1
+     }
+    ]
+   },
+   "note": "A cute, playful way to ask your partner for a kiss."
+  },
+  {
+   "id": "really-want-a-hug",
+   "cat": "affection",
+   "en": "I really want you to hold me",
+   "zh": "我好想让你抱抱我",
+   "py": "wǒ hǎo xiǎng ràng nǐ bào bao wǒ",
+   "phon": "waw how shyahng rahng nee BAOW baow waw",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "waw",
+     "said": 2,
+     "sandhi": true,
+     "say_py": "wó"
+    },
+    {
+     "han": "好",
+     "py": "hǎo",
+     "tone": 3,
+     "say": "how"
+    },
+    {
+     "han": "想",
+     "py": "xiǎng",
+     "tone": 3,
+     "say": "shyahng",
+     "said": 3
+    },
+    {
+     "han": "让",
+     "py": "ràng",
+     "tone": 4,
+     "say": "rahng",
+     "said": 4
+    },
+    {
+     "han": "你",
+     "py": "nǐ",
+     "tone": 3,
+     "say": "nee",
+     "said": 3
+    },
+    {
+     "han": "抱",
+     "py": "bào",
+     "tone": 4,
+     "say": "BAOW",
+     "said": 4
+    },
+    {
+     "han": "抱",
+     "py": "bao",
+     "tone": 5,
+     "say": "baow",
+     "said": 5
+    },
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "waw",
+     "said": 3
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.113,
+      "word": 0
+     },
+     {
+      "t": 0.212,
+      "d": 0.212,
+      "word": 1
+     },
+     {
+      "t": 0.425,
+      "d": 0.375,
+      "word": 2
+     },
+     {
+      "t": 0.887,
+      "d": 0.15,
+      "word": 3
+     },
+     {
+      "t": 1.038,
+      "d": 0.087,
+      "word": 4
+     },
+     {
+      "t": 1.15,
+      "d": 0.194,
+      "word": 5
+     },
+     {
+      "t": 1.344,
+      "d": 0.194,
+      "word": 5
+     },
+     {
+      "t": 1.538,
+      "d": 0.263,
+      "word": 6
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.205,
+      "word": 0
+     },
+     {
+      "t": 0.345,
+      "d": 0.386,
+      "word": 1
+     },
+     {
+      "t": 0.732,
+      "d": 0.682,
+      "word": 2
+     },
+     {
+      "t": 1.573,
+      "d": 0.273,
+      "word": 3
+     },
+     {
+      "t": 1.845,
+      "d": 0.159,
+      "word": 4
+     },
+     {
+      "t": 2.05,
+      "d": 0.352,
+      "word": 5
+     },
+     {
+      "t": 2.402,
+      "d": 0.352,
+      "word": 5
+     },
+     {
+      "t": 2.755,
+      "d": 0.477,
+      "word": 6
+     }
+    ]
+   },
+   "note": "Soft and affectionate — asking your partner to hold you."
+  },
+  {
+   "id": "come-hold-you",
+   "cat": "affection",
+   "en": "Come here, let me hold you",
+   "zh": "过来让我抱抱你",
+   "py": "guò lái ràng wǒ bào bao nǐ",
+   "phon": "gwaw lye rahng waw BAOW baow nee",
+   "syllables": [
+    {
+     "han": "过",
+     "py": "guò",
+     "tone": 4,
+     "say": "gwaw",
+     "said": 4
+    },
+    {
+     "han": "来",
+     "py": "lái",
+     "tone": 2,
+     "say": "lye",
+     "said": 2
+    },
+    {
+     "han": "让",
+     "py": "ràng",
+     "tone": 4,
+     "say": "rahng",
+     "said": 4
+    },
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "waw",
+     "said": 3
+    },
+    {
+     "han": "抱",
+     "py": "bào",
+     "tone": 4,
+     "say": "BAOW",
+     "said": 4
+    },
+    {
+     "han": "抱",
+     "py": "bao",
+     "tone": 5,
+     "say": "baow",
+     "said": 5
+    },
+    {
+     "han": "你",
+     "py": "nǐ",
+     "tone": 3,
+     "say": "nee",
+     "said": 3
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.156,
+      "word": 0
+     },
+     {
+      "t": 0.256,
+      "d": 0.156,
+      "word": 0
+     },
+     {
+      "t": 0.438,
+      "d": 0.125,
+      "word": 1
+     },
+     {
+      "t": 0.562,
+      "d": 0.075,
+      "word": 2
+     },
+     {
+      "t": 0.65,
+      "d": 0.206,
+      "word": 3
+     },
+     {
+      "t": 0.856,
+      "d": 0.206,
+      "word": 3
+     },
+     {
+      "t": 1.062,
+      "d": 0.237,
+      "word": 4
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.284,
+      "word": 0
+     },
+     {
+      "t": 0.425,
+      "d": 0.284,
+      "word": 0
+     },
+     {
+      "t": 0.755,
+      "d": 0.227,
+      "word": 1
+     },
+     {
+      "t": 0.982,
+      "d": 0.136,
+      "word": 2
+     },
+     {
+      "t": 1.141,
+      "d": 0.375,
+      "word": 3
+     },
+     {
+      "t": 1.516,
+      "d": 0.375,
+      "word": 3
+     },
+     {
+      "t": 1.891,
+      "d": 0.432,
+      "word": 4
+     }
+    ]
+   }
+  },
+  {
+   "id": "thinking-all-day",
+   "cat": "affection",
+   "en": "I've been thinking about you all day",
+   "zh": "我今天一直在想你",
+   "py": "wǒ jīn tiān yì zhí zài xiǎng nǐ",
+   "phon": "waw jin tyen yee jr dzye SHYAHNG nee",
+   "syllables": [
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "waw",
+     "said": 3
+    },
+    {
+     "han": "今",
+     "py": "jīn",
+     "tone": 1,
+     "say": "jin",
+     "said": 1
+    },
+    {
+     "han": "天",
+     "py": "tiān",
+     "tone": 1,
+     "say": "tyen",
+     "said": 1
+    },
+    {
+     "han": "一",
+     "py": "yì",
+     "tone": 4,
+     "say": "yee",
+     "said": 4
+    },
+    {
+     "han": "直",
+     "py": "zhí",
+     "tone": 2,
+     "say": "jr",
+     "said": 2
+    },
+    {
+     "han": "在",
+     "py": "zài",
+     "tone": 4,
+     "say": "dzye",
+     "said": 4
+    },
+    {
+     "han": "想",
+     "py": "xiǎng",
+     "tone": 3,
+     "say": "SHYAHNG",
+     "said": 2,
+     "sandhi": true,
+     "say_py": "xiáng"
+    },
+    {
+     "han": "你",
+     "py": "nǐ",
+     "tone": 3,
+     "say": "nee"
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.125,
+      "word": 0
+     },
+     {
+      "t": 0.237,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.418,
+      "d": 0.181,
+      "word": 1
+     },
+     {
+      "t": 0.625,
+      "d": 0.163,
+      "word": 2
+     },
+     {
+      "t": 0.787,
+      "d": 0.163,
+      "word": 2
+     },
+     {
+      "t": 0.963,
+      "d": 0.175,
+      "word": 3
+     },
+     {
+      "t": 1.137,
+      "d": 0.325,
+      "word": 4
+     },
+     {
+      "t": 1.462,
+      "d": 0.237,
+      "word": 5
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.227,
+      "word": 0
+     },
+     {
+      "t": 0.391,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 0.721,
+      "d": 0.33,
+      "word": 1
+     },
+     {
+      "t": 1.095,
+      "d": 0.295,
+      "word": 2
+     },
+     {
+      "t": 1.39,
+      "d": 0.295,
+      "word": 2
+     },
+     {
+      "t": 1.709,
+      "d": 0.318,
+      "word": 3
+     },
+     {
+      "t": 2.027,
+      "d": 0.591,
+      "word": 4
+     },
+     {
+      "t": 2.618,
+      "d": 0.432,
+      "word": 5
+     }
+    ]
+   }
+  },
+  {
    "id": "youre-cute",
    "cat": "compliments",
    "en": "You're so cute",
@@ -7634,6 +8144,158 @@ window.PHRASE_DATA = {
       "t": 1.368,
       "d": 0.409,
       "word": 0
+     }
+    ]
+   }
+  },
+  {
+   "id": "you-made-me-mad",
+   "cat": "checking-in",
+   "en": "You made me mad today",
+   "zh": "你今天让我生气了",
+   "py": "nǐ jīn tiān ràng wǒ shēng qì le",
+   "phon": "nee jin tyen rahng waw shung CHEE luh",
+   "syllables": [
+    {
+     "han": "你",
+     "py": "nǐ",
+     "tone": 3,
+     "say": "nee",
+     "said": 3
+    },
+    {
+     "han": "今",
+     "py": "jīn",
+     "tone": 1,
+     "say": "jin",
+     "said": 1
+    },
+    {
+     "han": "天",
+     "py": "tiān",
+     "tone": 1,
+     "say": "tyen",
+     "said": 1
+    },
+    {
+     "han": "让",
+     "py": "ràng",
+     "tone": 4,
+     "say": "rahng",
+     "said": 4
+    },
+    {
+     "han": "我",
+     "py": "wǒ",
+     "tone": 3,
+     "say": "waw",
+     "said": 3
+    },
+    {
+     "han": "生",
+     "py": "shēng",
+     "tone": 1,
+     "say": "shung",
+     "said": 1
+    },
+    {
+     "han": "气",
+     "py": "qì",
+     "tone": 4,
+     "say": "CHEE",
+     "said": 4
+    },
+    {
+     "han": "了",
+     "py": "le",
+     "tone": 5,
+     "say": "luh",
+     "said": 5
+    }
+   ],
+   "timing": {
+    "natural": [
+     {
+      "t": 0.1,
+      "d": 0.138,
+      "word": 0
+     },
+     {
+      "t": 0.237,
+      "d": 0.15,
+      "word": 1
+     },
+     {
+      "t": 0.387,
+      "d": 0.15,
+      "word": 1
+     },
+     {
+      "t": 0.562,
+      "d": 0.125,
+      "word": 2
+     },
+     {
+      "t": 0.688,
+      "d": 0.075,
+      "word": 3
+     },
+     {
+      "t": 0.775,
+      "d": 0.263,
+      "word": 4
+     },
+     {
+      "t": 1.038,
+      "d": 0.263,
+      "word": 4
+     },
+     {
+      "t": 1.3,
+      "d": 0.212,
+      "word": 5
+     }
+    ],
+    "slow": [
+     {
+      "t": 0.141,
+      "d": 0.25,
+      "word": 0
+     },
+     {
+      "t": 0.391,
+      "d": 0.273,
+      "word": 1
+     },
+     {
+      "t": 0.663,
+      "d": 0.273,
+      "word": 1
+     },
+     {
+      "t": 0.982,
+      "d": 0.227,
+      "word": 2
+     },
+     {
+      "t": 1.209,
+      "d": 0.136,
+      "word": 3
+     },
+     {
+      "t": 1.368,
+      "d": 0.477,
+      "word": 4
+     },
+     {
+      "t": 1.846,
+      "d": 0.477,
+      "word": 4
+     },
+     {
+      "t": 2.323,
+      "d": 0.386,
+      "word": 5
      }
     ]
    }
