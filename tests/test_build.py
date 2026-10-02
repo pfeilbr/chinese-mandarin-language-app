@@ -51,3 +51,30 @@ def test_generated_data_matches_source():
     payload = json.loads(js.split("window.PHRASE_DATA = ", 1)[1].rstrip().rstrip(";"))
     built = {p["id"]: p.get("bear", False) for p in payload["phrases"]}
     assert built == {p["id"]: bool(p.get("bear")) for p in SOURCE["phrases"]}
+
+
+@pytest.mark.parametrize("en, said", [
+    ("I miss you", "I miss you"),
+    ("Auntie (her mum)", "Auntie, her mum"),
+    ("Okay / will do", "Okay, or will do"),
+    ("Perfect! / Awesome!", "Perfect! or Awesome!"),
+])
+def test_english_is_respelled_for_speech(en, said):
+    assert build.speakable_en({**PHRASE, "en": en}) == said
+
+
+def test_en_say_overrides_the_english():
+    assert build.speakable_en({**PHRASE, "en_say": "Kiss me, please"}) == "Kiss me, please"
+
+
+def test_every_phrase_and_cue_has_current_english_audio():
+    """Passive practice speaks the English first; a missing or stale clip
+    means re-running the build."""
+    audio = ROOT / "web" / "audio"
+    manifest = json.loads((audio / "en.json").read_text())
+    for p in SOURCE["phrases"]:
+        assert (audio / f"{p['id']}.en.mp3").exists(), p["id"]
+        assert manifest[f"{p['id']}.en"] == build.speakable_en(p), p["id"]
+    for ids in build.cue_ids().values():
+        for cid in ids:
+            assert (audio / f"{cid}.mp3").exists(), cid

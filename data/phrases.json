@@ -1,5 +1,6 @@
 {
   "voice": "zh-CN-XiaoxiaoNeural",
+  "en_voice": "en-US-AvaNeural",
   "tracks": { "natural": "+0%", "slow": "-45%" },
   "categories": [
     { "id": "affection",      "name": "Affection",         "emoji": "❤️" },
