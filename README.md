@@ -22,7 +22,7 @@ route — so the app just tells you where to tap.)
 
 ## What it does
 
-- **102 phrases** across affection, sweet talk, meeting the family, occasions and
+- **120 phrases** across affection, sweet talk, flirting, meeting the family, occasions and
   toasts, Chengdu and spice, meals, coming and going, checking in, chores, and
   the "I'm still learning, say it slower" repair kit.
 - **Record yourself and hear it back** against the native clip, so you don't
