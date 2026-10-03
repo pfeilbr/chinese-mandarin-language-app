@@ -22,7 +22,7 @@ route — so the app just tells you where to tap.)
 
 ## What it does
 
-- **102 phrases** across affection, sweet talk, meeting the family, occasions and
+- **120 phrases** across affection, sweet talk, flirting, meeting the family, occasions and
   toasts, Chengdu and spice, meals, coming and going, checking in, chores, and
   the "I'm still learning, say it slower" repair kit.
 - **Record yourself and hear it back** against the native clip, so you don't
@@ -30,9 +30,10 @@ route — so the app just tells you where to tap.)
 - **Continuous speed control**, 40% to 110% of native pace.
 - **Written in English you can just read.** Every phrase is respelled
   syllable-by-syllable the way it actually sounds — `nee how kuh EYE`, with
-  CAPITALS marking the stressed syllable. Chinese characters and pinyin are both
-  off by default: two scripts you can't read yet are noise around the one line
-  you're trying to say. Turn either back on in Settings.
+  CAPITALS marking the stressed syllable. On the practice screen, Chinese
+  characters and pinyin are both off by default: two scripts you can't read yet
+  are noise around the one line you're trying to say. Turn either back on in
+  Settings.
 - **Tone colouring and contour marks** on every syllable. Tones are what decide
   whether you're understood, so they're the most visible thing on screen — and
   they ride on the English respelling, so they work with both scripts hidden.
@@ -40,12 +41,22 @@ route — so the app just tells you where to tap.)
 - **Syllable mode** steps through one sound at a time.
 - **Shadow mode** plays the phrase, leaves a silent gap for you to say it out loud,
   then plays it again — indefinitely. This is the one to use with AirPods in.
+- **Passive practice** (top of the list): up to 20 phrases from whatever the list
+  is showing. Each one is said in English, then in Mandarin, then it's your turn —
+  it listens, says *good* and moves on, or says *not quite* and plays both again.
+  See [Passive practice](#passive-practice).
 - **Lock-screen and AirPods controls.** Squeeze the stem to replay without taking
   your phone out.
 - **Favourites** and search across English, pinyin, and hanzi.
+- **Copy the characters.** Each list card shows the phrase in 汉字 under the
+  respelling, with a copy button — for pasting into WeChat or a translator.
 - **🐻 phrases.** Phrases flagged `"bear": true` show a bear in the list, and
   the 🐻 checkbox next to search shows just those, across every category.
-- **Settings** (☰): install, updates, offline audio and storage, and display
+- **Themes** (☰ → Theme): four light (Daylight, Solarized, Latte, Gruvbox), four
+  dark (Midnight — the original — Dracula, Nord, Tokyo Night), and four cute ones
+  with a mascot and a pattern (🐻 Bear, 🐼 Panda, 🎀 Kitty, 💕 Love). Tone colours
+  keep the same hue in every theme, so red is always tone 1.
+- **Settings** (☰): install, updates, theme, offline audio and storage, and display
   toggles — turn pinyin off to test yourself on the characters.
 
 ## Checking your pronunciation
@@ -59,6 +70,28 @@ It's a plain A/B rather than speech recognition on purpose: `SpeechRecognition`
 is unreliable-to-absent in iOS Safari, which is the one browser this has to work
 in. Recordings live in memory for the session only, and the mic stream is
 released the moment you stop — iOS keeps showing the in-use indicator otherwise.
+
+## Passive practice
+
+English, then Mandarin, then you. Where the browser has `SpeechRecognition` it
+listens for your attempt in `zh-CN` and compares what it heard with the phrase:
+two-thirds of the characters back, in order, is a pass. Homophones count (the
+recogniser writing 他 for 她 isn't your fault), and so do filler words around the
+phrase. A miss plays the English and the Mandarin again; after three misses it
+moves on and puts the phrase on the end-of-set list, so a recogniser that keeps
+mishearing you can't trap you on one phrase.
+
+Two honest limits:
+
+- **It hears words, not tones.** The recogniser's language model will happily
+  turn a wrong tone into the right word, so a pass means *recognisable*, not
+  *correct*. Tones are what record-and-compare and ear training are for.
+- **iOS support is patchy.** Safari's recognition needs Siri & Dictation on, and
+  has been unreliable in home-screen apps. When it's missing or refused, the set
+  carries on with a pause to say it in and a **Got it / Not yet** instead.
+
+It keeps the screen awake while a set runs (listening stops when the page is
+hidden), and the lock screen / AirPods controls map to pause, skip and replay.
 
 ## A note on the phrase content
 
@@ -80,7 +113,7 @@ The app checks for a new version on launch and offers it rather than applying it
 silently: you get an **Update available** prompt with *Update* and *Later*. You
 can also check by hand from **☰ menu → Updates**. Accepting swaps in the new
 version and reloads; the downloaded audio is kept, so an update never costs you
-the 2 MB again.
+the audio again.
 
 The mechanics are worth knowing if you change the deploy:
 
@@ -114,6 +147,11 @@ must survive any speed change.
 
 The build also captures per-word timings from the TTS service and subdivides them
 to per-syllable, which is what drives the synced highlighting and tap-to-hear.
+
+Passive practice adds one English clip per phrase (`en-US-AvaNeural`, set by
+`en_voice`) and a handful of spoken cues — "Good!", "Not quite. Listen again." —
+rendered the same way. `web/audio/en.json` records the text each English clip was
+rendered from, so editing a phrase's `en` re-renders its clip on the next build.
 
 ## Adding or changing phrases
 
@@ -152,6 +190,9 @@ teaches you to say something wrong without ever noticing.
   (`yí xià`, `yì qǐ`).
 - `bear` — optional; `true` puts a 🐻 next to the phrase and includes it in
   the bear-only filter.
+- `en_say` — optional; what passive practice *says* for the English, when `en`
+  reads badly aloud. By default the build already turns `Auntie (her mum)` into
+  "Auntie, her mum" and `Okay / will do` into "Okay, or will do".
 - `phon` — the English respelling, and the line the app shows biggest, because
   it's the one that gets read out loud. One space-separated chunk per syllable.
   Capitalise the syllable that takes the stress. Spell for an English reader

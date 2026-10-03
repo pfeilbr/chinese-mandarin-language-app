@@ -4,6 +4,9 @@ Renders every phrase in data/phrases.json to MP3 at two speaking rates using
 Microsoft's neural Mandarin voices (via edge-tts -- free, no API key), captures
 per-word timing data, and emits web/data/phrases.js for the front-end.
 
+Also renders each phrase's English once, plus the short spoken cues ("Good!",
+"Not quite...") that passive practice says between phrases.
+
 Usage:
     ./scripts/build.py              # only render what's missing
     ./scripts/build.py --force      # re-render everything
@@ -22,6 +25,20 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "phrases.json"
 AUDIO_DIR = ROOT / "web" / "audio"
 OUT_JS = ROOT / "web" / "data" / "phrases.js"
+# Which text each English clip was rendered from. An edited `en` would otherwise
+# keep its old audio forever, since only missing clips are rendered.
+EN_MANIFEST = AUDIO_DIR / "en.json"
+
+DEFAULT_EN_VOICE = "en-US-AvaNeural"
+
+# Spoken feedback for passive practice. Several takes per cue so twenty phrases
+# in a row don't all get the identical "Good!".
+CUES = {
+    "good": ["Good!", "Nice!", "Great job!", "That's it!"],
+    "again": ["Not quite. Listen again.", "Almost. One more time."],
+    "moveon": ["Let's move on."],
+    "done": ["That's the set. Nice work!"],
+}
 
 CONCURRENCY = 6
 PUNCT = "，。？！、：；「」《》,.?!"
@@ -165,6 +182,33 @@ def map_words_to_syllables(words: list[dict], n_syllables: int) -> list[dict]:
     return out[:n_syllables]
 
 
+def speakable_en(phrase: dict) -> str:
+    """The English as it should be *said*. The list's shorthand reads badly
+    aloud: "Auntie (her mum)" -> "Auntie, her mum", "Okay / will do" ->
+    "Okay, or will do". `en_say` overrides it outright."""
+    if phrase.get("en_say"):
+        return phrase["en_say"]
+    s = re.sub(r"\s*\(([^)]*)\)", r", \1", phrase["en"])
+    s = re.sub(r"\s*/\s*", ", or ", s)
+    return re.sub(r"([!?.]),", r"\1", s)
+
+
+def cue_ids() -> dict[str, list[str]]:
+    return {name: [f"cue-{name}-{i + 1}" for i in range(len(takes))]
+            for name, takes in CUES.items()}
+
+
+async def render_en(clip_id: str, text: str, voice: str, manifest: dict,
+                    force: bool, sem: asyncio.Semaphore) -> None:
+    mp3 = AUDIO_DIR / f"{clip_id}.mp3"
+    if mp3.exists() and manifest.get(clip_id) == text and not force:
+        return
+    async with sem:
+        await render(text, voice, "+0%", mp3)
+    manifest[clip_id] = text
+    print(f"  ✓ {clip_id}", flush=True)
+
+
 def phrase_entry(phrase: dict) -> dict:
     """The front-end record for one phrase, minus timings (added per track)."""
     out = {
@@ -239,8 +283,24 @@ async def main() -> int:
         *(process(p, cfg, args.force, sem) for p in cfg["phrases"])
     )
 
+    en_voice = cfg.get("en_voice", DEFAULT_EN_VOICE)
+    print(f"Rendering English prompts and cues as {en_voice}...")
+    manifest = json.loads(EN_MANIFEST.read_text()) if EN_MANIFEST.exists() else {}
+    en_jobs = [(f"{p['id']}.en", speakable_en(p)) for p in cfg["phrases"]]
+    for name, ids in cue_ids().items():
+        en_jobs += list(zip(ids, CUES[name]))
+    await asyncio.gather(
+        *(render_en(cid, text, en_voice, manifest, args.force, sem) for cid, text in en_jobs)
+    )
+    live = {cid for cid, _ in en_jobs}
+    EN_MANIFEST.write_text(json.dumps(
+        {k: v for k, v in sorted(manifest.items()) if k in live}, ensure_ascii=False, indent=1
+    ) + "\n")
+
     payload = {
         "voice": cfg["voice"],
+        "en_voice": en_voice,
+        "cues": cue_ids(),
         "tracks": cfg["tracks"],
         "categories": cfg["categories"],
         "phrases": list(phrases),

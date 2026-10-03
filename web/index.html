@@ -27,6 +27,17 @@
      up running yesterday's app.js against today's markup — which breaks the app
      outright the moment an element is renamed. -->
 <link rel="stylesheet" href="styles.css?v=__BUILD__">
+
+<!-- The saved theme goes on before first paint; set from app.js instead, a
+     light theme would flash dark on every launch. -->
+<script>
+  (function () {
+    try {
+      var theme = JSON.parse(localStorage.getItem('sim.prefs') || '{}').theme;
+      if (theme) document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
 
@@ -182,6 +193,14 @@
       </div>
     </section>
 
+    <!-- Theme -->
+    <section class="group">
+      <h3 class="group-head">Theme</h3>
+      <div class="group-body">
+        <div id="theme-picker" class="theme-picker"></div>
+      </div>
+    </section>
+
     <!-- Updates -->
     <section class="group">
       <h3 class="group-head">Updates</h3>
@@ -316,6 +335,55 @@
 
     <p id="drill-feedback" class="drill-feedback" hidden></p>
     <button id="drill-next" class="cmp-btn accent drill-next" hidden>Next</button>
+  </div>
+</section>
+
+<!-- Passive practice: English, then Mandarin, then you say it back — and it
+     listens, where the browser can, so a set runs without touching the phone. -->
+<section id="passive" class="sheet" hidden aria-modal="true" role="dialog" aria-label="Passive practice">
+  <div class="sheet-inner">
+    <div class="sheet-head">
+      <button class="icon-btn close-btn" aria-label="Back">
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <span id="pp-count" class="drill-score"></span>
+    </div>
+
+    <h2 class="sheet-title">Passive practice</h2>
+    <div class="pp-progress" aria-hidden="true"><i id="pp-bar"></i></div>
+
+    <div id="pp-run">
+      <div id="pp-card" class="pp-card" aria-live="polite">
+        <p class="pp-step"><i></i><span id="pp-step"></span></p>
+        <p id="pp-en" class="pp-en"></p>
+        <div id="pp-say" class="hanzi-row pp-say"></div>
+        <p id="pp-zh" class="pp-zh" lang="zh-CN"></p>
+        <p id="pp-heard" class="pp-heard" hidden></p>
+        <p id="pp-tries" class="pp-tries" hidden></p>
+        <div id="pp-grade" class="pp-grade" hidden>
+          <button id="pp-no" class="cmp-btn">Not yet</button>
+          <button id="pp-yes" class="cmp-btn accent">Got it</button>
+        </div>
+      </div>
+
+      <div class="pp-controls">
+        <button id="pp-pause" class="cmp-btn" aria-pressed="false">Pause</button>
+        <button id="pp-pass" class="cmp-btn">Count it</button>
+        <button id="pp-skip" class="cmp-btn">Skip</button>
+      </div>
+
+      <p id="pp-note" class="hint" hidden></p>
+    </div>
+
+    <div id="pp-done" class="pp-done" hidden>
+      <p id="pp-score" class="pp-big"></p>
+      <p id="pp-score-sub" class="drill-lead"></p>
+      <div id="pp-missed" class="pp-missed"></div>
+      <div class="pp-done-actions">
+        <button id="pp-again" class="cmp-btn">Same set again</button>
+        <button id="pp-next" class="cmp-btn accent">New set</button>
+      </div>
+    </div>
   </div>
 </section>
 
